@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { submitInquiry } from "@/lib/api";
+import { useState } from "react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -17,11 +19,14 @@ const contactSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
+type ContactFormData = z.infer<typeof contactSchema>;
+
 export default function Contact() {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const form = useForm<z.infer<typeof contactSchema>>({
+  const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "",
@@ -31,14 +36,28 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    console.log(values);
-    // Here you would integrate EmailJS
-    toast({
-      title: "Inquiry Sent!",
-      description: "We have received your message and will contact you shortly.",
-    });
-    form.reset();
+  async function onSubmit(values: ContactFormData) {
+    setIsSubmitting(true);
+    
+    try {
+      await submitInquiry(values);
+      
+      toast({
+        title: "Inquiry Sent!",
+        description: "We have received your message and will contact you shortly.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Submission Failed",
+        description: error instanceof Error ? error.message : "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -103,9 +122,14 @@ export default function Contact() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t.contact.address.replace("Address", "Name")}</FormLabel>
+                          <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Name" {...field} className="bg-muted/50" />
+                            <Input 
+                              placeholder="Your Name" 
+                              {...field} 
+                              className="bg-muted/50" 
+                              disabled={isSubmitting}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -118,7 +142,12 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>{t.contact.email}</FormLabel>
                           <FormControl>
-                            <Input placeholder="your@email.com" {...field} className="bg-muted/50" />
+                            <Input 
+                              placeholder="your@email.com" 
+                              {...field} 
+                              className="bg-muted/50" 
+                              disabled={isSubmitting}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -133,7 +162,12 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>{t.contact.phone}</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your Phone Number" {...field} className="bg-muted/50" />
+                          <Input 
+                            placeholder="Your Phone Number" 
+                            {...field} 
+                            className="bg-muted/50" 
+                            disabled={isSubmitting}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -147,15 +181,25 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>{t.contact.message}</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="How can we help you?" className="min-h-[150px] bg-muted/50" {...field} />
+                          <Textarea 
+                            placeholder="How can we help you?" 
+                            className="min-h-[150px] bg-muted/50" 
+                            {...field} 
+                            disabled={isSubmitting}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full md:w-auto bg-secondary hover:bg-secondary/90">
-                    {t.contact.send}
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full md:w-auto bg-secondary hover:bg-secondary/90"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : t.contact.send}
                   </Button>
                 </form>
               </Form>
