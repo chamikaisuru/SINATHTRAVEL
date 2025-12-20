@@ -1,0 +1,91 @@
+Create a complete, professional, mobile-responsive website for a travel agency named 
+"Sinath Travels and Tours".
+
+BUSINESS INFORMATION:
+- Company Name: Sinath Travels and Tours
+- Industry: Travel & Tourism
+- Certification: IATA Licensed by Civil Aviation Authority of Sri Lanka
+- Status: IATA Accredited Agent
+- Phone Number: 0117 794 128
+- Address: Main Street, Akkaraipattu, Sri Lanka
+- WhatsApp Number: 0117794128
+
+DESIGN & BRANDING:
+- Use the provided company logo
+- Extract and use the color scheme from the logo:
+  - Primary color: Deep Blue
+  - Secondary color: Red
+  - Accent colors: Yellow, Green, White
+- Overall style: Professional, trustworthy, modern travel agency design
+- Clean layout suitable for an IATA accredited company
+
+TECHNOLOGY:
+- Use HTML5, CSS3, JavaScript
+- Use Bootstrap or Tailwind CSS
+- Fully responsive for mobile, tablet, and desktop
+- SEO friendly structure
+
+WEBSITE PAGES & FEATURES:
+
+1. HOME PAGE
+- Hero section with travel-related images
+- Company introduction
+- IATA Accredited Agent badge
+- Services highlights:
+  - Air Ticketing
+  - Visa Services
+  - Tour Packages
+- Latest offers section
+- Floating WhatsApp chat button
+- Click-to-call phone button (mobile)
+
+2. ABOUT US PAGE
+- Company background
+- IATA license and accreditation details
+- Trust and reliability content
+
+3. SERVICES / PACKAGES PAGE
+- Sections for:
+  - Tour Packages
+  - Visa Services
+  - Air Ticket Offers
+  - Special Promotions
+- Each section should display sample package cards with images and descriptions
+
+4. CONTACT US PAGE
+- Address: Main Street, Akkaraipattu
+- Phone number
+- WhatsApp contact link
+- Google Map embed
+- Email inquiry form with:
+  - Name
+  - Email
+  - Phone
+  - Message
+- Form should be functional using frontend email service (example EmailJS)
+
+5. MULTI-LANGUAGE SUPPORT
+- Language switcher:
+  - English (default)
+  - Sinhala
+  - Tamil
+- Website text should change based on selected language
+
+UI / UX REQUIREMENTS:
+- Professional airline & travel theme
+- Smooth scrolling
+- Modern typography
+- Clean icons
+- Fast loading
+- Mobile-first design
+
+DELIVERABLE:
+- Fully completed static website
+- All pages linked correctly
+- Ready to deploy
+- Well-structured and commented code
+
+IMPORTANT:
+- Do not include admin panel
+- Do not include backend development
+- Focus only on creating the complete public website
