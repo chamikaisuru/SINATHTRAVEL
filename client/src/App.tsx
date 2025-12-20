@@ -12,6 +12,12 @@ import Services from "@/pages/services";
 import Contact from "@/pages/contact";
 import WhatsAppButton from "@/components/whatsapp-button";
 
+import AdminLayout from "@/components/admin/AdminLayout";
+import AdminLogin from "@/pages/admin/login";
+import AdminDashboard from "@/pages/admin/dashboard";
+import AdminPackages from "@/pages/admin/packages";
+import AdminInquiries from "@/pages/admin/inquiries";
+
 function Router() {
   return (
     <Layout>
@@ -20,6 +26,23 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
         <Route path="/contact" component={Contact} />
+        // Inside your Router component, add these routes:
+        <Route path="/admin/login" component={AdminLogin} />
+        <Route path="/admin/dashboard">
+          <AdminLayout>
+            <AdminDashboard />
+          </AdminLayout>
+        </Route>
+        <Route path="/admin/packages">
+          <AdminLayout>
+            <AdminPackages />
+          </AdminLayout>
+        </Route>
+        <Route path="/admin/inquiries">
+          <AdminLayout>
+            <AdminInquiries />
+          </AdminLayout>
+        </Route>
         <Route component={NotFound} />
       </Switch>
     </Layout>

@@ -3,6 +3,7 @@ import sigiriyaImg from "@assets/stock_images/sri_lanka_sigiriya_r_ddcb0491.jpg"
 import dubaiImg from "@assets/stock_images/dubai_skyline_with_b_8fae68a6.jpg";
 import maldivesImg from "@assets/stock_images/maldives_water_villa_e130bb66.jpg";
 import visaImg from "@assets/stock_images/passport_and_visa_ap_e2db6da8.jpg";
+import FreeVisaServicesimg from "@assets/stock_images/Free_Visa_Services.jpg";
 import touristsImg from "@assets/stock_images/happy_tourists_group_d3b2c5f2.jpg";
 
 export const images = {
@@ -11,6 +12,7 @@ export const images = {
   dubai: dubaiImg,
   maldives: maldivesImg,
   visa: visaImg,
+  FreeVisaServicesimg: FreeVisaServicesimg,
   tourists: touristsImg,
 };
 

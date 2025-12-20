@@ -88,7 +88,7 @@ export default function Services() {
             </Link>
           </div>
           <div className="flex-1">
-            <img src={images.visa} alt="Visa documents" className="rounded-2xl shadow-lg w-full object-cover h-[300px]" />
+            <img src={images.FreeVisaServicesimg} alt="Visa documents" className="rounded-2xl shadow-lg w-full object-cover h-[300px]" />
           </div>
         </div>
       </div>
