@@ -1,10 +1,23 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
-# Allow CORS
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+# CORS Headers - Allow requests from any origin
+<IfModule mod_headers.c>
+    # Allow from any origin
+    Header always set Access-Control-Allow-Origin "*"
+    
+    # Allow these methods
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    
+    # Allow these headers
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    
+    # Allow credentials
+    Header always set Access-Control-Allow-Credentials "true"
+    
+    # Cache preflight requests for 1 hour
+    Header always set Access-Control-Max-Age "3600"
+</IfModule>
 
 # Handle preflight OPTIONS requests
 RewriteCond %{REQUEST_METHOD} OPTIONS
