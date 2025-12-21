@@ -40,49 +40,53 @@ class Database {
 }
 
 /**
- * Enhanced CORS Handler
- * Works for both development and production
+ * FIXED CORS Handler - ඔයාගේ issue එක solve කරන්න
  */
 function enableCORS() {
+    // CRITICAL: Output කරපු දෙයක් නැත්නම් විතරක් headers set කරන්න
+    if (headers_sent()) {
+        return;
+    }
+    
     // Get the request origin
     $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
     
-    // Allowed origins for development
+    // Development සඳහා allow කරන origins
     $allowedOrigins = [
+         'http://localhost:5000',
+    'http://localhost:8080',  // මේක add කරන්න
+    'http://127.0.0.1:8080',  // මේකත් add කරන්න
+    'http://192.168.8.101:8080',  // මේකත් add කරන්න
         'http://localhost:5000',
         'http://localhost:5173',
         'http://127.0.0.1:5000',
         'http://127.0.0.1:5173',
         'http://192.168.8.101:5000',
         'http://192.168.8.101:5173',
+        'http://192.168.8.101:8080',
         'https://www.sinathtravels.com',
         'https://sinathtravels.com',
     ];
     
-    // Check if origin is in allowed list
+    // Check origin and set appropriate header
     if (in_array($origin, $allowedOrigins)) {
         header("Access-Control-Allow-Origin: $origin");
+    } elseif (preg_match('/^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.0\.\d+\.\d+)(:\d+)?$/', $origin)) {
+        // Local development origins
+        header("Access-Control-Allow-Origin: $origin");
     } else {
-        // For development, allow all local origins
-        if (strpos($origin, 'localhost') !== false || 
-            strpos($origin, '127.0.0.1') !== false ||
-            strpos($origin, '192.168.') !== false ||
-            strpos($origin, '10.0.') !== false) {
-            header("Access-Control-Allow-Origin: $origin");
-        } else {
-            // Fallback for production
-            header("Access-Control-Allow-Origin: *");
-        }
+        // Production fallback
+        header("Access-Control-Allow-Origin: *");
     }
     
-    // Required CORS headers
+    // CORS headers - මෙහෙම අනිවාර්යෙන්ම තියෙන්න ඕන
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin");
     header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Max-Age: 3600");
+    header("Access-Control-Max-Age: 86400"); // 24 hours
     header("Content-Type: application/json; charset=UTF-8");
 
-    // Handle OPTIONS preflight request
+    // OPTIONS preflight request එක handle කරන්න
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
         http_response_code(200);
         exit(0);
@@ -91,9 +95,6 @@ function enableCORS() {
 
 /**
  * Send JSON response
- * @param int $status HTTP status code
- * @param mixed $data Response data
- * @param string $message Optional message
  */
 function sendResponse($status, $data = null, $message = null) {
     http_response_code($status);
@@ -113,7 +114,6 @@ function sendResponse($status, $data = null, $message = null) {
         $response['data'] = $data;
     }
     
-    // Add success flag for easier client-side handling
     $response['success'] = ($status >= 200 && $status < 300);
     
     echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -122,13 +122,10 @@ function sendResponse($status, $data = null, $message = null) {
 
 /**
  * Get uploaded file path
- * @param string $filename
- * @return string Full file path
  */
 function getUploadPath($filename) {
     $uploadDir = __DIR__ . '/../uploads/';
     
-    // Create directory if it doesn't exist
     if (!file_exists($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
@@ -138,26 +135,18 @@ function getUploadPath($filename) {
 
 /**
  * Get public URL for uploaded file
- * @param string $filename
- * @return string Public URL
  */
 function getUploadUrl($filename) {
     if (empty($filename)) {
         return '';
     }
     
-    // Get protocol
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-    
-    // Get host
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-    
-    // Get base path
     $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
     $basePath = str_replace('/api', '', $scriptPath);
     $basePath = str_replace('/admin', '', $basePath);
     
-    // Build full URL
     $url = "$protocol://$host$basePath/uploads/$filename";
     
     return $url;
@@ -165,8 +154,6 @@ function getUploadUrl($filename) {
 
 /**
  * Validate and sanitize input
- * @param string $data Input data
- * @return string Sanitized data
  */
 function sanitizeInput($data) {
     $data = trim($data);
@@ -177,8 +164,6 @@ function sanitizeInput($data) {
 
 /**
  * Log error to file
- * @param string $message Error message
- * @param string $type Error type
  */
 function logError($message, $type = 'ERROR') {
     $logFile = __DIR__ . '/../logs/error.log';

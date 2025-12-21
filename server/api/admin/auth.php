@@ -4,24 +4,16 @@
  * Handles login, logout, and session management
  */
 
-// CORS headers - MUST be FIRST before any other output
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept");
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json; charset=UTF-8");
-
-// Handle OPTIONS preflight immediately
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit(0);
-}
-
-// Start session AFTER CORS headers
-session_start();
-
-// Include database connection
+// CRITICAL: Database config include කරන්න විතරක් කරන්න මුලින්ම
 require_once '../../config/database.php';
+
+// CORS enable කරන්න දැන්
+enableCORS();
+
+// Session start කරන්න CORS headers වලින් පස්සේ
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $database = new Database();
 $db = $database->getConnection();
@@ -123,14 +115,12 @@ function handleLogout($db) {
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
     if ($sessionId) {
-        // Delete session from database
         $query = "DELETE FROM admin_sessions WHERE id = :id";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $sessionId);
         $stmt->execute();
     }
     
-    // Destroy PHP session
     session_destroy();
     
     sendResponse(200, null, 'Logout successful');
@@ -146,7 +136,6 @@ function handleCheckAuth($db) {
         sendResponse(401, null, 'Not authenticated');
     }
     
-    // Verify session exists and is valid
     $query = "SELECT au.* FROM admin_users au 
               JOIN admin_sessions s ON au.id = s.admin_id 
               WHERE s.id = :session_id AND s.expires_at > NOW() AND au.status = 'active'";
@@ -174,7 +163,6 @@ function handleCheckAuth($db) {
 
 /**
  * Verify admin authentication
- * Use this function in other admin API files
  */
 function verifyAdminAuth($db) {
     if (session_status() === PHP_SESSION_NONE) {

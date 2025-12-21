@@ -3,9 +3,12 @@
  * Handles all admin panel API requests
  */
 
+// FIXED: Port 8080 එකට match වෙන විදියට
 const ADMIN_API_BASE = import.meta.env.VITE_API_URL 
   ? import.meta.env.VITE_API_URL.replace('/api', '/api/admin')
-  : 'http://localhost/sinath-travels/server/api/admin';
+  : 'http://localhost:8080/sinath-travels/server/api/admin';
+
+console.log('Admin API Base URL:', ADMIN_API_BASE); // Debug කරන්න
 
 /**
  * Admin API request with authentication
@@ -16,9 +19,11 @@ async function adminApiRequest<T>(
 ): Promise<T> {
   const url = `${ADMIN_API_BASE}/${endpoint}`;
   
+  console.log('Making request to:', url); // Debug log
+  
   const config: RequestInit = {
     ...options,
-    credentials: 'include', // Important for session cookies
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
@@ -28,8 +33,9 @@ async function adminApiRequest<T>(
   try {
     const response = await fetch(url, config);
     
+    console.log('Response status:', response.status); // Debug log
+    
     if (response.status === 401) {
-      // Redirect to login on authentication failure
       window.location.href = '/admin/login';
       throw new Error('Authentication required');
     }
@@ -40,6 +46,7 @@ async function adminApiRequest<T>(
     }
 
     const data = await response.json();
+    console.log('Response data:', data); // Debug log
     return data.data || data;
   } catch (error) {
     console.error('Admin API request failed:', error);
@@ -127,7 +134,7 @@ export async function createAdminPackage(formData: FormData): Promise<{ id: numb
   const response = await fetch(url, {
     method: 'POST',
     credentials: 'include',
-    body: formData, // Don't set Content-Type, browser will set it with boundary
+    body: formData,
   });
   
   if (!response.ok) {
