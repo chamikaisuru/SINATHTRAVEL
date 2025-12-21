@@ -21,3 +21,189 @@
 [Sun Dec 21 15:54:25.830976 2025] [php:error] [pid 1244:tid 1880] [client ::1:38321] PHP Fatal error:  Uncaught Exception: Database connection failed in D:\\xampp\\htdocs\\sinath-travels\\server\\config\\database.php:29\nStack trace:\n#0 D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php(28): Database->getConnection()\n#1 {main}\n  thrown in D:\\xampp\\htdocs\\sinath-travels\\server\\config\\database.php on line 29, referer: http://localhost:5000/
 [Sun Dec 21 16:10:17.015638 2025] [php:notice] [pid 20348:tid 1888] [client ::1:39768] Connection Error: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it, referer: http://localhost:5000/
 [Sun Dec 21 16:10:17.015638 2025] [php:error] [pid 20348:tid 1888] [client ::1:39768] PHP Fatal error:  Uncaught Exception: Database connection failed in D:\\xampp\\htdocs\\sinath-travels\\server\\config\\database.php:29\nStack trace:\n#0 D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php(28): Database->getConnection()\n#1 {main}\n  thrown in D:\\xampp\\htdocs\\sinath-travels\\server\\config\\database.php on line 29, referer: http://localhost:5000/
+[Sun Dec 21 18:53:22.084733 2025] [php:notice] [pid 19792:tid 1888] [client ::1:56297] Login attempt for username: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:53:22.603928 2025] [php:notice] [pid 19792:tid 1888] [client ::1:56297] Invalid password for user: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:54:15.866843 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56404] Login attempt for username: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:54:15.932050 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56404] Invalid password for user: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:54:47.511280 2025] [autoindex:error] [pid 19792:tid 1880] [client ::1:56437] AH01276: Cannot serve directory D:/xampp/htdocs/sinath-travels/server/api/admin/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Dec 21 18:55:55.316386 2025] [php:notice] [pid 19792:tid 1872] [client ::1:56476] Login attempt for username: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:55:55.379162 2025] [php:notice] [pid 19792:tid 1872] [client ::1:56476] Invalid password for user: admin, referer: http://localhost:5000/
+[Sun Dec 21 18:57:25.720351 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56546] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 18:57:25.782490 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56546] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:01:57.382541 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56780] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:01:57.444408 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56780] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:02:09.865754 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56796] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:02:09.928617 2025] [php:notice] [pid 19792:tid 1880] [client ::1:56796] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:06:10.982378 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57134] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:06:11.046788 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57134] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:06:27.536610 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57151] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:06:27.604276 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57151] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:11:05.733044 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57395] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:11:05.799531 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57395] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:13:32.881897 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57498] Login attempt for username: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:13:32.945019 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57498] Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.472424 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.472940 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.472940 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473424 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473683 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473683 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473683 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473949 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.473949 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Stored password hash: $2y$10$92IXUNpkjO0rO..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.474971 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.537263 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Password match: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.537263 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] \xe2\x9d\x8c Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:21:06.537263 2025] [php:notice] [pid 19792:tid 1880] [client ::1:57877] Direct comparison: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.026831 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.027872 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.027872 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Stored password hash: $2y$10$92IXUNpkjO0rO..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.027872 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.091850 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Password match: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.092875 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] \xe2\x9d\x8c Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:02.092875 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58663] Direct comparison: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.599597 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600080 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600168 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600258 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600355 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600433 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.600495 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.601055 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.601055 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Stored password hash: $2y$10$92IXUNpkjO0rO..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.601055 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.669225 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Password match: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.670225 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] \xe2\x9d\x8c Invalid password for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:36:16.670225 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58695] Direct comparison: NO, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.961328 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.961328 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.961328 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.961328 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.961328 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.962437 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.962437 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.965445 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.965445 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:35.965445 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.030206 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.030206 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.034207 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Creating session: d0440237cf91a1027bc193a56a9f12b7c60f92bd9d0ee2c18ac200b3e3ce71cd, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.106069 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.157300 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.223678 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.224207 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:36.224708 2025] [php:notice] [pid 19792:tid 1880] [client ::1:58813] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.803215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.803215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.803215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.803215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.803215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.804217 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.804217 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.804217 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.804217 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.804217 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.866215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.866215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:56.866215 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Creating session: 9d9ecfcce7ca8a4f87c62e561bc36cb51c3ba06f1b5cce3bc114e6dfaa51bf5c, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:57.033909 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:57.152417 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:57.209515 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:57.209515 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:37:57.209515 2025] [php:notice] [pid 19792:tid 1896] [client ::1:58840] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.326764 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.327763 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.327763 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.327763 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.397995 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.397995 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:24.397995 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Creating session: 03d559a7162da6995222e316fd0e384cf986fe3f6ae541003b8d2aa7c6d13b6a, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:25.210015 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:25.511131 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:26.491663 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:26.492662 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:26.492662 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59159] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.812057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.812057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.813057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.814057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.814057 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.878607 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.879608 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:38.879608 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Creating session: bb8c8c865f50a08795a4b41caecbc62910168ce0c9776a4da443587d2d8242d2, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:39.181787 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:39.544278 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:42.168797 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:42.168797 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:43:42.168797 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59185] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.850886 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.850886 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.850886 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.850886 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.851851 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.912909 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.912909 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.912909 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Creating session: 7c72d1fec43b21506de9f1b0f9de53e9632f0cf5e5f6ae35ecc66ef4ed8beaca, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.954846 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:47.993429 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:48.453161 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:48.453161 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:44:48.453161 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59243] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.113756 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.113756 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.113756 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.114756 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.114912 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.114912 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.115411 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.116420 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.116420 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.116918 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.270239 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.270239 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.270239 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Creating session: d5d4e5297d6aff9bc5d51ccb4fc814ac8d88ca724518ef303ac29f9095deff7f, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.320609 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:00.428653 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:01.065064 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:01.065563 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:45:01.065645 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59252] Action: none, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Method: POST, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Action: login, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xf0\x9f\x94\xb5 handleLogin called, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Raw input: {"username":"admin","password":"admin123"}, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Decoded data: Array\n(\n    [username] => admin\n    [password] => admin123\n)\n, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.265139 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.266108 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xe2\x9c\x85 User found: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.266108 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Stored password hash: $2y$10$yoGfmKywIzznj..., referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.266108 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Input password: admin123, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.331583 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Password match: YES, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.331583 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xe2\x9c\x85 Password verified successfully, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.331583 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Creating session: 0fff215ba0edb33eadb147b6817f70aec583c0efecbfa90629344189b901c016, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.457652 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xe2\x9c\x85 Session created, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:22.497511 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] \xe2\x9c\x85 Login successful for user: admin, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:23.323048 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] ========== AUTH DEBUG ==========, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:23.324049 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Method: GET, referer: http://192.168.8.101:5000/
+[Sun Dec 21 19:55:23.324049 2025] [php:notice] [pid 19792:tid 1896] [client ::1:59351] Action: none, referer: http://192.168.8.101:5000/

@@ -1,5 +1,5 @@
 /**
- * Admin API Client
+ * Admin API Client - WITH DEBUG LOGS
  * Handles all admin panel API requests
  */
 
@@ -8,7 +8,7 @@ const ADMIN_API_BASE = import.meta.env.VITE_API_URL
   ? import.meta.env.VITE_API_URL.replace('/api', '/api/admin')
   : 'http://localhost:8080/server/api/admin';
 
-console.log('Admin API Base URL:', ADMIN_API_BASE); // Debug කරන්න
+console.log('Admin API Base URL:', ADMIN_API_BASE);
 
 /**
  * Admin API request with authentication
@@ -19,7 +19,8 @@ async function adminApiRequest<T>(
 ): Promise<T> {
   const url = `${ADMIN_API_BASE}/${endpoint}`;
   
-  console.log('Making request to:', url); // Debug log
+  console.log('🔵 Making request to:', url);
+  console.log('🔵 Request options:', options);
   
   const config: RequestInit = {
     ...options,
@@ -31,25 +32,29 @@ async function adminApiRequest<T>(
   };
 
   try {
+    console.log('🟢 Sending fetch request...');
     const response = await fetch(url, config);
     
-    console.log('Response status:', response.status); // Debug log
+    console.log('🟡 Response status:', response.status);
+    console.log('🟡 Response headers:', Object.fromEntries(response.headers.entries()));
     
     if (response.status === 401) {
+      console.log('🔴 Unauthorized - redirecting to login');
       window.location.href = '/admin/login';
       throw new Error('Authentication required');
     }
     
     if (!response.ok) {
       const error = await response.json().catch(() => ({ message: 'Request failed' }));
+      console.log('🔴 Request failed:', error);
       throw new Error(error.message || `HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
-    console.log('Response data:', data); // Debug log
+    console.log('✅ Response data:', data);
     return data.data || data;
   } catch (error) {
-    console.error('Admin API request failed:', error);
+    console.error('❌ Admin API request failed:', error);
     throw error;
   }
 }
@@ -77,6 +82,7 @@ export interface LoginResponse {
 }
 
 export async function adminLogin(credentials: LoginCredentials): Promise<LoginResponse> {
+  console.log('📝 Login attempt with:', { username: credentials.username });
   return adminApiRequest<LoginResponse>('auth.php?action=login', {
     method: 'POST',
     body: JSON.stringify(credentials),

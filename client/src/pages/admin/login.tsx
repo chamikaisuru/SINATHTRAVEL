@@ -10,6 +10,7 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { adminLogin } from "@/lib/adminApi";
 import { Lock } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const loginSchema = z.object({
   username: z.string().min(3, "Username is required"),
@@ -19,8 +20,9 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function AdminLogin() {
-  const [, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   const { toast } = useToast();
+  const queryClient = useQueryClient();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<LoginFormData>({
@@ -32,20 +34,36 @@ export default function AdminLogin() {
   });
 
   async function onSubmit(values: LoginFormData) {
+    console.log("🔵 Form submitted:", values.username);
     setIsLoading(true);
 
     try {
-      await adminLogin(values);
+      console.log("🔵 Calling adminLogin API...");
+      const result = await adminLogin(values);
+      
+      console.log("✅ Login successful!", result);
+      
+      // Store auth data in query cache
+      queryClient.setQueryData(['admin-auth'], {
+        admin: result.admin,
+        token: result.token
+      });
       
       toast({
-        title: "Login Successful",
-        description: "Welcome to admin panel",
+        title: "✅ Login Successful",
+        description: `Welcome back, ${result.admin.full_name}!`,
       });
 
-      setLocation("/admin/dashboard");
+      console.log("🔵 Redirecting to dashboard...");
+      
+      // Force navigation
+      window.location.href = "/admin/dashboard";
+      
     } catch (error) {
+      console.error("❌ Login failed:", error);
+      
       toast({
-        title: "Login Failed",
+        title: "❌ Login Failed",
         description: error instanceof Error ? error.message : "Invalid credentials",
         variant: "destructive",
       });
@@ -115,7 +133,14 @@ export default function AdminLogin() {
                 className="w-full bg-primary hover:bg-primary/90"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing in..." : "Sign In"}
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <span className="animate-spin">⏳</span>
+                    Signing in...
+                  </span>
+                ) : (
+                  "Sign In"
+                )}
               </Button>
             </form>
           </Form>

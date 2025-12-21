@@ -49,29 +49,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
         <div className="container mx-auto px-4 h-20 flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo - FIXED: Removed nested <a> tag */}
           <Link href="/">
-            <a className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer">
               <div className="text-2xl font-heading font-black tracking-tighter text-primary">
                 SI<span className="text-secondary">N</span>ATH
               </div>
               <div className="hidden lg:block text-xs font-medium text-muted-foreground uppercase tracking-widest border-l pl-2 border-border">
                 Travels & Tours
               </div>
-            </a>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
-                <a 
-                  className={`text-sm font-semibold transition-colors hover:text-secondary ${
-                    location === link.href ? "text-secondary" : "text-foreground"
-                  }`}
-                >
+                <span className={`text-sm font-semibold transition-colors hover:text-secondary cursor-pointer ${
+                  location === link.href ? "text-secondary" : "text-foreground"
+                }`}>
                   {link.label}
-                </a>
+                </span>
               </Link>
             ))}
             
@@ -107,14 +105,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="md:hidden bg-background border-b border-border absolute w-full px-4 py-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-5">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
-                <a 
-                  className={`text-lg font-medium py-2 ${
+                <span 
+                  className={`text-lg font-medium py-2 block ${
                     location === link.href ? "text-secondary" : "text-foreground"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </span>
               </Link>
             ))}
             <div className="py-2 border-t border-border flex justify-between items-center">
@@ -152,10 +150,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h4 className="font-bold text-lg mb-6 text-white">Quick Links</h4>
               <ul className="space-y-3 text-sm text-primary-foreground/80">
-                <li><Link href="/"><a className="hover:text-accent transition-colors">Home</a></Link></li>
-                <li><Link href="/about"><a className="hover:text-accent transition-colors">About Us</a></Link></li>
-                <li><Link href="/services"><a className="hover:text-accent transition-colors">Services</a></Link></li>
-                <li><Link href="/contact"><a className="hover:text-accent transition-colors">Contact</a></Link></li>
+                <li><Link href="/"><span className="hover:text-accent transition-colors cursor-pointer">Home</span></Link></li>
+                <li><Link href="/about"><span className="hover:text-accent transition-colors cursor-pointer">About Us</span></Link></li>
+                <li><Link href="/services"><span className="hover:text-accent transition-colors cursor-pointer">Services</span></Link></li>
+                <li><Link href="/contact"><span className="hover:text-accent transition-colors cursor-pointer">Contact</span></Link></li>
               </ul>
             </div>
 
