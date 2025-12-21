@@ -14,3 +14,11 @@
 ::1 - - [21/Dec/2025:15:25:59 +0530] "GET /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
 ::1 - - [21/Dec/2025:15:26:10 +0530] "GET /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
 ::1 - - [21/Dec/2025:15:33:07 +0530] "GET /server/api/admin/debug-cors.php HTTP/1.1" 200 123
+::1 - - [21/Dec/2025:15:37:30 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+127.0.0.1 - - [21/Dec/2025:15:38:38 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 3172
+127.0.0.1 - - [21/Dec/2025:15:38:45 +0530] "GET /phpmyadmin/js/messages.php?l=en&v=5.2.1 HTTP/1.1" 200 7911
+127.0.0.1 - - [21/Dec/2025:15:38:45 +0530] "GET /phpmyadmin/themes/pmahomme/img/s_error.png HTTP/1.1" 200 614
+127.0.0.1 - - [21/Dec/2025:15:39:51 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 3226
+::1 - - [21/Dec/2025:15:39:58 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+::1 - - [21/Dec/2025:15:54:21 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+::1 - - [21/Dec/2025:15:54:21 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357

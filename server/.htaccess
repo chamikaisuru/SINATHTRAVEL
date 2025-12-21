@@ -1,25 +1,6 @@
-# FIXED .htaccess for credentials: 'include'
-
+# server/.htaccess
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
-    # Handle OPTIONS immediately
-    RewriteCond %{REQUEST_METHOD} OPTIONS
-    RewriteRule ^(.*)$ $1 [R=200,L]
-</IfModule>
-
-<IfModule mod_headers.c>
-    # CRITICAL: Dynamic origin setting for credentials
-    SetEnvIf Origin "^http(s)?://(localhost|127\.0\.0\.1)(:[0-9]+)?$" AccessControlAllowOrigin=$0
-    
-    # Add production domain here:
-    # SetEnvIf Origin "^https://yourdomain\.com$" AccessControlAllowOrigin=$0
-    
-    Header always set Access-Control-Allow-Origin "%{AccessControlAllowOrigin}e" env=AccessControlAllowOrigin
-    Header always set Access-Control-Allow-Credentials "true"
-    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept, Origin"
-    Header always set Access-Control-Max-Age "3600"
 </IfModule>
 
 Options -Indexes

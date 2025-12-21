@@ -1,7 +1,7 @@
 <?php
 /**
  * Database Configuration
- * FIXED: Prevents duplicate CORS headers
+ * UPDATED: Added network IP to allowed origins
  */
 
 class Database {
@@ -33,47 +33,40 @@ class Database {
     }
 }
 
-// CRITICAL: Track if CORS was already set to prevent duplicates
 $GLOBALS['_CORS_HEADERS_SENT'] = $GLOBALS['_CORS_HEADERS_SENT'] ?? false;
 
 /**
- * FIXED CORS FUNCTION - Prevents duplicate headers
+ * FIXED CORS FUNCTION - Added network IP support
  */
 function enableCORS() {
-    // CRITICAL: Only set headers once per request
     if ($GLOBALS['_CORS_HEADERS_SENT']) {
         return;
     }
     
-    // Check if headers were already sent
     if (headers_sent($file, $line)) {
         error_log("⚠️ Headers already sent in $file on line $line");
         return;
     }
     
-    // Get origin from request
     $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
     
-    // ALLOWED ORIGINS
+    // UPDATED: Added network IP to allowed origins
     $allowedOrigins = [
         'http://localhost:5000',
         'http://127.0.0.1:5000',
         'http://localhost:8080',
         'http://127.0.0.1:8080',
-        // Add production domain: 'https://yourdomain.com'
+        'http://192.168.8.101:5000',  // ADD YOUR NETWORK IP HERE
+        'http://192.168.8.101:8080',  // ADD YOUR NETWORK IP HERE
     ];
     
-    // Check if origin is allowed
     $allowOrigin = '';
     if (in_array($origin, $allowedOrigins)) {
         $allowOrigin = $origin;
-    } elseif (preg_match('#^http://(?:localhost|127\.0\.0\.1):\d+$#', $origin)) {
+    } elseif (preg_match('#^http://(?:localhost|127\.0\.0\.1|192\.168\.\d+\.\d+):\d+$#', $origin)) {
         $allowOrigin = $origin;
     }
     
-    // CRITICAL: Set headers in this exact order
-    // Avoid sending duplicate Access-Control-Allow-Origin if the webserver
-    // (e.g. Apache via .htaccess) already set it. Check existing headers.
     $existingHeaders = headers_list();
     $hasOriginHeader = false;
     foreach ($existingHeaders as $h) {
@@ -87,18 +80,14 @@ function enableCORS() {
         header("Access-Control-Allow-Origin: $allowOrigin");
         header("Access-Control-Allow-Credentials: true");
     }
-    // If the origin header is already set by the server, do not override it
-    // but still ensure other CORS headers are present below.
     
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin");
     header("Access-Control-Max-Age: 3600");
     header("Content-Type: application/json; charset=UTF-8");
     
-    // Mark CORS headers as sent
     $GLOBALS['_CORS_HEADERS_SENT'] = true;
     
-    // Handle OPTIONS preflight
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
         http_response_code(200);
         exit(0);
