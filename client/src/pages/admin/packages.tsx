@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, Image as ImageIcon } from "lucide-react";
+import { Plus, Edit, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const packageSchema = z.object({
@@ -43,10 +43,23 @@ export default function AdminPackages() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [editingPackage, setEditingPackage] = useState<AdminPackage | null>(null);
 
-  const { data: packages = [], isLoading } = useQuery({
+  // FIXED: Handle both array and object response formats
+  const { data: packagesResponse, isLoading } = useQuery({
     queryKey: ['admin-packages'],
-    queryFn: () => getAdminPackages(),
+    queryFn: async () => {
+      console.log('📦 Fetching packages...');
+      const result = await getAdminPackages();
+      console.log('📦 Raw result:', result);
+      return result;
+    },
   });
+
+  // FIXED: Safely extract packages array from response
+  const packages = Array.isArray(packagesResponse) 
+    ? packagesResponse 
+    : (packagesResponse?.data || packagesResponse?.packages || []);
+
+  console.log('📦 Packages array:', packages);
 
   const form = useForm<PackageFormData>({
     resolver: zodResolver(packageSchema),
@@ -104,7 +117,15 @@ export default function AdminPackages() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="space-y-6">
+        <h1 className="text-3xl font-heading font-bold text-primary">Packages</h1>
+        <div className="text-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading packages...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -248,47 +269,57 @@ export default function AdminPackages() {
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {packages.map((pkg) => (
-          <Card key={pkg.id}>
-            {pkg.image && (
-              <div className="h-48 overflow-hidden">
-                <img src={pkg.image} alt={pkg.title_en} className="w-full h-full object-cover" />
-              </div>
-            )}
-            <CardHeader>
-              <div className="flex items-start justify-between">
-                <CardTitle className="text-lg">{pkg.title_en}</CardTitle>
-                <Badge variant={pkg.status === 'active' ? 'default' : 'secondary'}>
-                  {pkg.status}
-                </Badge>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground line-clamp-2">{pkg.description_en}</p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-xl font-bold text-primary">${pkg.price}</span>
-                {pkg.duration && (
-                  <span className="text-sm text-muted-foreground">{pkg.duration}</span>
-                )}
-              </div>
-            </CardContent>
-            <CardFooter className="flex gap-2">
-              <Button variant="outline" size="sm" className="flex-1">
-                <Edit className="w-4 h-4 mr-1" />
-                Edit
-              </Button>
-              <Button 
-                variant="destructive" 
-                size="sm"
-                onClick={() => pkg.id && handleDelete(pkg.id)}
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
+      {/* FIXED: Show message when no packages */}
+      {!Array.isArray(packages) || packages.length === 0 ? (
+        <Card>
+          <CardContent className="py-12 text-center">
+            <p className="text-muted-foreground mb-4">No packages found</p>
+            <p className="text-sm text-muted-foreground">Click "Add Package" to create your first package</p>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {packages.map((pkg) => (
+            <Card key={pkg.id}>
+              {pkg.image && (
+                <div className="h-48 overflow-hidden">
+                  <img src={pkg.image} alt={pkg.title_en} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <CardTitle className="text-lg">{pkg.title_en}</CardTitle>
+                  <Badge variant={pkg.status === 'active' ? 'default' : 'secondary'}>
+                    {pkg.status}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground line-clamp-2">{pkg.description_en}</p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-xl font-bold text-primary">${pkg.price}</span>
+                  {pkg.duration && (
+                    <span className="text-sm text-muted-foreground">{pkg.duration}</span>
+                  )}
+                </div>
+              </CardContent>
+              <CardFooter className="flex gap-2">
+                <Button variant="outline" size="sm" className="flex-1">
+                  <Edit className="w-4 h-4 mr-1" />
+                  Edit
+                </Button>
+                <Button 
+                  variant="destructive" 
+                  size="sm"
+                  onClick={() => pkg.id && handleDelete(pkg.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

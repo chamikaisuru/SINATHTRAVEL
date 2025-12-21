@@ -8,13 +8,18 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 export default function AdminDashboard() {
   // Fetch packages with error handling
   const { 
-    data: packages, 
+    data: packagesData, 
     isLoading: packagesLoading, 
     error: packagesError,
     refetch: refetchPackages 
   } = useQuery({
     queryKey: ['admin-packages'],
-    queryFn: () => getAdminPackages(),
+    queryFn: async () => {
+      console.log('🔵 Fetching packages...');
+      const result = await getAdminPackages();
+      console.log('✅ Packages result:', result);
+      return result;
+    },
     retry: 2,
   });
 
@@ -26,12 +31,17 @@ export default function AdminDashboard() {
     refetch: refetchInquiries 
   } = useQuery({
     queryKey: ['admin-inquiries-stats'],
-    queryFn: () => getAdminInquiries({ limit: 1 }),
+    queryFn: async () => {
+      console.log('🔵 Fetching inquiries...');
+      const result = await getAdminInquiries({ limit: 1 });
+      console.log('✅ Inquiries result:', result);
+      return result;
+    },
     retry: 2,
   });
 
-  console.log("📊 Dashboard Data:", {
-    packages,
+  console.log("📊 Dashboard State:", {
+    packagesData,
     inquiriesData,
     packagesLoading,
     inquiriesLoading,
@@ -103,8 +113,11 @@ export default function AdminDashboard() {
     );
   }
 
-  // Safely access data with defaults
-  const packagesArray = Array.isArray(packages) ? packages : [];
+  // FIXED: Safely access data - handle both array and wrapped object formats
+  const packages = Array.isArray(packagesData) 
+    ? packagesData 
+    : (packagesData?.data || packagesData?.packages || []);
+    
   const stats = inquiriesData?.stats || { 
     total: 0, 
     new_count: 0, 
@@ -112,11 +125,11 @@ export default function AdminDashboard() {
     replied_count: 0 
   };
   
-  const activePackages = packagesArray.filter(p => p.status === 'active').length;
-  const totalPackages = packagesArray.length;
+  const activePackages = packages.filter((p: any) => p.status === 'active').length;
+  const totalPackages = packages.length;
 
   console.log("📊 Computed Stats:", {
-    packagesArray: packagesArray.length,
+    packagesArray: packages.length,
     activePackages,
     totalPackages,
     stats
@@ -129,21 +142,6 @@ export default function AdminDashboard() {
         <h1 className="text-3xl font-heading font-bold text-primary mb-2">Dashboard</h1>
         <p className="text-muted-foreground">Welcome to Sinath Travels Admin Panel</p>
       </div>
-
-      {/* Debug Info (Remove in production) */}
-      {process.env.NODE_ENV === 'development' && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-xs">
-          <p className="font-semibold text-blue-900 mb-2">Debug Info:</p>
-          <pre className="text-blue-800">
-            {JSON.stringify({
-              packages: packagesArray.length,
-              active: activePackages,
-              inquiries: stats.total,
-              new: stats.new_count
-            }, null, 2)}
-          </pre>
-        </div>
-      )}
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -165,7 +163,7 @@ export default function AdminDashboard() {
         
         <StatCard
           title="Total Inquiries"
-          value={stats.total}
+          value={stats.total || 0}
           icon={<Mail className="w-8 h-8" />}
           bgColor="bg-purple-500/10"
           iconColor="text-purple-500"
@@ -173,7 +171,7 @@ export default function AdminDashboard() {
         
         <StatCard
           title="New Inquiries"
-          value={stats.new_count}
+          value={stats.new_count || 0}
           icon={<Mail className="w-8 h-8" />}
           bgColor="bg-orange-500/10"
           iconColor="text-orange-500"
@@ -192,22 +190,22 @@ export default function AdminDashboard() {
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Tour Packages</span>
                 <span className="font-bold text-primary">
-                  {packagesArray.filter(p => p.category === 'tour').length}
+                  {packages.filter((p: any) => p.category === 'tour').length}
                 </span>
               </div>
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Visa Services</span>
                 <span className="font-bold text-primary">
-                  {packagesArray.filter(p => p.category === 'visa').length}
+                  {packages.filter((p: any) => p.category === 'visa').length}
                 </span>
               </div>
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Read Inquiries</span>
-                <span className="font-bold text-primary">{stats.read_count}</span>
+                <span className="font-bold text-primary">{stats.read_count || 0}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Replied Inquiries</span>
-                <span className="font-bold text-green-600">{stats.replied_count}</span>
+                <span className="font-bold text-green-600">{stats.replied_count || 0}</span>
               </div>
             </div>
           </CardContent>
@@ -235,9 +233,9 @@ export default function AdminDashboard() {
             <CardTitle>Recent Packages</CardTitle>
           </CardHeader>
           <CardContent>
-            {packagesArray.length > 0 ? (
+            {packages.length > 0 ? (
               <div className="space-y-2">
-                {packagesArray.slice(0, 5).map((pkg) => (
+                {packages.slice(0, 5).map((pkg: any) => (
                   <div key={pkg.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                     <div>
                       <p className="font-medium">{pkg.title_en}</p>
