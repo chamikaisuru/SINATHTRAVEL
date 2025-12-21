@@ -1,21 +1,31 @@
 <?php
 /**
- * Admin Authentication API - WITH DEBUG LOGS
- * Replace your auth.php with this temporarily
+ * Admin Authentication API - FIXED SESSION CONFIGURATION
+ * This fixes the redirect loop issue
  */
 
 // STEP 1: Set CORS headers FIRST
 require_once '../../config/database.php';
 enableCORS();
 
-// STEP 2: Configure session
+// STEP 2: Configure session - FIXED FOR HTTP
 ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_samesite', 'None');
 ini_set('session.use_strict_mode', 1);
 
+// IMPORTANT: For HTTP connections (localhost), don't use SameSite=None
+// SameSite=None ONLY works with Secure=1 (HTTPS)
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    // Production HTTPS
+    ini_set('session.cookie_samesite', 'None');
     ini_set('session.cookie_secure', 1);
+} else {
+    // Development HTTP - Use Lax instead of None
+    ini_set('session.cookie_samesite', 'Lax');
+    ini_set('session.cookie_secure', 0);
 }
+
+// Set session cookie path
+ini_set('session.cookie_path', '/');
 
 // STEP 3: Start session
 if (session_status() === PHP_SESSION_NONE) {
@@ -27,10 +37,12 @@ $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-// DEBUG: Log everything
+// DEBUG: Log session info
 error_log("========== AUTH DEBUG ==========");
 error_log("Method: " . $method);
 error_log("Action: " . ($_GET['action'] ?? 'none'));
+error_log("Session ID: " . session_id());
+error_log("Session data: " . json_encode($_SESSION));
 
 try {
     switch($method) {
@@ -65,13 +77,9 @@ function handleLogin($db) {
     error_log("🔵 handleLogin called");
     
     $rawInput = file_get_contents("php://input");
-    error_log("Raw input: " . $rawInput);
-    
     $data = json_decode($rawInput, true);
-    error_log("Decoded data: " . print_r($data, true));
     
     if (empty($data['username']) || empty($data['password'])) {
-        error_log("❌ Missing username or password");
         sendResponse(400, null, 'Username and password required');
     }
     
@@ -86,25 +94,14 @@ function handleLogin($db) {
     
     if (!$admin) {
         error_log("❌ User not found: " . $data['username']);
-        sendResponse(401, null, 'Invalid credentials - User not found');
+        sendResponse(401, null, 'Invalid credentials');
     }
     
     error_log("✅ User found: " . $admin['username']);
-    error_log("Stored password hash: " . substr($admin['password'], 0, 20) . "...");
-    error_log("Input password: " . $data['password']);
     
-    // Test password verification
-    $passwordMatch = password_verify($data['password'], $admin['password']);
-    error_log("Password match: " . ($passwordMatch ? 'YES' : 'NO'));
-    
-    if (!$passwordMatch) {
+    if (!password_verify($data['password'], $admin['password'])) {
         error_log("❌ Invalid password for user: " . $data['username']);
-        
-        // Try direct comparison (for debugging)
-        $directMatch = ($data['password'] === $admin['password']);
-        error_log("Direct comparison: " . ($directMatch ? 'YES' : 'NO'));
-        
-        sendResponse(401, null, 'Invalid credentials - Wrong password');
+        sendResponse(401, null, 'Invalid credentials');
     }
     
     error_log("✅ Password verified successfully");
@@ -127,7 +124,7 @@ function handleLogin($db) {
     $stmt->bindParam(':expires_at', $expiresAt);
     $stmt->execute();
     
-    error_log("✅ Session created");
+    error_log("✅ Session created in database");
     
     // Update last login
     $query = "UPDATE admin_users SET last_login = NOW() WHERE id = :id";
@@ -138,8 +135,13 @@ function handleLogin($db) {
     // Set session variables
     $_SESSION['admin_session_id'] = $sessionId;
     $_SESSION['admin_id'] = $admin['id'];
+    $_SESSION['admin_username'] = $admin['username'];
     
-    error_log("✅ Login successful for user: " . $admin['username']);
+    // Force session save
+    session_write_close();
+    
+    error_log("✅ Session saved to PHP session");
+    error_log("Session contents: " . json_encode($_SESSION));
     
     sendResponse(200, [
         'token' => $sessionId,
@@ -174,11 +176,17 @@ function handleLogout($db) {
  * GET: Check authentication
  */
 function handleCheckAuth($db) {
+    error_log("🔍 Checking auth...");
+    error_log("Session contents: " . json_encode($_SESSION));
+    
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
     if (!$sessionId) {
+        error_log("❌ No session ID found");
         sendResponse(401, null, 'Not authenticated');
     }
+    
+    error_log("🔍 Looking for session: " . $sessionId);
     
     $query = "SELECT au.* FROM admin_users au 
               JOIN admin_sessions s ON au.id = s.admin_id 
@@ -190,9 +198,12 @@ function handleCheckAuth($db) {
     $admin = $stmt->fetch();
     
     if (!$admin) {
+        error_log("❌ Session not found or expired");
         session_destroy();
         sendResponse(401, null, 'Session expired');
     }
+    
+    error_log("✅ Auth check passed for user: " . $admin['username']);
     
     sendResponse(200, [
         'admin' => [

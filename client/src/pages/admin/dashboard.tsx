@@ -1,22 +1,73 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAdminPackages, getAdminInquiries } from "@/lib/adminApi";
-import { Package, Mail, DollarSign, TrendingUp } from "lucide-react";
+import { Package, Mail, TrendingUp } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AdminDashboard() {
-  const { data: packages = [] } = useQuery({
+  // Fetch packages with proper error handling
+  const { data: packages, isLoading: packagesLoading, error: packagesError } = useQuery({
     queryKey: ['admin-packages'],
     queryFn: () => getAdminPackages(),
   });
 
-  const { data: inquiriesData } = useQuery({
+  // Fetch inquiries with proper error handling
+  const { data: inquiriesData, isLoading: inquiriesLoading, error: inquiriesError } = useQuery({
     queryKey: ['admin-inquiries-stats'],
     queryFn: () => getAdminInquiries({ limit: 1 }),
   });
 
-  const stats = inquiriesData?.stats;
-  const activePackages = packages.filter(p => p.status === 'active').length;
-  const totalPackages = packages.length;
+  // Loading state
+  if (packagesLoading || inquiriesLoading) {
+    return (
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-heading font-bold text-primary mb-2">Dashboard</h1>
+          <p className="text-muted-foreground">Loading dashboard data...</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i}>
+              <CardContent className="p-6">
+                <Skeleton className="h-20 w-full" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (packagesError || inquiriesError) {
+    return (
+      <div className="space-y-8">
+        <div>
+          <h1 className="text-3xl font-heading font-bold text-primary mb-2">Dashboard</h1>
+          <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 mt-4">
+            <p className="text-destructive font-medium">
+              ❌ Failed to load dashboard data
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              {packagesError?.toString() || inquiriesError?.toString()}
+            </p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 px-4 py-2 bg-primary text-white rounded-lg"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Safely access data with defaults
+  const packagesArray = Array.isArray(packages) ? packages : [];
+  const stats = inquiriesData?.stats || { total: 0, new_count: 0, read_count: 0, replied_count: 0 };
+  const activePackages = packagesArray.filter(p => p.status === 'active').length;
+  const totalPackages = packagesArray.length;
 
   return (
     <div className="space-y-8">
@@ -45,7 +96,7 @@ export default function AdminDashboard() {
         
         <StatCard
           title="Total Inquiries"
-          value={stats?.total || 0}
+          value={stats.total}
           icon={<Mail className="w-8 h-8" />}
           bgColor="bg-purple-500/10"
           iconColor="text-purple-500"
@@ -53,7 +104,7 @@ export default function AdminDashboard() {
         
         <StatCard
           title="New Inquiries"
-          value={stats?.new_count || 0}
+          value={stats.new_count}
           icon={<Mail className="w-8 h-8" />}
           bgColor="bg-orange-500/10"
           iconColor="text-orange-500"
@@ -72,22 +123,22 @@ export default function AdminDashboard() {
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Tour Packages</span>
                 <span className="font-bold text-primary">
-                  {packages.filter(p => p.category === 'tour').length}
+                  {packagesArray.filter(p => p.category === 'tour').length}
                 </span>
               </div>
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Visa Services</span>
                 <span className="font-bold text-primary">
-                  {packages.filter(p => p.category === 'visa').length}
+                  {packagesArray.filter(p => p.category === 'visa').length}
                 </span>
               </div>
               <div className="flex items-center justify-between pb-3 border-b">
                 <span className="text-sm text-muted-foreground">Read Inquiries</span>
-                <span className="font-bold text-primary">{stats?.read_count || 0}</span>
+                <span className="font-bold text-primary">{stats.read_count}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Replied Inquiries</span>
-                <span className="font-bold text-green-600">{stats?.replied_count || 0}</span>
+                <span className="font-bold text-green-600">{stats.replied_count}</span>
               </div>
             </div>
           </CardContent>

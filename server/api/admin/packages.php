@@ -1,7 +1,7 @@
 <?php
 /**
  * Admin Packages Management API
- * CRUD operations for packages (requires authentication)
+ * FIXED: Properly returns data
  */
 
 require_once '../../config/database.php';
@@ -43,7 +43,7 @@ try {
 }
 
 /**
- * GET: Fetch all packages (including inactive)
+ * GET: Fetch all packages
  */
 function handleGet($db) {
     $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
@@ -62,7 +62,7 @@ function handleGet($db) {
         
         sendResponse(200, $package);
     } else {
-        // Get all packages
+        // Get all packages with optional filters
         $status = isset($_GET['status']) ? $_GET['status'] : null;
         $category = isset($_GET['category']) ? $_GET['category'] : null;
         
@@ -89,12 +89,16 @@ function handleGet($db) {
         $stmt->execute();
         $packages = $stmt->fetchAll();
         
+        // Format image URLs
         foreach ($packages as &$package) {
             if ($package['image']) {
                 $package['image'] = getUploadUrl($package['image']);
             }
         }
         
+        error_log("✅ Returning " . count($packages) . " packages");
+        
+        // Return packages array directly
         sendResponse(200, $packages);
     }
 }
@@ -103,7 +107,6 @@ function handleGet($db) {
  * POST: Create new package with image upload
  */
 function handlePost($db) {
-    // Handle multipart form data
     $data = $_POST;
     $imagePath = null;
     
@@ -157,7 +160,6 @@ function handlePut($db) {
         sendResponse(400, null, 'Package ID required');
     }
     
-    // Check if package exists
     $query = "SELECT * FROM packages WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $data['id']);
@@ -271,3 +273,4 @@ function uploadImage($file) {
     
     throw new Exception('Failed to upload image');
 }
+?>
