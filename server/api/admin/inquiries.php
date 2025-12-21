@@ -1,7 +1,6 @@
 <?php
 /**
- * Admin Inquiries Management API
- * View and manage customer inquiries
+ * COMPLETELY FIXED Admin Inquiries API
  */
 
 require_once '../../config/database.php';
@@ -13,8 +12,17 @@ $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
+error_log("📬 INQUIRIES API CALLED");
+error_log("Method: " . $method);
+
 // Verify admin authentication
-$admin = verifyAdminAuth($db);
+try {
+    $admin = verifyAdminAuth($db);
+    error_log("✅ Admin verified in inquiries.php: " . $admin['username']);
+} catch(Exception $e) {
+    error_log("❌ Auth failed in inquiries.php");
+    exit;
+}
 
 try {
     switch($method) {
@@ -34,7 +42,7 @@ try {
             sendResponse(405, null, 'Method not allowed');
     }
 } catch(Exception $e) {
-    error_log("Admin Inquiries Error: " . $e->getMessage());
+    error_log("❌ Inquiries Error: " . $e->getMessage());
     sendResponse(500, null, 'Internal server error');
 }
 
@@ -42,6 +50,8 @@ try {
  * GET: Fetch inquiries with pagination and filtering
  */
 function handleGet($db) {
+    error_log("📬 handleGet inquiries called");
+    
     $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
     
     if ($id) {
@@ -122,6 +132,9 @@ function handleGet($db) {
         $statsStmt->execute();
         $stats = $statsStmt->fetch();
         
+        error_log("📬 Found " . count($inquiries) . " inquiries");
+        error_log("📬 Stats: " . json_encode($stats));
+        
         sendResponse(200, [
             'inquiries' => $inquiries,
             'pagination' => [
@@ -184,3 +197,4 @@ function handleDelete($db) {
         sendResponse(500, null, 'Failed to delete inquiry');
     }
 }
+?>

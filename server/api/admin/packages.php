@@ -1,7 +1,7 @@
 <?php
 /**
- * Admin Packages Management API
- * FIXED: Properly returns data
+ * COMPLETELY FIXED Admin Packages API
+ * Now properly returns packages array, not auth data
  */
 
 require_once '../../config/database.php';
@@ -13,9 +13,21 @@ $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Verify admin authentication
-$admin = verifyAdminAuth($db);
+error_log("📦 PACKAGES API CALLED");
+error_log("Method: " . $method);
+error_log("Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
 
+// Verify admin authentication - this should NOT send a response, just return admin
+try {
+    $admin = verifyAdminAuth($db);
+    error_log("✅ Admin verified in packages.php: " . $admin['username']);
+} catch(Exception $e) {
+    error_log("❌ Auth failed in packages.php: " . $e->getMessage());
+    // verifyAdminAuth already sent the 401 response
+    exit;
+}
+
+// Now handle the actual packages request
 try {
     switch($method) {
         case 'GET':
@@ -38,18 +50,23 @@ try {
             sendResponse(405, null, 'Method not allowed');
     }
 } catch(Exception $e) {
-    error_log("Admin Packages Error: " . $e->getMessage());
-    sendResponse(500, null, 'Internal server error');
+    error_log("❌ Packages Error: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
+    sendResponse(500, null, 'Internal server error: ' . $e->getMessage());
 }
 
 /**
  * GET: Fetch all packages
+ * FIXED: Returns array of packages directly
  */
 function handleGet($db) {
+    error_log("📦 handleGet called");
+    
     $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
     
     if ($id) {
         // Get single package
+        error_log("📦 Fetching single package: " . $id);
         $query = "SELECT * FROM packages WHERE id = :id";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $id);
@@ -60,9 +77,12 @@ function handleGet($db) {
             $package['image'] = getUploadUrl($package['image']);
         }
         
+        error_log("📦 Returning single package");
         sendResponse(200, $package);
     } else {
         // Get all packages with optional filters
+        error_log("📦 Fetching all packages");
+        
         $status = isset($_GET['status']) ? $_GET['status'] : null;
         $category = isset($_GET['category']) ? $_GET['category'] : null;
         
@@ -77,6 +97,8 @@ function handleGet($db) {
         
         $query .= " ORDER BY created_at DESC";
         
+        error_log("📦 Query: " . $query);
+        
         $stmt = $db->prepare($query);
         
         if ($status) {
@@ -89,6 +111,8 @@ function handleGet($db) {
         $stmt->execute();
         $packages = $stmt->fetchAll();
         
+        error_log("📦 Found " . count($packages) . " packages");
+        
         // Format image URLs
         foreach ($packages as &$package) {
             if ($package['image']) {
@@ -96,9 +120,10 @@ function handleGet($db) {
             }
         }
         
-        error_log("✅ Returning " . count($packages) . " packages");
+        error_log("📦 Sending response with " . count($packages) . " packages");
         
-        // Return packages array directly
+        // CRITICAL FIX: Send packages array directly as data
+        // The frontend expects an array, not { packages: [...] }
         sendResponse(200, $packages);
     }
 }
