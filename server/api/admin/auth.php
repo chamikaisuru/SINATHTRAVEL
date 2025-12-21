@@ -1,26 +1,29 @@
 <?php
 /**
  * Admin Authentication API
- * Handles login, logout, and session management
+ * FIXED: Proper CORS and session handling
  */
 
-// CRITICAL: Database config include කරන්න BEFORE any output
+// STEP 1: Set CORS headers FIRST (before ANY output)
 require_once '../../config/database.php';
-
-// CRITICAL: CORS headers set කරන්න FIRST
 enableCORS();
 
-// Session start කරන්න CORS headers වලින් පස්සේ
+// STEP 2: Configure session settings
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_samesite', 'None');
+ini_set('session.use_strict_mode', 1);
+
+// Only set secure flag if using HTTPS
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+    ini_set('session.cookie_secure', 1);
+}
+
+// STEP 3: Start session
 if (session_status() === PHP_SESSION_NONE) {
-    // Session cookie එක සඳහා secure settings
-    ini_set('session.cookie_httponly', 1);
-    ini_set('session.cookie_samesite', 'None');
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-        ini_set('session.cookie_secure', 1);
-    }
     session_start();
 }
 
+// STEP 4: Initialize database
 $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
@@ -56,15 +59,12 @@ try {
 function handleLogin($db) {
     $data = json_decode(file_get_contents("php://input"), true);
     
-    // Debug logging
     error_log("Login attempt for username: " . ($data['username'] ?? 'none'));
     
-    // Validate input
     if (empty($data['username']) || empty($data['password'])) {
         sendResponse(400, null, 'Username and password required');
     }
     
-    // Get admin user from database
     $query = "SELECT * FROM admin_users WHERE username = :username AND status = 'active'";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':username', $data['username']);
@@ -72,24 +72,20 @@ function handleLogin($db) {
     
     $admin = $stmt->fetch();
     
-    // Debug logging
     if (!$admin) {
         error_log("User not found: " . $data['username']);
-    } else {
-        error_log("User found: " . $admin['username']);
-    }
-    
-    // Verify credentials
-    if (!$admin || !password_verify($data['password'], $admin['password'])) {
-        error_log("Invalid credentials for user: " . $data['username']);
         sendResponse(401, null, 'Invalid credentials');
     }
     
-    // Create session ID
+    if (!password_verify($data['password'], $admin['password'])) {
+        error_log("Invalid password for user: " . $data['username']);
+        sendResponse(401, null, 'Invalid credentials');
+    }
+    
+    // Create session
     $sessionId = bin2hex(random_bytes(32));
     $expiresAt = date('Y-m-d H:i:s', strtotime('+24 hours'));
     
-    // Insert session into database
     $query = "INSERT INTO admin_sessions (id, admin_id, ip_address, user_agent, expires_at) 
               VALUES (:id, :admin_id, :ip, :user_agent, :expires_at)";
     $stmt = $db->prepare($query);
@@ -102,7 +98,7 @@ function handleLogin($db) {
     $stmt->bindParam(':expires_at', $expiresAt);
     $stmt->execute();
     
-    // Update last login timestamp
+    // Update last login
     $query = "UPDATE admin_users SET last_login = NOW() WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $admin['id']);
@@ -114,7 +110,6 @@ function handleLogin($db) {
     
     error_log("Login successful for user: " . $admin['username']);
     
-    // Return success response
     sendResponse(200, [
         'token' => $sessionId,
         'admin' => [
@@ -141,12 +136,11 @@ function handleLogout($db) {
     }
     
     session_destroy();
-    
     sendResponse(200, null, 'Logout successful');
 }
 
 /**
- * GET: Check authentication status
+ * GET: Check authentication
  */
 function handleCheckAuth($db) {
     $sessionId = $_SESSION['admin_session_id'] ?? null;
@@ -181,7 +175,7 @@ function handleCheckAuth($db) {
 }
 
 /**
- * Verify admin authentication
+ * Verify admin authentication (for other admin endpoints)
  */
 function verifyAdminAuth($db) {
     if (session_status() === PHP_SESSION_NONE) {

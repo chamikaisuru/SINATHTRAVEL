@@ -1,0 +1,16 @@
+::1 - - [21/Dec/2025:11:26:06 +0530] "GET /test-simple.php HTTP/1.1" 200 84
+::1 - - [21/Dec/2025:11:26:06 +0530] "GET /sinath-travels/server/api/admin/test-cors.php HTTP/1.1" 404 297
+::1 - - [21/Dec/2025:11:26:06 +0530] "GET /server/api/admin/test-cors.php HTTP/1.1" 200 388
+::1 - - [21/Dec/2025:11:26:41 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+::1 - - [21/Dec/2025:11:26:41 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:11:26:51 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:11:27:00 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:17:18 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+::1 - - [21/Dec/2025:15:17:18 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:22:14 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 596
+::1 - - [21/Dec/2025:15:22:14 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:22:37 +0530] "GET /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:23:20 +0530] "GET /sinath-travels/server/api/admin/auth.php?action=login HTTP/1.1" 404 297
+::1 - - [21/Dec/2025:15:25:59 +0530] "GET /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:26:10 +0530] "GET /server/api/admin/auth.php?action=login HTTP/1.1" 200 357
+::1 - - [21/Dec/2025:15:33:07 +0530] "GET /server/api/admin/debug-cors.php HTTP/1.1" 200 123
