@@ -6,7 +6,7 @@
 // FIXED: Port 8080 එකට match වෙන විදියට
 const ADMIN_API_BASE = import.meta.env.VITE_API_URL 
   ? import.meta.env.VITE_API_URL.replace('/api', '/api/admin')
-  : 'http://localhost:8080/sinath-travels/server/api/admin';
+  : 'http://localhost:8080/server/api/admin';
 
 console.log('Admin API Base URL:', ADMIN_API_BASE); // Debug කරන්න
 

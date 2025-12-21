@@ -1,22 +1,26 @@
-<IfModule mod_headers.c>
-    # CRITICAL: credentials: 'include' සඳහා wildcard (*) වැඩ කරන්නේ නෑ
-    # SetEnvIf එක use කරලා dynamic origin එක set කරන්න
+# FIXED .htaccess for credentials: 'include'
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
     
-    SetEnvIf Origin "^http(s)?://(localhost|127\.0\.0\.1|192\.168\.[0-9]+\.[0-9]+)(:[0-9]+)?$" AccessControlAllowOrigin=$0
-    SetEnvIf Origin "^https?://(www\.)?sinathtravels\.com$" AccessControlAllowOrigin=$0
-    
-    Header always set Access-Control-Allow-Origin "%{AccessControlAllowOrigin}e" env=AccessControlAllowOrigin
-    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept, Origin"
-    Header always set Access-Control-Allow-Credentials "true"
-    Header always set Access-Control-Max-Age "3600"
+    # Handle OPTIONS immediately
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
 </IfModule>
 
-RewriteEngine On
-
-# Handle OPTIONS immediately
-RewriteCond %{REQUEST_METHOD} OPTIONS
-RewriteRule ^(.*)$ $1 [R=200,L]
+<IfModule mod_headers.c>
+    # CRITICAL: Dynamic origin setting for credentials
+    SetEnvIf Origin "^http(s)?://(localhost|127\.0\.0\.1)(:[0-9]+)?$" AccessControlAllowOrigin=$0
+    
+    # Add production domain here:
+    # SetEnvIf Origin "^https://yourdomain\.com$" AccessControlAllowOrigin=$0
+    
+    Header always set Access-Control-Allow-Origin "%{AccessControlAllowOrigin}e" env=AccessControlAllowOrigin
+    Header always set Access-Control-Allow-Credentials "true"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept, Origin"
+    Header always set Access-Control-Max-Age "3600"
+</IfModule>
 
 Options -Indexes
 

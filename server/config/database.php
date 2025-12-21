@@ -1,7 +1,7 @@
 <?php
 /**
  * Database Configuration
- * Using PDO for secure database connections
+ * FIXED CORS FOR credentials: 'include'
  */
 
 class Database {
@@ -34,58 +34,49 @@ class Database {
 }
 
 /**
- * ULTIMATE CORS FIX - credentials: 'include' සඳහා
+ * FIXED CORS FUNCTION - Works with credentials: 'include'
  */
 function enableCORS() {
-    // Check if headers already sent
+    // CRITICAL: Headers send වෙලා තියෙනවා නම් return
     if (headers_sent($file, $line)) {
-        error_log("Headers already sent in $file on line $line");
+        error_log("⚠️ Headers already sent in $file on line $line");
         return;
     }
     
-    // Get origin
-    $origin = '';
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-        $origin = $_SERVER['HTTP_ORIGIN'];
-    }
+    // Get origin from request
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
     
-    // Log for debugging
-    error_log("Request Origin: " . $origin);
-    error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
-    
-    // Allowed origins - EXACT matches only
+    // ALLOWED ORIGINS - Add your production domain here
     $allowedOrigins = [
         'http://localhost:5000',
-        'http://localhost:8080',
         'http://127.0.0.1:5000',
+        'http://localhost:8080',
         'http://127.0.0.1:8080',
+        // Add production domain: 'https://yourdomain.com'
     ];
     
-    // Set appropriate origin
-    $allowedOrigin = 'http://localhost:5000'; // default
-    
+    // Check if origin is allowed
+    $allowOrigin = '';
     if (in_array($origin, $allowedOrigins)) {
-        $allowedOrigin = $origin;
-        error_log("Matched exact origin: " . $origin);
-    } elseif (preg_match('#^http://(?:localhost|127\.0\.0\.1|192\.168\.\d+\.\d+)(?::\d+)?$#', $origin)) {
-        $allowedOrigin = $origin;
-        error_log("Matched pattern origin: " . $origin);
+        $allowOrigin = $origin;
+    } elseif (preg_match('#^http://(?:localhost|127\.0\.0\.1):\d+$#', $origin)) {
+        // Allow any localhost with port
+        $allowOrigin = $origin;
     }
     
-    // CRITICAL: Set headers in correct order
-    header("Access-Control-Allow-Origin: " . $allowedOrigin);
-    header("Access-Control-Allow-Credentials: true");
+    // CRITICAL: මේ order එක වෙනස් කරන්න එපා
+    if ($allowOrigin) {
+        header("Access-Control-Allow-Origin: $allowOrigin");
+        header("Access-Control-Allow-Credentials: true");
+    }
+    
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin");
     header("Access-Control-Max-Age: 3600");
     header("Content-Type: application/json; charset=UTF-8");
     
-    // Log headers
-    error_log("Set CORS Origin to: " . $allowedOrigin);
-    
     // Handle OPTIONS preflight
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-        error_log("Handling OPTIONS preflight request");
         http_response_code(200);
         exit(0);
     }
