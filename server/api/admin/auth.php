@@ -1,7 +1,7 @@
 <?php
 /**
  * Admin Authentication API - COMPLETE FIXED VERSION
- * Fixes the issue where verifyAdminAuth was returning wrong data
+ * Fixes session handling and authentication
  */
 
 // STEP 1: Set CORS headers FIRST
@@ -11,15 +11,8 @@ enableCORS();
 // STEP 2: Configure session - FIXED FOR HTTP
 ini_set('session.cookie_httponly', 1);
 ini_set('session.use_strict_mode', 1);
-
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-    ini_set('session.cookie_samesite', 'None');
-    ini_set('session.cookie_secure', 1);
-} else {
-    ini_set('session.cookie_samesite', 'Lax');
-    ini_set('session.cookie_secure', 0);
-}
-
+ini_set('session.cookie_samesite', 'Lax');
+ini_set('session.cookie_secure', 0);
 ini_set('session.cookie_path', '/');
 
 // STEP 3: Start session
@@ -35,6 +28,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 error_log("========== AUTH DEBUG ==========");
 error_log("Method: " . $method);
 error_log("Action: " . ($_GET['action'] ?? 'none'));
+error_log("Session ID from cookie: " . ($_SESSION['admin_session_id'] ?? 'none'));
 
 try {
     switch($method) {
@@ -119,9 +113,8 @@ function handleLogin($db) {
     $_SESSION['admin_id'] = $admin['id'];
     $_SESSION['admin_username'] = $admin['username'];
     
-    session_write_close();
-    
-    error_log("✅ Login successful for: " . $admin['username']);
+    error_log("✅ Session stored: " . $sessionId);
+    error_log("✅ PHP Session ID: " . session_id());
     
     sendResponse(200, [
         'token' => $sessionId,
@@ -151,13 +144,18 @@ function handleLogout($db) {
 
 function handleCheckAuth($db) {
     error_log("🔍 Checking auth...");
+    error_log("🔍 Session data: " . json_encode($_SESSION));
     
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
     if (!$sessionId) {
-        error_log("❌ No session ID");
+        error_log("❌ No session ID found");
+        error_log("❌ Session contents: " . print_r($_SESSION, true));
         sendResponse(401, null, 'Not authenticated');
+        return;
     }
+    
+    error_log("🔍 Session ID found: " . $sessionId);
     
     $query = "SELECT au.* FROM admin_users au 
               JOIN admin_sessions s ON au.id = s.admin_id 
@@ -169,12 +167,13 @@ function handleCheckAuth($db) {
     $admin = $stmt->fetch();
     
     if (!$admin) {
-        error_log("❌ Session expired");
+        error_log("❌ Session expired or invalid");
         session_destroy();
         sendResponse(401, null, 'Session expired');
+        return;
     }
     
-    error_log("✅ Auth check passed");
+    error_log("✅ Auth check passed for: " . $admin['username']);
     
     sendResponse(200, [
         'admin' => [
@@ -188,8 +187,8 @@ function handleCheckAuth($db) {
 }
 
 /**
- * FIXED: Verify admin authentication
- * This function ONLY returns the admin user, it does NOT send a response
+ * Verify admin authentication for API calls
+ * Returns admin user or sends 401 and exits
  */
 function verifyAdminAuth($db) {
     if (session_status() === PHP_SESSION_NONE) {
@@ -197,14 +196,17 @@ function verifyAdminAuth($db) {
     }
     
     error_log("🔍 Verifying admin for API request...");
+    error_log("🔍 Session data in verify: " . json_encode($_SESSION));
     
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
     if (!$sessionId) {
-        error_log("❌ No session ID found in verifyAdminAuth");
+        error_log("❌ No session ID in verifyAdminAuth");
         sendResponse(401, null, 'Authentication required');
-        exit; // Only exit on failure
+        exit;
     }
+    
+    error_log("🔍 Checking session: " . $sessionId);
     
     $query = "SELECT au.* FROM admin_users au 
               JOIN admin_sessions s ON au.id = s.admin_id 
@@ -218,12 +220,11 @@ function verifyAdminAuth($db) {
     if (!$admin) {
         error_log("❌ Invalid session in verifyAdminAuth");
         sendResponse(401, null, 'Invalid or expired session');
-        exit; // Only exit on failure
+        exit;
     }
     
     error_log("✅ Admin verified: " . $admin['username']);
     
-    // CRITICAL FIX: Just return the admin, don't send any response
     return $admin;
 }
 ?>

@@ -1,20 +1,42 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAdminPackages, getAdminInquiries } from "@/lib/adminApi";
-import { Package, Mail, TrendingUp } from "lucide-react";
+import { Package, Mail, TrendingUp, AlertCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function AdminDashboard() {
-  // Fetch packages with proper error handling
-  const { data: packages, isLoading: packagesLoading, error: packagesError } = useQuery({
+  // Fetch packages with error handling
+  const { 
+    data: packages, 
+    isLoading: packagesLoading, 
+    error: packagesError,
+    refetch: refetchPackages 
+  } = useQuery({
     queryKey: ['admin-packages'],
     queryFn: () => getAdminPackages(),
+    retry: 2,
   });
 
-  // Fetch inquiries with proper error handling
-  const { data: inquiriesData, isLoading: inquiriesLoading, error: inquiriesError } = useQuery({
+  // Fetch inquiries with error handling
+  const { 
+    data: inquiriesData, 
+    isLoading: inquiriesLoading, 
+    error: inquiriesError,
+    refetch: refetchInquiries 
+  } = useQuery({
     queryKey: ['admin-inquiries-stats'],
     queryFn: () => getAdminInquiries({ limit: 1 }),
+    retry: 2,
+  });
+
+  console.log("📊 Dashboard Data:", {
+    packages,
+    inquiriesData,
+    packagesLoading,
+    inquiriesLoading,
+    packagesError: packagesError?.toString(),
+    inquiriesError: inquiriesError?.toString()
   });
 
   // Loading state
@@ -38,43 +60,90 @@ export default function AdminDashboard() {
     );
   }
 
-  // Error state
+  // Error state with retry option
   if (packagesError || inquiriesError) {
     return (
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl font-heading font-bold text-primary mb-2">Dashboard</h1>
-          <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4 mt-4">
-            <p className="text-destructive font-medium">
-              ❌ Failed to load dashboard data
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              {packagesError?.toString() || inquiriesError?.toString()}
-            </p>
-            <button 
-              onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-primary text-white rounded-lg"
-            >
-              Retry
-            </button>
-          </div>
         </div>
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            <div className="space-y-2">
+              <p className="font-semibold">Failed to load dashboard data</p>
+              {packagesError && (
+                <p className="text-sm">Packages: {packagesError.toString()}</p>
+              )}
+              {inquiriesError && (
+                <p className="text-sm">Inquiries: {inquiriesError.toString()}</p>
+              )}
+              <div className="flex gap-2 mt-4">
+                {packagesError && (
+                  <button 
+                    onClick={() => refetchPackages()} 
+                    className="px-4 py-2 bg-primary text-white rounded-lg text-sm"
+                  >
+                    Retry Packages
+                  </button>
+                )}
+                {inquiriesError && (
+                  <button 
+                    onClick={() => refetchInquiries()} 
+                    className="px-4 py-2 bg-primary text-white rounded-lg text-sm"
+                  >
+                    Retry Inquiries
+                  </button>
+                )}
+              </div>
+            </div>
+          </AlertDescription>
+        </Alert>
       </div>
     );
   }
 
   // Safely access data with defaults
   const packagesArray = Array.isArray(packages) ? packages : [];
-  const stats = inquiriesData?.stats || { total: 0, new_count: 0, read_count: 0, replied_count: 0 };
+  const stats = inquiriesData?.stats || { 
+    total: 0, 
+    new_count: 0, 
+    read_count: 0, 
+    replied_count: 0 
+  };
+  
   const activePackages = packagesArray.filter(p => p.status === 'active').length;
   const totalPackages = packagesArray.length;
 
+  console.log("📊 Computed Stats:", {
+    packagesArray: packagesArray.length,
+    activePackages,
+    totalPackages,
+    stats
+  });
+
   return (
     <div className="space-y-8">
+      {/* Header */}
       <div>
         <h1 className="text-3xl font-heading font-bold text-primary mb-2">Dashboard</h1>
         <p className="text-muted-foreground">Welcome to Sinath Travels Admin Panel</p>
       </div>
+
+      {/* Debug Info (Remove in production) */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-xs">
+          <p className="font-semibold text-blue-900 mb-2">Debug Info:</p>
+          <pre className="text-blue-800">
+            {JSON.stringify({
+              packages: packagesArray.length,
+              active: activePackages,
+              inquiries: stats.total,
+              new: stats.new_count
+            }, null, 2)}
+          </pre>
+        </div>
+      )}
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -155,6 +224,42 @@ export default function AdminDashboard() {
               <StatusItem label="Image Uploads" status="online" />
               <StatusItem label="Email Service" status="pending" />
             </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Data Tables Preview */}
+      <div className="grid grid-cols-1 gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Packages</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {packagesArray.length > 0 ? (
+              <div className="space-y-2">
+                {packagesArray.slice(0, 5).map((pkg) => (
+                  <div key={pkg.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                    <div>
+                      <p className="font-medium">{pkg.title_en}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {pkg.category} • ${pkg.price}
+                      </p>
+                    </div>
+                    <span className={`text-xs px-2 py-1 rounded-full ${
+                      pkg.status === 'active' 
+                        ? 'bg-green-100 text-green-700' 
+                        : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      {pkg.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground text-center py-4">
+                No packages found. Create your first package!
+              </p>
+            )}
           </CardContent>
         </Card>
       </div>
