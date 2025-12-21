@@ -5,16 +5,12 @@
  */
 
 class Database {
-    // Database credentials - UPDATE THESE IF NEEDED
     private $host = "localhost";
     private $db_name = "sinath_travels";
     private $username = "root";
     private $password = "";
     private $conn;
 
-    /**
-     * Get database connection
-     */
     public function getConnection() {
         $this->conn = null;
 
@@ -25,9 +21,7 @@ class Database {
                 $this->password
             );
             
-            // Set error mode to exceptions
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // Set default fetch mode to associative array
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             
         } catch(PDOException $e) {
@@ -40,66 +34,66 @@ class Database {
 }
 
 /**
- * FIXED CORS Handler - ඔයාගේ issue එක solve කරන්න
+ * ULTIMATE CORS FIX - credentials: 'include' සඳහා
  */
 function enableCORS() {
-    // CRITICAL: Output කරපු දෙයක් නැත්නම් විතරක් headers set කරන්න
-    if (headers_sent()) {
+    // Check if headers already sent
+    if (headers_sent($file, $line)) {
+        error_log("Headers already sent in $file on line $line");
         return;
     }
     
-    // Get the request origin
-    $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
-    
-    // Development සඳහා allow කරන origins
-    $allowedOrigins = [
-         'http://localhost:5000',
-    'http://localhost:8080',  // මේක add කරන්න
-    'http://127.0.0.1:8080',  // මේකත් add කරන්න
-    'http://192.168.8.101:8080',  // මේකත් add කරන්න
-        'http://localhost:5000',
-        'http://localhost:5173',
-        'http://127.0.0.1:5000',
-        'http://127.0.0.1:5173',
-        'http://192.168.8.101:5000',
-        'http://192.168.8.101:5173',
-        'http://192.168.8.101:8080',
-        'https://www.sinathtravels.com',
-        'https://sinathtravels.com',
-    ];
-    
-    // Check origin and set appropriate header
-    if (in_array($origin, $allowedOrigins)) {
-        header("Access-Control-Allow-Origin: $origin");
-    } elseif (preg_match('/^http:\/\/(localhost|127\.0\.0\.1|192\.168\.\d+\.\d+|10\.0\.\d+\.\d+)(:\d+)?$/', $origin)) {
-        // Local development origins
-        header("Access-Control-Allow-Origin: $origin");
-    } else {
-        // Production fallback
-        header("Access-Control-Allow-Origin: *");
+    // Get origin
+    $origin = '';
+    if (isset($_SERVER['HTTP_ORIGIN'])) {
+        $origin = $_SERVER['HTTP_ORIGIN'];
     }
     
-    // CORS headers - මෙහෙම අනිවාර්යෙන්ම තියෙන්න ඕන
+    // Log for debugging
+    error_log("Request Origin: " . $origin);
+    error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
+    
+    // Allowed origins - EXACT matches only
+    $allowedOrigins = [
+        'http://localhost:5000',
+        'http://localhost:8080',
+        'http://127.0.0.1:5000',
+        'http://127.0.0.1:8080',
+    ];
+    
+    // Set appropriate origin
+    $allowedOrigin = 'http://localhost:5000'; // default
+    
+    if (in_array($origin, $allowedOrigins)) {
+        $allowedOrigin = $origin;
+        error_log("Matched exact origin: " . $origin);
+    } elseif (preg_match('#^http://(?:localhost|127\.0\.0\.1|192\.168\.\d+\.\d+)(?::\d+)?$#', $origin)) {
+        $allowedOrigin = $origin;
+        error_log("Matched pattern origin: " . $origin);
+    }
+    
+    // CRITICAL: Set headers in correct order
+    header("Access-Control-Allow-Origin: " . $allowedOrigin);
+    header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Origin");
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Max-Age: 86400"); // 24 hours
+    header("Access-Control-Max-Age: 3600");
     header("Content-Type: application/json; charset=UTF-8");
-
-    // OPTIONS preflight request එක handle කරන්න
+    
+    // Log headers
+    error_log("Set CORS Origin to: " . $allowedOrigin);
+    
+    // Handle OPTIONS preflight
     if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        error_log("Handling OPTIONS preflight request");
         http_response_code(200);
         exit(0);
     }
 }
 
-/**
- * Send JSON response
- */
 function sendResponse($status, $data = null, $message = null) {
     http_response_code($status);
     
-    // Ensure headers are set
     if (!headers_sent()) {
         header('Content-Type: application/json; charset=UTF-8');
     }
@@ -120,9 +114,6 @@ function sendResponse($status, $data = null, $message = null) {
     exit;
 }
 
-/**
- * Get uploaded file path
- */
 function getUploadPath($filename) {
     $uploadDir = __DIR__ . '/../uploads/';
     
@@ -133,9 +124,6 @@ function getUploadPath($filename) {
     return $uploadDir . $filename;
 }
 
-/**
- * Get public URL for uploaded file
- */
 function getUploadUrl($filename) {
     if (empty($filename)) {
         return '';
@@ -152,9 +140,6 @@ function getUploadUrl($filename) {
     return $url;
 }
 
-/**
- * Validate and sanitize input
- */
 function sanitizeInput($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -162,9 +147,6 @@ function sanitizeInput($data) {
     return $data;
 }
 
-/**
- * Log error to file
- */
 function logError($message, $type = 'ERROR') {
     $logFile = __DIR__ . '/../logs/error.log';
     $logDir = dirname($logFile);

@@ -4,14 +4,20 @@
  * Handles login, logout, and session management
  */
 
-// CRITICAL: Database config include කරන්න විතරක් කරන්න මුලින්ම
+// CRITICAL: Database config include කරන්න BEFORE any output
 require_once '../../config/database.php';
 
-// CORS enable කරන්න දැන්
+// CRITICAL: CORS headers set කරන්න FIRST
 enableCORS();
 
 // Session start කරන්න CORS headers වලින් පස්සේ
 if (session_status() === PHP_SESSION_NONE) {
+    // Session cookie එක සඳහා secure settings
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_samesite', 'None');
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+        ini_set('session.cookie_secure', 1);
+    }
     session_start();
 }
 
@@ -50,6 +56,9 @@ try {
 function handleLogin($db) {
     $data = json_decode(file_get_contents("php://input"), true);
     
+    // Debug logging
+    error_log("Login attempt for username: " . ($data['username'] ?? 'none'));
+    
     // Validate input
     if (empty($data['username']) || empty($data['password'])) {
         sendResponse(400, null, 'Username and password required');
@@ -63,8 +72,16 @@ function handleLogin($db) {
     
     $admin = $stmt->fetch();
     
+    // Debug logging
+    if (!$admin) {
+        error_log("User not found: " . $data['username']);
+    } else {
+        error_log("User found: " . $admin['username']);
+    }
+    
     // Verify credentials
     if (!$admin || !password_verify($data['password'], $admin['password'])) {
+        error_log("Invalid credentials for user: " . $data['username']);
         sendResponse(401, null, 'Invalid credentials');
     }
     
@@ -94,6 +111,8 @@ function handleLogin($db) {
     // Set session variables
     $_SESSION['admin_session_id'] = $sessionId;
     $_SESSION['admin_id'] = $admin['id'];
+    
+    error_log("Login successful for user: " . $admin['username']);
     
     // Return success response
     sendResponse(200, [
