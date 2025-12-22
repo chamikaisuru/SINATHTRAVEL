@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { 
   getAdminPackages, 
-  createAdminPackage, 
+  createAdminPackage,
+  updateAdminPackage,
   deleteAdminPackage,
   type AdminPackage 
 } from "@/lib/adminApi";
@@ -17,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, Loader2, Package } from "lucide-react";
+import { Plus, Edit, Trash2, Loader2, Package, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -36,34 +37,21 @@ export default function AdminPackages() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [editingPackage, setEditingPackage] = useState<AdminPackage | null>(null);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const { data: packagesResponse, isLoading, error, refetch } = useQuery({
+  const { data: packages = [], isLoading, error } = useQuery({
     queryKey: ['admin-packages'],
     queryFn: async () => {
-      console.log('📦 Fetching admin packages...');
       const result = await getAdminPackages();
-      console.log('📦 Raw API response:', result);
-      console.log('📦 Is array?', Array.isArray(result));
-      console.log('📦 Has data property?', result?.data);
-      console.log('📦 Has packages property?', result?.packages);
-      return result;
+      // Handle different response formats
+      if (Array.isArray(result)) return result;
+      if (result?.data && Array.isArray(result.data)) return result.data;
+      if (result?.packages && Array.isArray(result.packages)) return result.packages;
+      return [];
     },
   });
-
-  // Extract packages array from response
-  let packages: AdminPackage[] = [];
-  
-  if (Array.isArray(packagesResponse)) {
-    packages = packagesResponse;
-  } else if (packagesResponse?.data && Array.isArray(packagesResponse.data)) {
-    packages = packagesResponse.data;
-  } else if (packagesResponse?.packages && Array.isArray(packagesResponse.packages)) {
-    packages = packagesResponse.packages;
-  }
-
-  console.log('📦 Final packages array:', packages);
-  console.log('📦 Package count:', packages.length);
 
   const form = useForm<PackageFormData>({
     resolver: zodResolver(packageSchema),
@@ -81,14 +69,29 @@ export default function AdminPackages() {
     mutationFn: createAdminPackage,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-packages'] });
-      toast({ title: "Package created successfully" });
-      setDialogOpen(false);
-      form.reset();
-      setSelectedImage(null);
+      toast({ title: "✅ Package created successfully" });
+      handleCloseDialog();
     },
     onError: (error: Error) => {
       toast({ 
-        title: "Failed to create package", 
+        title: "❌ Failed to create package", 
+        description: error.message, 
+        variant: "destructive" 
+      });
+    },
+  });
+
+  const updateMutation = useMutation({
+    mutationFn: ({ id, data }: { id: number; data: Partial<AdminPackage> }) =>
+      updateAdminPackage(id, data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-packages'] });
+      toast({ title: "✅ Package updated successfully" });
+      handleCloseDialog();
+    },
+    onError: (error: Error) => {
+      toast({ 
+        title: "❌ Failed to update package", 
         description: error.message, 
         variant: "destructive" 
       });
@@ -99,16 +102,58 @@ export default function AdminPackages() {
     mutationFn: deleteAdminPackage,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['admin-packages'] });
-      toast({ title: "Package deleted successfully" });
+      toast({ title: "✅ Package deleted successfully" });
     },
     onError: (error: Error) => {
       toast({ 
-        title: "Failed to delete package", 
+        title: "❌ Failed to delete package", 
         description: error.message, 
         variant: "destructive" 
       });
     },
   });
+
+  function handleOpenDialog(pkg?: AdminPackage) {
+    if (pkg) {
+      setEditingPackage(pkg);
+      form.reset({
+        category: pkg.category,
+        title_en: pkg.title_en,
+        description_en: pkg.description_en,
+        price: pkg.price.toString(),
+        duration: pkg.duration || '',
+        status: pkg.status,
+      });
+      if (pkg.image) {
+        setImagePreview(pkg.image);
+      }
+    } else {
+      setEditingPackage(null);
+      form.reset();
+      setImagePreview(null);
+    }
+    setDialogOpen(true);
+  }
+
+  function handleCloseDialog() {
+    setDialogOpen(false);
+    setEditingPackage(null);
+    setSelectedImage(null);
+    setImagePreview(null);
+    form.reset();
+  }
+
+  function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   function onSubmit(values: PackageFormData) {
     const formData = new FormData();
@@ -120,11 +165,21 @@ export default function AdminPackages() {
       formData.append('image', selectedImage);
     }
     
-    createMutation.mutate(formData);
+    if (editingPackage?.id) {
+      updateMutation.mutate({ 
+        id: editingPackage.id, 
+        data: {
+          ...values,
+          price: parseFloat(values.price),
+        }
+      });
+    } else {
+      createMutation.mutate(formData);
+    }
   }
 
   function handleDelete(id: number) {
-    if (confirm('Are you sure you want to delete this package?')) {
+    if (confirm('Are you sure you want to delete this package? This action cannot be undone.')) {
       deleteMutation.mutate(id);
     }
   }
@@ -165,17 +220,24 @@ export default function AdminPackages() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-heading font-bold text-primary">Packages</h1>
+        <h1 className="text-3xl font-heading font-bold text-primary">
+          Packages ({packages.length})
+        </h1>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="bg-secondary hover:bg-secondary/90">
+            <Button 
+              className="bg-secondary hover:bg-secondary/90"
+              onClick={() => handleOpenDialog()}
+            >
               <Plus className="w-4 h-4 mr-2" />
               Add Package
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Add New Package</DialogTitle>
+              <DialogTitle>
+                {editingPackage ? 'Edit Package' : 'Add New Package'}
+              </DialogTitle>
             </DialogHeader>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -186,17 +248,17 @@ export default function AdminPackages() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Category</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="tour">Tour</SelectItem>
-                            <SelectItem value="visa">Visa</SelectItem>
-                            <SelectItem value="ticket">Ticket</SelectItem>
-                            <SelectItem value="offer">Offer</SelectItem>
+                            <SelectItem value="tour">Tour Package</SelectItem>
+                            <SelectItem value="visa">Visa Service</SelectItem>
+                            <SelectItem value="ticket">Flight Ticket</SelectItem>
+                            <SelectItem value="offer">Special Offer</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -210,7 +272,7 @@ export default function AdminPackages() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Status</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue />
@@ -251,7 +313,7 @@ export default function AdminPackages() {
                         <Textarea 
                           placeholder="Describe the package..." 
                           {...field} 
-                          rows={3} 
+                          rows={4} 
                         />
                       </FormControl>
                       <FormMessage />
@@ -295,39 +357,43 @@ export default function AdminPackages() {
                 </div>
 
                 <div>
-                  <FormLabel>Image (Optional)</FormLabel>
+                  <FormLabel>Package Image</FormLabel>
                   <Input 
                     type="file" 
                     accept="image/*"
-                    onChange={(e) => setSelectedImage(e.target.files?.[0] || null)}
+                    onChange={handleImageChange}
                     className="mt-2"
                   />
-                  {selectedImage && (
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Selected: {selectedImage.name}
-                    </p>
+                  {imagePreview && (
+                    <div className="mt-4">
+                      <img 
+                        src={imagePreview} 
+                        alt="Preview" 
+                        className="w-full h-48 object-cover rounded-lg"
+                      />
+                    </div>
                   )}
                 </div>
 
                 <div className="flex gap-2 pt-4">
                   <Button 
                     type="submit" 
-                    disabled={createMutation.isPending}
+                    disabled={createMutation.isPending || updateMutation.isPending}
                     className="flex-1"
                   >
-                    {createMutation.isPending ? (
+                    {(createMutation.isPending || updateMutation.isPending) ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Creating...
+                        {editingPackage ? 'Updating...' : 'Creating...'}
                       </>
                     ) : (
-                      'Create Package'
+                      editingPackage ? 'Update Package' : 'Create Package'
                     )}
                   </Button>
                   <Button 
                     type="button" 
                     variant="outline" 
-                    onClick={() => setDialogOpen(false)}
+                    onClick={handleCloseDialog}
                   >
                     Cancel
                   </Button>
@@ -338,7 +404,7 @@ export default function AdminPackages() {
         </Dialog>
       </div>
 
-      {!Array.isArray(packages) || packages.length === 0 ? (
+      {packages.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
             <Package className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
@@ -346,45 +412,41 @@ export default function AdminPackages() {
             <p className="text-sm text-muted-foreground mb-4">
               Click "Add Package" to create your first package
             </p>
-            <Button 
-              onClick={() => setDialogOpen(true)} 
-              variant="outline"
-            >
-              <Plus className="w-4 h-4 mr-2" />
-              Create First Package
-            </Button>
           </CardContent>
         </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((pkg) => (
-            <Card key={pkg.id} className="overflow-hidden">
+            <Card key={pkg.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               {pkg.image && (
-                <div className="h-48 overflow-hidden bg-muted">
+                <div className="h-48 overflow-hidden bg-muted relative">
                   <img 
                     src={pkg.image} 
                     alt={pkg.title_en} 
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
-                    }}
                   />
+                  <Badge 
+                    variant={pkg.status === 'active' ? 'default' : 'secondary'}
+                    className="absolute top-2 right-2"
+                  >
+                    {pkg.status}
+                  </Badge>
                 </div>
               )}
               <CardHeader>
                 <div className="flex items-start justify-between gap-2">
                   <CardTitle className="text-lg line-clamp-2">{pkg.title_en}</CardTitle>
-                  <Badge variant={pkg.status === 'active' ? 'default' : 'secondary'}>
-                    {pkg.status}
-                  </Badge>
                 </div>
+                <Badge variant="outline" className="w-fit text-xs mt-2">
+                  {pkg.category}
+                </Badge>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
                   {pkg.description_en}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">
+                  <span className="text-2xl font-bold text-primary">
                     ${pkg.price}
                   </span>
                   {pkg.duration && (
@@ -393,14 +455,14 @@ export default function AdminPackages() {
                     </span>
                   )}
                 </div>
-                <div className="mt-2">
-                  <Badge variant="outline" className="text-xs">
-                    {pkg.category}
-                  </Badge>
-                </div>
               </CardContent>
-              <CardFooter className="flex gap-2 bg-muted/30">
-                <Button variant="outline" size="sm" className="flex-1">
+              <CardFooter className="flex gap-2 bg-muted/30 border-t">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex-1"
+                  onClick={() => handleOpenDialog(pkg)}
+                >
                   <Edit className="w-4 h-4 mr-1" />
                   Edit
                 </Button>

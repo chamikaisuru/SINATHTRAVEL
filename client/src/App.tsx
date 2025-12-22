@@ -10,6 +10,7 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Services from "@/pages/services";
 import Contact from "@/pages/contact";
+import PackageDetails from "@/pages/package-details";
 import WhatsAppButton from "@/components/whatsapp-button";
 
 import AdminLayout from "@/components/admin/AdminLayout";
@@ -26,7 +27,9 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/services" component={Services} />
         <Route path="/contact" component={Contact} />
-        // Inside your Router component, add these routes:
+        <Route path="/package/:id" component={PackageDetails} />
+        
+        {/* Admin Routes */}
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin/dashboard">
           <AdminLayout>
@@ -43,6 +46,7 @@ function Router() {
             <AdminInquiries />
           </AdminLayout>
         </Route>
+        
         <Route component={NotFound} />
       </Switch>
     </Layout>

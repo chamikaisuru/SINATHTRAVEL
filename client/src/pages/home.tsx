@@ -2,12 +2,21 @@ import { useLanguage } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Plane, Globe, Map } from "lucide-react";
 import { Link } from "wouter";
-import { images, packages } from "@/lib/data";
+import { images } from "@/lib/data";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useQuery } from "@tanstack/react-query";
+import { getPackages } from "@/lib/api";
 
 export default function Home() {
   const { t } = useLanguage();
+
+  // Fetch packages from API
+  const { data: packages = [], isLoading } = useQuery({
+    queryKey: ['packages'],
+    queryFn: () => getPackages({ status: 'active', limit: 6 }),
+  });
 
   return (
     <div className="flex flex-col gap-16 pb-16">
@@ -100,44 +109,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Packages */}
+      {/* Featured Packages - DYNAMIC */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Popular Packages</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Explore our most sought-after destinations and exclusive holiday deals crafted just for you.</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">
+              Popular Packages
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Explore our most sought-after destinations and exclusive holiday deals crafted just for you.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages.map((pkg) => (
-              <Card key={pkg.id} className="overflow-hidden border-none shadow-lg group hover:shadow-xl transition-all duration-300">
-                <div className="h-64 overflow-hidden relative">
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-bold text-primary z-10">
-                    {pkg.price}
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="overflow-hidden">
+                  <Skeleton className="h-64 w-full" />
+                  <CardHeader>
+                    <Skeleton className="h-6 w-3/4" />
+                  </CardHeader>
+                  <CardContent>
+                    <Skeleton className="h-4 w-full mb-2" />
+                    <Skeleton className="h-4 w-2/3" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : packages.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">No packages available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {packages.slice(0, 6).map((pkg) => (
+                <Card key={pkg.id} className="overflow-hidden border-none shadow-lg group hover:shadow-xl transition-all duration-300">
+                  <div className="h-64 overflow-hidden relative">
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full font-bold text-primary z-10">
+                      ${pkg.price}
+                    </div>
+                    {pkg.image ? (
+                      <img 
+                        src={pkg.image} 
+                        alt={pkg.title_en} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted flex items-center justify-center">
+                        <Map className="w-16 h-16 text-muted-foreground" />
+                      </div>
+                    )}
                   </div>
-                  <img 
-                    src={pkg.image} 
-                    alt={pkg.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-primary">{pkg.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">{pkg.description}</p>
-                </CardContent>
-                <CardFooter className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-muted-foreground">{pkg.duration}</span>
-                  <Link href="/contact">
-                    <Button variant="ghost" className="text-secondary hover:text-secondary/80 font-semibold p-0 hover:bg-transparent">
-                      Inquire Now <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
+                  <CardHeader>
+                    <CardTitle className="text-xl font-bold text-primary line-clamp-2">
+                      {pkg.title_en}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm line-clamp-2">
+                      {pkg.description_en}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="flex justify-between items-center">
+                    {pkg.duration && (
+                      <span className="text-sm font-medium text-muted-foreground">
+                        {pkg.duration}
+                      </span>
+                    )}
+                    <Link href={`/package/${pkg.id}`}>
+                      <Button variant="ghost" className="text-secondary hover:text-secondary/80 font-semibold p-0 hover:bg-transparent">
+                        View Details <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {packages.length > 6 && (
+            <div className="text-center mt-12">
+              <Link href="/services">
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                  View All Packages
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     </div>
