@@ -189,6 +189,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="border-t border-white/10 pt-8 text-center text-sm text-primary-foreground/60">
             &copy; {new Date().getFullYear()} Sinath Travels and Tours. {t.footer.rights}
           </div>
+          <div className="border-t border-white/10 pt-2 text-center text-sm text-primary">
+            <Link href="/admin/login"><span className="hover:text-accent transition-colors cursor-pointer">Admin Login</span></Link>
+          </div>
         </div>
       </footer>
     </div>

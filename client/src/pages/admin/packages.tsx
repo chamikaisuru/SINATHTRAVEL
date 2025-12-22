@@ -3,7 +3,6 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { 
   getAdminPackages, 
   createAdminPackage, 
-  updateAdminPackage, 
   deleteAdminPackage,
   type AdminPackage 
 } from "@/lib/adminApi";
@@ -18,17 +17,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2 } from "lucide-react";
+import { Plus, Edit, Trash2, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const packageSchema = z.object({
   category: z.enum(['tour', 'visa', 'ticket', 'offer']),
   title_en: z.string().min(5, "Title required"),
-  title_si: z.string().optional(),
-  title_ta: z.string().optional(),
   description_en: z.string().min(10, "Description required"),
-  description_si: z.string().optional(),
-  description_ta: z.string().optional(),
   price: z.string().min(1, "Price required"),
   duration: z.string().optional(),
   status: z.enum(['active', 'inactive']),
@@ -41,25 +37,33 @@ export default function AdminPackages() {
   const queryClient = useQueryClient();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [editingPackage, setEditingPackage] = useState<AdminPackage | null>(null);
 
-  // FIXED: Handle both array and object response formats
-  const { data: packagesResponse, isLoading } = useQuery({
+  const { data: packagesResponse, isLoading, error, refetch } = useQuery({
     queryKey: ['admin-packages'],
     queryFn: async () => {
-      console.log('📦 Fetching packages...');
+      console.log('📦 Fetching admin packages...');
       const result = await getAdminPackages();
-      console.log('📦 Raw result:', result);
+      console.log('📦 Raw API response:', result);
+      console.log('📦 Is array?', Array.isArray(result));
+      console.log('📦 Has data property?', result?.data);
+      console.log('📦 Has packages property?', result?.packages);
       return result;
     },
   });
 
-  // FIXED: Safely extract packages array from response
-  const packages = Array.isArray(packagesResponse) 
-    ? packagesResponse 
-    : (packagesResponse?.data || packagesResponse?.packages || []);
+  // Extract packages array from response
+  let packages: AdminPackage[] = [];
+  
+  if (Array.isArray(packagesResponse)) {
+    packages = packagesResponse;
+  } else if (packagesResponse?.data && Array.isArray(packagesResponse.data)) {
+    packages = packagesResponse.data;
+  } else if (packagesResponse?.packages && Array.isArray(packagesResponse.packages)) {
+    packages = packagesResponse.packages;
+  }
 
-  console.log('📦 Packages array:', packages);
+  console.log('📦 Final packages array:', packages);
+  console.log('📦 Package count:', packages.length);
 
   const form = useForm<PackageFormData>({
     resolver: zodResolver(packageSchema),
@@ -69,6 +73,7 @@ export default function AdminPackages() {
       title_en: '',
       description_en: '',
       price: '',
+      duration: '',
     },
   });
 
@@ -82,7 +87,11 @@ export default function AdminPackages() {
       setSelectedImage(null);
     },
     onError: (error: Error) => {
-      toast({ title: "Failed to create package", description: error.message, variant: "destructive" });
+      toast({ 
+        title: "Failed to create package", 
+        description: error.message, 
+        variant: "destructive" 
+      });
     },
   });
 
@@ -93,7 +102,11 @@ export default function AdminPackages() {
       toast({ title: "Package deleted successfully" });
     },
     onError: (error: Error) => {
-      toast({ title: "Failed to delete package", description: error.message, variant: "destructive" });
+      toast({ 
+        title: "Failed to delete package", 
+        description: error.message, 
+        variant: "destructive" 
+      });
     },
   });
 
@@ -120,10 +133,31 @@ export default function AdminPackages() {
     return (
       <div className="space-y-6">
         <h1 className="text-3xl font-heading font-bold text-primary">Packages</h1>
-        <div className="text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-muted-foreground">Loading packages...</p>
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          <span className="ml-4 text-muted-foreground">Loading packages...</span>
         </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="space-y-6">
+        <h1 className="text-3xl font-heading font-bold text-primary">Packages</h1>
+        <Alert variant="destructive">
+          <AlertDescription>
+            Error loading packages: {error.toString()}
+            <Button 
+              onClick={() => queryClient.invalidateQueries({ queryKey: ['admin-packages'] })} 
+              variant="outline" 
+              size="sm" 
+              className="ml-4"
+            >
+              Retry
+            </Button>
+          </AlertDescription>
+        </Alert>
       </div>
     );
   }
@@ -200,7 +234,7 @@ export default function AdminPackages() {
                     <FormItem>
                       <FormLabel>Title (English)</FormLabel>
                       <FormControl>
-                        <Input {...field} />
+                        <Input placeholder="e.g., Dubai Shopping Festival" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -214,7 +248,11 @@ export default function AdminPackages() {
                     <FormItem>
                       <FormLabel>Description (English)</FormLabel>
                       <FormControl>
-                        <Textarea {...field} rows={3} />
+                        <Textarea 
+                          placeholder="Describe the package..." 
+                          {...field} 
+                          rows={3} 
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -229,7 +267,12 @@ export default function AdminPackages() {
                       <FormItem>
                         <FormLabel>Price (USD)</FormLabel>
                         <FormControl>
-                          <Input type="number" step="0.01" {...field} />
+                          <Input 
+                            type="number" 
+                            step="0.01" 
+                            placeholder="500.00" 
+                            {...field} 
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -241,9 +284,9 @@ export default function AdminPackages() {
                     name="duration"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Duration</FormLabel>
+                        <FormLabel>Duration (Optional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. 5 Days" {...field} />
+                          <Input placeholder="e.g., 5 Days" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -252,58 +295,111 @@ export default function AdminPackages() {
                 </div>
 
                 <div>
-                  <FormLabel>Image</FormLabel>
+                  <FormLabel>Image (Optional)</FormLabel>
                   <Input 
                     type="file" 
                     accept="image/*"
                     onChange={(e) => setSelectedImage(e.target.files?.[0] || null)}
+                    className="mt-2"
                   />
+                  {selectedImage && (
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Selected: {selectedImage.name}
+                    </p>
+                  )}
                 </div>
 
-                <Button type="submit" disabled={createMutation.isPending}>
-                  {createMutation.isPending ? "Creating..." : "Create Package"}
-                </Button>
+                <div className="flex gap-2 pt-4">
+                  <Button 
+                    type="submit" 
+                    disabled={createMutation.isPending}
+                    className="flex-1"
+                  >
+                    {createMutation.isPending ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Creating...
+                      </>
+                    ) : (
+                      'Create Package'
+                    )}
+                  </Button>
+                  <Button 
+                    type="button" 
+                    variant="outline" 
+                    onClick={() => setDialogOpen(false)}
+                  >
+                    Cancel
+                  </Button>
+                </div>
               </form>
             </Form>
           </DialogContent>
         </Dialog>
       </div>
 
-      {/* FIXED: Show message when no packages */}
       {!Array.isArray(packages) || packages.length === 0 ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-muted-foreground mb-4">No packages found</p>
-            <p className="text-sm text-muted-foreground">Click "Add Package" to create your first package</p>
+            <Package className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+            <h3 className="text-lg font-semibold mb-2">No packages found</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Click "Add Package" to create your first package
+            </p>
+            <Button 
+              onClick={() => setDialogOpen(true)} 
+              variant="outline"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Create First Package
+            </Button>
           </CardContent>
         </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packages.map((pkg) => (
-            <Card key={pkg.id}>
+            <Card key={pkg.id} className="overflow-hidden">
               {pkg.image && (
-                <div className="h-48 overflow-hidden">
-                  <img src={pkg.image} alt={pkg.title_en} className="w-full h-full object-cover" />
+                <div className="h-48 overflow-hidden bg-muted">
+                  <img 
+                    src={pkg.image} 
+                    alt={pkg.title_en} 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
                 </div>
               )}
               <CardHeader>
-                <div className="flex items-start justify-between">
-                  <CardTitle className="text-lg">{pkg.title_en}</CardTitle>
+                <div className="flex items-start justify-between gap-2">
+                  <CardTitle className="text-lg line-clamp-2">{pkg.title_en}</CardTitle>
                   <Badge variant={pkg.status === 'active' ? 'default' : 'secondary'}>
                     {pkg.status}
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground line-clamp-2">{pkg.description_en}</p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">${pkg.price}</span>
+                <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                  {pkg.description_en}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xl font-bold text-primary">
+                    ${pkg.price}
+                  </span>
                   {pkg.duration && (
-                    <span className="text-sm text-muted-foreground">{pkg.duration}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {pkg.duration}
+                    </span>
                   )}
                 </div>
+                <div className="mt-2">
+                  <Badge variant="outline" className="text-xs">
+                    {pkg.category}
+                  </Badge>
+                </div>
               </CardContent>
-              <CardFooter className="flex gap-2">
+              <CardFooter className="flex gap-2 bg-muted/30">
                 <Button variant="outline" size="sm" className="flex-1">
                   <Edit className="w-4 h-4 mr-1" />
                   Edit
@@ -312,8 +408,13 @@ export default function AdminPackages() {
                   variant="destructive" 
                   size="sm"
                   onClick={() => pkg.id && handleDelete(pkg.id)}
+                  disabled={deleteMutation.isPending}
                 >
-                  <Trash2 className="w-4 h-4" />
+                  {deleteMutation.isPending ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Trash2 className="w-4 h-4" />
+                  )}
                 </Button>
               </CardFooter>
             </Card>
