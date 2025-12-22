@@ -2213,3 +2213,173 @@
 [Tue Dec 23 04:14:25.386560 2025] [php:notice] [pid 13928:tid 776] [client ::1:54995] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
 [Tue Dec 23 04:14:25.386560 2025] [php:notice] [pid 13928:tid 776] [client ::1:54995] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
 [Tue Dec 23 04:14:25.387245 2025] [php:notice] [pid 13928:tid 776] [client ::1:54995] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.604262 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.604262 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.604262 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.605255 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.605255 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.605255 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.605255 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.605255 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.683991 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.683991 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.683991 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.685515 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.685515 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.685515 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.686014 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:35.686510 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.171972 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.172970 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.204089 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:19:37.205085 2025] [php:notice] [pid 13928:tid 784] [client ::1:55196] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.863862 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.864859 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.949778 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.949778 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.949778 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.949778 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.949778 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.950775 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.950775 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:31:07.951053 2025] [php:notice] [pid 13928:tid 784] [client ::1:55704] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:37:45.630667 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] ========== PACKAGES API CALLED ==========
+[Tue Dec 23 04:37:45.632361 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xe2\x9c\x85 Database connected
+[Tue Dec 23 04:37:45.632825 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xa6 Request method: GET
+[Tue Dec 23 04:37:45.632825 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xa6 Filters - Category: all, Status: active, Limit: 50
+[Tue Dec 23 04:37:45.632825 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xa6 Query: SELECT * FROM packages WHERE status = :status ORDER BY created_at DESC LIMIT :limit
+[Tue Dec 23 04:37:45.988479 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xa6 Found 3 packages
+[Tue Dec 23 04:37:45.988479 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xb7 Image URL: http://127.0.0.1:8080/server/uploads/sri_lanka_sigiriya_r_ddcb0491.jpg
+[Tue Dec 23 04:37:45.988479 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xb7 Image URL: http://127.0.0.1:8080/server/uploads/dubai_skyline_with_b_8fae68a6.jpg
+[Tue Dec 23 04:37:45.988479 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xf0\x9f\x93\xb7 Image URL: http://127.0.0.1:8080/server/uploads/maldives_water_villa_e130bb66.jpg
+[Tue Dec 23 04:37:45.989490 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:55914] \xe2\x9c\x85 Sending response with 3 packages
+[Tue Dec 23 04:40:02.490269 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.490764 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.490764 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.491261 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.491261 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.491261 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.491261 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.492763 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.642737 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.643234 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.643585 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.644080 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.644080 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.644577 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.644577 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:40:02.645749 2025] [php:notice] [pid 13928:tid 816] [client ::1:55998] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.928255 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.928255 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.929279 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.929279 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.929822 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.929822 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.930317 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:25.931695 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.089542 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.089542 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.089542 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.089542 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.089542 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.090430 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.090430 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:26.091422 2025] [php:notice] [pid 13928:tid 816] [client ::1:56062] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.648172 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.648172 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.648962 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.648962 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.649402 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.649402 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.649898 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.650905 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.720612 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.720612 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721108 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721108 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721605 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721605 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721885 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:41.721885 2025] [php:notice] [pid 13928:tid 816] [client ::1:56081] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.181075 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.181075 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.182148 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.182148 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.182148 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.182148 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.182148 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.183069 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.325927 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.325927 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.325927 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.325927 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.327030 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.327030 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.327030 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:41:56.328675 2025] [php:notice] [pid 13928:tid 816] [client ::1:56106] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.958964 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.959239 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.959239 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.959239 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.959239 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.960268 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.960268 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:21.962073 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.283413 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.283413 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.283413 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.283413 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.284741 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.284741 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.284741 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:22.285737 2025] [php:notice] [pid 13928:tid 816] [client ::1:56211] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.062704 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.062704 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.063709 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.063709 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.063709 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.064702 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.064702 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.065694 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.182593 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.183089 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.183089 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.183584 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.184083 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.184083 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.184579 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:43:32.186855 2025] [php:notice] [pid 13928:tid 816] [client ::1:56229] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.636964 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.636964 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.636964 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.637894 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.637894 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.638391 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.638391 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.639403 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.725530 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.726231 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.726728 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.727224 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] Session ID from cookie: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.727224 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.728202 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.728202 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xf0\x9f\x94\x8d Session ID found: 954a1a7996e5d661c6cc5c8f4c848c97ec147e4bb7f9e92cca0ba08989229061, referer: http://localhost:5000/
+[Tue Dec 23 04:44:00.729761 2025] [php:notice] [pid 13928:tid 816] [client ::1:56254] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/

@@ -1,7 +1,7 @@
 <?php
 /**
- * Admin Packages API - FINAL FIXED VERSION
- * Save to: server/api/admin/packages.php
+ * FIXED Admin Packages API
+ * Properly returns packages array to frontend
  */
 
 // Start session FIRST
@@ -18,14 +18,14 @@ $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-error_log("📦 ADMIN PACKAGES API - Method: " . $method);
+error_log("📦 PACKAGES API - Method: " . $method);
 
 // Verify admin authentication
 try {
     $admin = verifyAdminAuth($db);
     error_log("✅ Admin verified: " . $admin['username']);
 } catch(Exception $e) {
-    error_log("❌ Auth failed: " . $e->getMessage());
+    error_log("❌ Auth failed");
     exit;
 }
 
@@ -57,7 +57,7 @@ try {
 }
 
 function handleGet($db) {
-    error_log("📦 GET request");
+    error_log("📦 GET packages request");
     
     $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
     
@@ -75,7 +75,7 @@ function handleGet($db) {
         
         sendResponse(200, $package);
     } else {
-        // All packages
+        // All packages - THIS IS THE KEY PART
         $status = isset($_GET['status']) ? $_GET['status'] : null;
         $category = isset($_GET['category']) ? $_GET['category'] : null;
         
@@ -104,7 +104,7 @@ function handleGet($db) {
         $stmt->execute();
         $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        error_log("📦 Found " . count($packages) . " packages");
+        error_log("📦 Found " . count($packages) . " packages in database");
         
         // Format image URLs
         foreach ($packages as &$package) {
@@ -113,17 +113,11 @@ function handleGet($db) {
             }
         }
         
-        // CRITICAL FIX: Return array directly, NOT wrapped in object
-        error_log("📦 Returning " . count($packages) . " packages as array");
+        error_log("📦 Sending " . count($packages) . " packages to frontend");
         
-        http_response_code(200);
-        header('Content-Type: application/json; charset=UTF-8');
-        echo json_encode([
-            'success' => true,
-            'data' => $packages,
-            'count' => count($packages)
-        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        exit;
+        // CRITICAL FIX: The adminApi.ts expects response.data to be the array directly
+        // So we use sendResponse which wraps it in { success, data, message }
+        sendResponse(200, $packages, 'Packages retrieved successfully');
     }
 }
 

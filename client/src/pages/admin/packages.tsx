@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, Loader2, Package, Eye } from "lucide-react";
+import { Plus, Edit, Trash2, Loader2, Package } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -41,14 +41,28 @@ export default function AdminPackages() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const { data: packages = [], isLoading, error } = useQuery({
+  const { data: packages = [], isLoading, error } = useQuery<AdminPackage[]>({
     queryKey: ['admin-packages'],
     queryFn: async () => {
+      console.log('🔍 Fetching packages from API...');
       const result = await getAdminPackages();
-      // Handle different response formats
-      if (Array.isArray(result)) return result;
-      if (result?.data && Array.isArray(result.data)) return result.data;
-      if (result?.packages && Array.isArray(result.packages)) return result.packages;
+      console.log('🔍 API returned:', result);
+      console.log('🔍 Type:', typeof result);
+      console.log('🔍 Is Array?', Array.isArray(result));
+      
+      if (Array.isArray(result)) {
+        console.log('✅ Returning', result.length, 'packages');
+        return result;
+      }
+      
+      // Handle wrapped responses
+      const resultObj = result as any;
+      if (resultObj?.data && Array.isArray(resultObj.data)) {
+        console.log('✅ Returning', resultObj.data.length, 'packages from data property');
+        return resultObj.data;
+      }
+      
+      console.error('❌ Unexpected response format:', result);
       return [];
     },
   });
@@ -216,6 +230,8 @@ export default function AdminPackages() {
       </div>
     );
   }
+
+  console.log('📦 Rendering with', packages.length, 'packages');
 
   return (
     <div className="space-y-6">
@@ -412,6 +428,10 @@ export default function AdminPackages() {
             <p className="text-sm text-muted-foreground mb-4">
               Click "Add Package" to create your first package
             </p>
+            <Button onClick={() => handleOpenDialog()}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add Your First Package
+            </Button>
           </CardContent>
         </Card>
       ) : (

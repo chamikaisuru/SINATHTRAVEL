@@ -1,9 +1,8 @@
 /**
- * Admin API Client - WITH DEBUG LOGS
+ * Admin API Client - FIXED VERSION
  * Handles all admin panel API requests
  */
 
-// FIXED: Port 8080 එකට match වෙන විදියට
 const ADMIN_API_BASE = import.meta.env.VITE_API_URL 
   ? import.meta.env.VITE_API_URL.replace('/api', '/api/admin')
   : 'http://localhost:8080/server/api/admin';
@@ -127,7 +126,24 @@ export async function getAdminPackages(params?: {
   if (params?.category) queryParams.append('category', params.category);
   
   const query = queryParams.toString();
-  return adminApiRequest<AdminPackage[]>(`packages.php${query ? '?' + query : ''}`);
+  const response = await adminApiRequest<any>(`packages.php${query ? '?' + query : ''}`);
+  
+  console.log('📦 Raw packages response:', response);
+  
+  // Handle different response formats
+  if (Array.isArray(response)) {
+    console.log('📦 Response is array, returning directly');
+    return response;
+  }
+  
+  // If wrapped in data property
+  if (response && typeof response === 'object' && 'data' in response) {
+    console.log('📦 Response has data property');
+    return Array.isArray(response.data) ? response.data : [];
+  }
+  
+  console.error('📦 Unexpected response format:', response);
+  return [];
 }
 
 export async function getAdminPackage(id: number): Promise<AdminPackage> {
