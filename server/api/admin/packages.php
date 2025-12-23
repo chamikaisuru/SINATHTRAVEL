@@ -1,16 +1,15 @@
 <?php
 /**
  * COMPLETELY FIXED Admin Packages API
- * CRITICAL FIX: Session must be started BEFORE any configuration
  * Replace: server/api/admin/packages.php
  */
 
-// STEP 1: Start session FIRST (before anything else)
+// STEP 1: Start session FIRST
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// STEP 2: Load dependencies AFTER session started
+// STEP 2: Load dependencies
 require_once '../../config/database.php';
 require_once './auth.php';
 
@@ -20,7 +19,6 @@ enableCORS();
 error_log("========== PACKAGES API ==========");
 error_log("Method: " . $_SERVER['REQUEST_METHOD']);
 error_log("Session ID: " . session_id());
-error_log("Admin Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
 
 // STEP 4: Initialize database
 $database = new Database();
@@ -78,7 +76,14 @@ function handleGet($db) {
         $query = "SELECT * FROM packages WHERE id = :id";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        
+        if (!$stmt->execute()) {
+            error_log("❌ Query execution failed");
+            error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
+            sendResponse(500, null, 'Database query failed');
+            return;
+        }
+        
         $package = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($package && $package['image']) {
@@ -90,8 +95,11 @@ function handleGet($db) {
         return;
     }
     
-    // Get all packages
-    error_log("📦 Fetching all packages");
+    // ====================================
+    // GET ALL PACKAGES - THIS IS THE CRITICAL PART
+    // ====================================
+    
+    error_log("📦 Fetching ALL packages");
     
     $status = isset($_GET['status']) ? $_GET['status'] : null;
     $category = isset($_GET['category']) ? $_GET['category'] : null;
@@ -111,34 +119,74 @@ function handleGet($db) {
     
     $query .= " ORDER BY created_at DESC";
     
-    error_log("📦 Query: " . $query);
-    error_log("📦 Params: " . json_encode($params));
+    error_log("📦 SQL Query: " . $query);
+    error_log("📦 Parameters: " . json_encode($params));
     
+    // Prepare statement
     $stmt = $db->prepare($query);
+    
+    if (!$stmt) {
+        error_log("❌ Failed to prepare statement");
+        error_log("PDO Error: " . print_r($db->errorInfo(), true));
+        sendResponse(500, null, 'Failed to prepare database query');
+        return;
+    }
     
     // Bind parameters
     foreach ($params as $key => $value) {
         $stmt->bindValue($key, $value);
+        error_log("📦 Bound parameter: $key = $value");
     }
     
-    $stmt->execute();
+    // Execute query
+    $executeResult = $stmt->execute();
     
-    // CRITICAL: Use fetchAll with PDO::FETCH_ASSOC
+    if (!$executeResult) {
+        error_log("❌ Query execution failed");
+        error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
+        sendResponse(500, null, 'Database query execution failed');
+        return;
+    }
+    
+    error_log("✅ Query executed successfully");
+    
+    // Get row count
+    $rowCount = $stmt->rowCount();
+    error_log("📦 Row count: " . $rowCount);
+    
+    // Fetch all results
     $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    error_log("📦 Query executed");
-    error_log("📦 Rows returned: " . $stmt->rowCount());
-    error_log("📦 Packages count: " . count($packages));
+    if ($packages === false) {
+        error_log("❌ fetchAll() returned FALSE");
+        error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
+        sendResponse(500, null, 'Failed to fetch packages from database');
+        return;
+    }
+    
+    $packageCount = count($packages);
+    error_log("📦 Fetched " . $packageCount . " packages from database");
+    
+    // Log first package for debugging
+    if ($packageCount > 0) {
+        error_log("📦 First package sample: " . json_encode($packages[0]));
+    } else {
+        error_log("⚠️ No packages found in database");
+    }
     
     // Format image URLs
     foreach ($packages as &$package) {
         if (!empty($package['image'])) {
+            $originalImage = $package['image'];
             $package['image'] = getUploadUrl($package['image']);
+            error_log("📦 Converted image: $originalImage -> " . $package['image']);
         }
     }
     unset($package); // Break reference
     
-    error_log("📦 Sending response with " . count($packages) . " packages");
+    error_log("📦 Sending response with " . $packageCount . " packages");
+    
+    // Send response
     sendResponse(200, $packages, 'Packages retrieved successfully');
 }
 

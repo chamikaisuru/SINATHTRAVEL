@@ -1,6 +1,6 @@
 /**
- * Admin API Client - FIXED VERSION
- * Handles all admin panel API requests
+ * Admin API Client - FIXED RESPONSE HANDLING
+ * Replace: client/src/lib/adminApi.ts
  */
 
 const ADMIN_API_BASE = import.meta.env.VITE_API_URL 
@@ -19,9 +19,7 @@ async function adminApiRequest<T>(
   const url = `${ADMIN_API_BASE}/${endpoint}`;
 
   console.log('🔵 Making request to:', url);
-  console.log('🔵 Request options:', options);
 
-  // ✅ FIXED: TypeScript-safe headers
   const headers: Record<string, string> = {
     ...(options.headers as Record<string, string>),
   };
@@ -56,14 +54,24 @@ async function adminApiRequest<T>(
     }
 
     const data = await response.json();
-    return (data.data ?? data) as T;
+    
+    // CRITICAL FIX: The PHP API wraps data in { success, data, message }
+    // We need to return data.data if it exists, otherwise return data
+    console.log('🔵 Raw API response:', data);
+    
+    if (data.data !== undefined) {
+      console.log('🔵 Returning data.data:', data.data);
+      return data.data as T;
+    }
+    
+    console.log('🔵 Returning data directly:', data);
+    return data as T;
+    
   } catch (error) {
     console.error('❌ Admin API request failed:', error);
     throw error;
   }
 }
-
-
 
 // ====================
 // AUTHENTICATION
@@ -133,23 +141,24 @@ export async function getAdminPackages(params?: {
   if (params?.category) queryParams.append('category', params.category);
   
   const query = queryParams.toString();
-  const response = await adminApiRequest<any>(`packages.php${query ? '?' + query : ''}`);
   
-  console.log('📦 Raw packages response:', response);
+  console.log('📦 Fetching packages with query:', query);
   
-  // Handle different response formats
-  if (Array.isArray(response)) {
-    console.log('📦 Response is array, returning directly');
-    return response;
+  // Make the API call
+  const result = await adminApiRequest<AdminPackage[]>(
+    `packages.php${query ? '?' + query : ''}`
+  );
+  
+  console.log('📦 getAdminPackages result:', result);
+  
+  // The result should already be the array of packages
+  // because adminApiRequest extracts data.data
+  if (Array.isArray(result)) {
+    console.log('✅ Got array with', result.length, 'packages');
+    return result;
   }
   
-  // If wrapped in data property
-  if (response && typeof response === 'object' && 'data' in response) {
-    console.log('📦 Response has data property');
-    return Array.isArray(response.data) ? response.data : [];
-  }
-  
-  console.error('📦 Unexpected response format:', response);
+  console.error('❌ Unexpected result type:', typeof result, result);
   return [];
 }
 

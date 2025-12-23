@@ -3023,3 +3023,205 @@
 [Tue Dec 23 08:12:51.814952 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
 [Tue Dec 23 08:12:51.814952 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
 [Tue Dec 23 08:12:51.816034 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.113772 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.114748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.116748 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200307 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200307 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200307 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200803 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200803 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.200803 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.201300 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:25:17.201736 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63178] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.099893 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.100841 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.100841 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212432 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.212929 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:26:26.213943 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63240] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.869948 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:27:57.870945 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028134 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028134 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028134 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028134 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028630 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028630 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.028630 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:27:58.029347 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63312] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.029264 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.030259 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.127557 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:32:07.128554 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63458] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.143453 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.144383 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.145409 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.240400 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.241095 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.241664 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.241664 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.242262 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.242262 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.242758 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:38:58.243559 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.332854 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.332854 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.332854 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.332854 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.333859 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.333859 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.333859 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.333859 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.401166 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.401166 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.401166 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.402165 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.402165 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.402165 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.402165 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:39:00.403159 2025] [php:notice] [pid 13976:tid 1888] [client ::1:63786] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.164361 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.164361 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.164361 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.164361 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.164361 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.165358 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.165358 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.166370 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.340382 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.340382 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.340878 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.341374 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.341374 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.341871 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.341871 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:44:19.343385 2025] [php:notice] [pid 13976:tid 1888] [client ::1:64019] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.409411 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.424210 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.424210 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.425290 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.425290 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Admin Session ID: none, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.442554 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.442554 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.843388 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 12:32:57.998191 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xe2\x9c\x85 Session stored: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.270051 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.270051 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.271082 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.271248 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.271369 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Admin Session ID: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.271369 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.271369 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x94\x8d Session ID found: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.299967 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.416673 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.416673 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.416673 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Admin Session ID: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.416673 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.419664 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.419664 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.442759 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.442759 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.461110 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.461110 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 12:32:58.462106 2025] [php:notice] [pid 6872:tid 1888] [client ::1:2405] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.340189 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Admin Session ID: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.341191 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x94\x8d Session ID found: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.342183 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.388220 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.388220 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.389217 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Admin Session ID: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.389217 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.390213 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.390213 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.391208 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.391208 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.391208 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.391208 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:03.392211 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2518] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.342355 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] Session ID: m2olmuathpb9cbpp3m3lvgrhbs, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] Admin Session ID: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.343249 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] \xf0\x9f\x94\x8d Session ID found: 9e289ecc0b9d2a5dc144dfdf263ad6dc4dbc51efdbad5d4fdbf773107e34d917, referer: http://localhost:5000/
+[Tue Dec 23 12:35:10.344243 2025] [php:notice] [pid 6872:tid 1880] [client ::1:2526] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.202114 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] Session ID: on7qgr460t6k61c7dialflik4n, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] Admin Session ID: none, referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 14:14:27.221261 2025] [php:notice] [pid 24356:tid 768] [client ::1:4146] \xe2\x9d\x8c No session ID found, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.670197 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.670197 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.670197 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.670197 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Session ID: on7qgr460t6k61c7dialflik4n, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.670197 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Admin Session ID: none, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.672848 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 14:14:42.696731 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.047434 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.216941 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xe2\x9c\x85 Session stored: 8c8d53d1d43af89b8f07d558b82b5f717290699190627fa86544654c27ddc31c, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.675800 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.675800 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.675800 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.675800 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Session ID: on7qgr460t6k61c7dialflik4n, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.676298 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Admin Session ID: 8c8d53d1d43af89b8f07d558b82b5f717290699190627fa86544654c27ddc31c, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.676298 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.676298 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x94\x8d Session ID found: 8c8d53d1d43af89b8f07d558b82b5f717290699190627fa86544654c27ddc31c, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.687272 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.734663 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.734663 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Session ID: on7qgr460t6k61c7dialflik4n, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.735671 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Admin Session ID: 8c8d53d1d43af89b8f07d558b82b5f717290699190627fa86544654c27ddc31c, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.735786 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.737202 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.737202 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.771698 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.771698 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.782123 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.782123 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 14:14:43.782123 2025] [php:notice] [pid 24356:tid 792] [client ::1:4166] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
