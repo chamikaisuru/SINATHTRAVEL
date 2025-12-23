@@ -1,9 +1,9 @@
 /**
- * API Client - FIXED WITH STOCK IMAGES
+ * API Client - FIXED IMAGE HANDLING
  * Replace: client/src/lib/api.ts
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost/sinath-travels/server/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/server/api';
 
 async function apiRequest<T>(
   endpoint: string,
@@ -102,41 +102,38 @@ export async function submitInquiry(data: InquiryData): Promise<InquiryResponse>
 }
 
 /**
- * FIXED: Get full image URL with stock images support
+ * FIXED: Get image URL - handles both stock and uploaded images
+ * Backend now sends the correct path, we just need to pass it through
  */
 export function getImageUrl(imagePath?: string): string {
   if (!imagePath) return '';
   
+  console.log('🖼️ Frontend getImageUrl received:', imagePath);
+  
   // If already a full URL, return as is
-  if (imagePath.startsWith('http')) return imagePath;
+  if (imagePath.startsWith('http')) {
+    console.log('🖼️ Full URL, returning as is');
+    return imagePath;
+  }
   
-  // CRITICAL: Check if this is a stock image (no path separators)
-  const isStockImage = !imagePath.includes('/') && !imagePath.includes('\\');
-  
-  if (isStockImage) {
-    // Use Vite's asset import system for stock images
+  // If it's a stock image path (starts with /src/assets)
+  if (imagePath.startsWith('/src/assets/stock_images/')) {
+    // Extract just the filename
+    const filename = imagePath.split('/').pop() || '';
+    console.log('🖼️ Stock image, using Vite import:', filename);
+    
     try {
-      // Import from attached_assets/stock_images
-      return new URL(`/attached_assets/stock_images/${imagePath}`, import.meta.url).href;
+      // Use Vite's asset import
+      return new URL(`/attached_assets/stock_images/${filename}`, import.meta.url).href;
     } catch (e) {
-      console.error('Failed to load stock image:', imagePath, e);
-      // Fallback
-      return `/attached_assets/stock_images/${imagePath}`;
+      console.error('Failed to load stock image:', filename, e);
+      return `/attached_assets/stock_images/${filename}`;
     }
   }
   
-  // If it's a path from the server uploads
-  if (imagePath.startsWith('/server/uploads/')) {
-    return `${window.location.origin}${imagePath}`;
-  }
-  
-  // If it's a relative server path
-  if (imagePath.startsWith('/uploads/')) {
-    return `${window.location.origin}/server${imagePath}`;
-  }
-  
-  // Default case - assume it's in uploads
-  return `${window.location.origin}/server/uploads/${imagePath}`;
+  // Otherwise, assume backend gave us correct path
+  console.log('🖼️ Using path as provided by backend');
+  return imagePath;
 }
 
 /**

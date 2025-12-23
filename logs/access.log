@@ -1,2 +1,0 @@
-::1 - - [24/Dec/2025:03:20:53 +0530] "GET /server/api/admin/auth.php HTTP/1.1" 200 150
-::1 - - [24/Dec/2025:03:20:53 +0530] "GET /server/api/admin/packages.php HTTP/1.1" 200 2893

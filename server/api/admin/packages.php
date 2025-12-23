@@ -1,6 +1,6 @@
 <?php
 /**
- * COMPLETELY FIXED Admin Packages API
+ * FIXED Admin Packages API - Proper Image URL Generation
  * Replace: server/api/admin/packages.php
  */
 
@@ -87,6 +87,50 @@ try {
 }
 
 /**
+ * FIXED: Convert database image path to frontend-usable URL
+ */
+function formatImagePath($imagePath) {
+    if (empty($imagePath)) {
+        return null;
+    }
+    
+    error_log("🖼️ Formatting image path: " . $imagePath);
+    
+    // If already a full URL, return as is
+    if (strpos($imagePath, 'http://') === 0 || strpos($imagePath, 'https://') === 0) {
+        error_log("🖼️ Already full URL");
+        return $imagePath;
+    }
+    
+    // Normalize path separators
+    $imagePath = str_replace('\\', '/', $imagePath);
+    
+    // Remove any leading slashes or path prefixes
+    $imagePath = ltrim($imagePath, '/');
+    $imagePath = str_replace('server/uploads/', '', $imagePath);
+    $imagePath = str_replace('uploads/', '', $imagePath);
+    
+    // Check if it's a stock image (no timestamp pattern in filename)
+    // Uploaded images have pattern: {random}_{timestamp}.{ext}
+    // Stock images: descriptive_name_{hash}.jpg
+    $isStockImage = !preg_match('/^\w+_\d{10,}\.(jpg|jpeg|png|webp)$/i', $imagePath);
+    
+    if ($isStockImage) {
+        // Stock image - return path for Vite to resolve
+        error_log("🖼️ Stock image detected: " . $imagePath);
+        return '/src/assets/stock_images/' . $imagePath;
+    } else {
+        // Uploaded image - return full URL to server/uploads
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
+        $url = "$protocol://$host/server/uploads/$imagePath";
+        
+        error_log("🖼️ Uploaded image URL: " . $url);
+        return $url;
+    }
+}
+
+/**
  * GET: Fetch packages
  */
 function handleGet($db) {
@@ -109,8 +153,9 @@ function handleGet($db) {
         
         $package = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        if ($package && $package['image']) {
-            $package['image'] = getImageUrl($package['image']);
+        if ($package) {
+            // Format image path
+            $package['image'] = formatImagePath($package['image']);
         }
         
         sendResponse(200, $package);
@@ -177,28 +222,15 @@ function handleGet($db) {
     $packageCount = count($packages);
     error_log("📦 Fetched " . $packageCount . " packages from database");
     
-    // Format image URLs
+    // CRITICAL FIX: Format image paths for ALL packages
     foreach ($packages as &$package) {
-        if (!empty($package['image'])) {
-            // Check if it's a stock image (no path separators)
-            $isStockImage = (strpos($package['image'], '/') === false && strpos($package['image'], '\\') === false);
-            
-            if ($isStockImage) {
-                // For stock images, return path that frontend can resolve
-                $package['image'] = '/src/assets/stock_images/' . $package['image'];
-                error_log("📦 Stock image: " . $package['image']);
-            } else {
-                // For uploaded images, use getImageUrl()
-                $package['image'] = getImageUrl($package['image']);
-                error_log("📦 Uploaded image: " . $package['image']);
-            }
-        }
+        $package['image'] = formatImagePath($package['image']);
     }
     unset($package);
     
     error_log("📦 Sending response with " . $packageCount . " packages");
     
-    // Send response - sendResponse() wraps it as {success: true, data: [packages]}
+    // Send response
     sendResponse(200, $packages, 'Packages retrieved successfully');
 }
 
@@ -214,6 +246,7 @@ function handlePost($db) {
     // Handle image upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         try {
+            // Upload image and get JUST the filename
             $imagePath = uploadImage($_FILES['image']);
             error_log("📦 Image uploaded: " . $imagePath);
         } catch(Exception $e) {
@@ -244,7 +277,7 @@ function handlePost($db) {
     $stmt->bindParam(':description_en', $data['description_en']);
     $stmt->bindParam(':price', $data['price']);
     $stmt->bindParam(':duration', $data['duration']);
-    $stmt->bindParam(':image', $imagePath);
+    $stmt->bindParam(':image', $imagePath); // Store ONLY filename in database
     $stmt->bindParam(':status', $status);
     
     if ($stmt->execute()) {
@@ -258,36 +291,101 @@ function handlePost($db) {
 }
 
 /**
- * PUT: Update package
+ * PUT: Update package - FIXED TO HANDLE MULTIPART FORM DATA
  */
 function handlePut($db) {
-    parse_str(file_get_contents("php://input"), $data);
+    error_log("📝 handlePut called");
+    error_log("📝 Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'none'));
+    error_log("📝 Has FILES: " . (isset($_FILES['image']) ? 'yes' : 'no'));
+    
+    // CRITICAL FIX: PUT with file upload comes as POST with _method=PUT
+    // OR as multipart PUT data
+    $data = [];
+    $isMultipart = strpos($_SERVER['CONTENT_TYPE'] ?? '', 'multipart/form-data') !== false;
+    
+    if ($isMultipart || $_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Multipart form data (with file upload)
+        $data = $_POST;
+        error_log("📝 Using POST data: " . json_encode($data));
+    } else {
+        // Regular PUT (no file)
+        parse_str(file_get_contents("php://input"), $data);
+        error_log("📝 Using parsed PUT data: " . json_encode($data));
+    }
     
     if (empty($data['id'])) {
+        error_log("❌ No package ID");
         sendResponse(400, null, 'Package ID required');
         return;
     }
     
-    // Check if package exists
+    // Check if package exists and get current image
     $query = "SELECT * FROM packages WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $data['id']);
     $stmt->execute();
     
-    if (!$stmt->fetch()) {
+    $existingPackage = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$existingPackage) {
+        error_log("❌ Package not found: " . $data['id']);
         sendResponse(404, null, 'Package not found');
         return;
     }
     
-    // Update package
-    $query = "UPDATE packages SET 
-              category = :category,
-              title_en = :title_en,
-              description_en = :description_en,
-              price = :price,
-              duration = :duration,
-              status = :status
-              WHERE id = :id";
+    error_log("✅ Package found: " . $existingPackage['title_en']);
+    error_log("📝 Current image: " . ($existingPackage['image'] ?? 'none'));
+    
+    // Handle new image upload
+    $newImagePath = null;
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        try {
+            // Upload new image
+            $newImagePath = uploadImage($_FILES['image']);
+            error_log("✅ New image uploaded: " . $newImagePath);
+            
+            // Delete old image if it exists and is not a stock image
+            if (!empty($existingPackage['image'])) {
+                $isStockImage = !preg_match('/^\w+_\d{10,}\.(jpg|jpeg|png|webp)$/i', $existingPackage['image']);
+                
+                if (!$isStockImage) {
+                    $oldImagePath = __DIR__ . '/../../uploads/' . $existingPackage['image'];
+                    if (file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                        error_log("🗑️ Deleted old image: " . $oldImagePath);
+                    }
+                }
+            }
+        } catch(Exception $e) {
+            error_log("❌ Image upload failed: " . $e->getMessage());
+            sendResponse(400, null, 'Image upload failed: ' . $e->getMessage());
+            return;
+        }
+    }
+    
+    // Build UPDATE query
+    if ($newImagePath) {
+        // Update including image
+        $query = "UPDATE packages SET 
+                  category = :category,
+                  title_en = :title_en,
+                  description_en = :description_en,
+                  price = :price,
+                  duration = :duration,
+                  status = :status,
+                  image = :image
+                  WHERE id = :id";
+    } else {
+        // Update without image
+        $query = "UPDATE packages SET 
+                  category = :category,
+                  title_en = :title_en,
+                  description_en = :description_en,
+                  price = :price,
+                  duration = :duration,
+                  status = :status
+                  WHERE id = :id";
+    }
     
     $stmt = $db->prepare($query);
     
@@ -299,9 +397,27 @@ function handlePut($db) {
     $stmt->bindParam(':duration', $data['duration']);
     $stmt->bindParam(':status', $data['status']);
     
+    if ($newImagePath) {
+        $stmt->bindParam(':image', $newImagePath);
+    }
+    
     if ($stmt->execute()) {
-        sendResponse(200, null, 'Package updated successfully');
+        error_log("✅ Package updated successfully");
+        
+        // Get updated package to return with formatted image URL
+        $query = "SELECT * FROM packages WHERE id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $data['id']);
+        $stmt->execute();
+        $updatedPackage = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($updatedPackage) {
+            $updatedPackage['image'] = formatImagePath($updatedPackage['image']);
+        }
+        
+        sendResponse(200, $updatedPackage, 'Package updated successfully');
     } else {
+        error_log("❌ Failed to update package");
         sendResponse(500, null, 'Failed to update package');
     }
 }
@@ -335,11 +451,16 @@ function handleDelete($db) {
     $stmt->bindParam(':id', $data['id']);
     
     if ($stmt->execute()) {
-        // Delete image file if it's an uploaded image
+        // Delete image file if it's an uploaded image (not stock)
         if (!empty($package['image'])) {
-            $imagePath = getUploadPath($package['image']);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
+            $isStockImage = !preg_match('/^\w+_\d{10,}\.(jpg|jpeg|png|webp)$/i', $package['image']);
+            
+            if (!$isStockImage) {
+                $imagePath = __DIR__ . '/../../uploads/' . $package['image'];
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                    error_log("🗑️ Deleted image: " . $imagePath);
+                }
             }
         }
         sendResponse(200, null, 'Package deleted successfully');
@@ -349,30 +470,36 @@ function handleDelete($db) {
 }
 
 /**
- * Upload image
+ * Upload image - Returns ONLY filename
  */
 function uploadImage($file) {
     $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
     $maxSize = 5 * 1024 * 1024; // 5MB
     
     if (!in_array($file['type'], $allowedTypes)) {
-        throw new Exception('Invalid file type');
+        throw new Exception('Invalid file type. Allowed: JPG, PNG, WebP');
     }
     
     if ($file['size'] > $maxSize) {
-        throw new Exception('File too large');
+        throw new Exception('File too large. Maximum 5MB');
     }
     
+    // Generate unique filename with timestamp
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $filename = uniqid() . '_' . time() . '.' . $extension;
-    $uploadPath = getUploadPath($filename);
     
-    $uploadDir = dirname($uploadPath);
+    // Upload to server/uploads directory
+    $uploadDir = __DIR__ . '/../../uploads/';
+    
     if (!file_exists($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
     
+    $uploadPath = $uploadDir . $filename;
+    
     if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+        error_log("✅ File uploaded: " . $uploadPath);
+        // Return ONLY the filename, not the full path
         return $filename;
     }
     

@@ -158,29 +158,46 @@ export default function AdminPackages() {
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
 
-    // Validate
-    if (!formData.title_en || !formData.description_en || !formData.price) {
-      toast({
-        title: "❌ Validation Error",
-        description: "Please fill in all required fields",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    const submitFormData = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value) submitFormData.append(key, value.toString());
+  // Validate
+  if (!formData.title_en || !formData.description_en || !formData.price) {
+    toast({
+      title: "❌ Validation Error",
+      description: "Please fill in all required fields",
+      variant: "destructive"
     });
+    return;
+  }
+
+  if (editingPackage?.id) {
+    // UPDATING EXISTING PACKAGE
+    console.log('📝 Updating package:', editingPackage.id);
+    console.log('📝 Has new image:', !!selectedImage);
     
     if (selectedImage) {
+      // Has new image - use FormData
+      const submitFormData = new FormData();
+      
+      // Add all fields
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value) submitFormData.append(key, value.toString());
+      });
+      
+      // Add image file
       submitFormData.append('image', selectedImage);
-    }
-    
-    if (editingPackage?.id) {
+      
+      console.log('📝 Sending FormData with new image');
+      
+      updateMutation.mutate({ 
+        id: editingPackage.id, 
+        data: submitFormData 
+      });
+    } else {
+      // No new image - send as object
+      console.log('📝 Sending data without image change');
+      
       updateMutation.mutate({ 
         id: editingPackage.id, 
         data: {
@@ -188,10 +205,24 @@ export default function AdminPackages() {
           price: parseFloat(formData.price),
         }
       });
-    } else {
-      createMutation.mutate(submitFormData);
     }
+  } else {
+    // CREATING NEW PACKAGE
+    console.log('📝 Creating new package');
+    
+    const submitFormData = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value) submitFormData.append(key, value.toString());
+    });
+    
+    if (selectedImage) {
+      submitFormData.append('image', selectedImage);
+      console.log('📝 Added image to FormData');
+    }
+    
+    createMutation.mutate(submitFormData);
   }
+}
 
   function handleDelete(id: number) {
     if (confirm('Are you sure you want to delete this package? This action cannot be undone.')) {

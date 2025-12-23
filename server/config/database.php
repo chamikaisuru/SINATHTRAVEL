@@ -1,6 +1,6 @@
 <?php
 /**
- * Database Configuration - FIXED WITH STOCK IMAGES SUPPORT
+ * Database Configuration - FIXED IMAGE URL GENERATION
  * Replace: server/config/database.php
  */
 
@@ -120,6 +120,9 @@ function sendResponse($status, $data = null, $message = null) {
  * Get upload path for saving files
  */
 function getUploadPath($filename) {
+    // FIXED: Normalize path separators
+    $filename = str_replace('\\', '/', $filename);
+    
     $uploadDir = __DIR__ . '/../uploads/';
     
     if (!file_exists($uploadDir)) {
@@ -130,68 +133,88 @@ function getUploadPath($filename) {
 }
 
 /**
- * FIXED: Get image URL - handles both stock images and uploads
+ * COMPLETELY FIXED: Get image URL for frontend display
  */
 function getImageUrl($filename) {
     if (empty($filename)) {
         return '';
     }
     
+    error_log("🖼️ getImageUrl called with: " . $filename);
+    
     // If already a full URL, return as is
     if (strpos($filename, 'http://') === 0 || strpos($filename, 'https://') === 0) {
+        error_log("🖼️ Already full URL: " . $filename);
         return $filename;
     }
     
-    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    // Normalize path separators
+    $filename = str_replace('\\', '/', $filename);
     
-    // CRITICAL FIX: Check if this is a stock image (no path prefix)
-    // Stock images are just filenames like "dubai_skyline_with_b_8fae68a6.jpg"
-    if (strpos($filename, '/') === false && strpos($filename, '\\') === false) {
-        // It's a stock image - use Vite's asset system
-        // Frontend will handle this through the @assets alias
-        return "/src/assets/stock_images/" . $filename;
+    // CRITICAL FIX: Check if this is a stock image (just filename, no path)
+    // Stock images: "dubai_skyline_with_b_8fae68a6.jpg"
+    // Uploaded images: "694b0de204527_1766526434.png"
+    if (strpos($filename, '/') === false) {
+        // Could be either stock or uploaded
+        // Check if file exists in uploads directory
+        $uploadPath = __DIR__ . '/../uploads/' . $filename;
+        
+        if (file_exists($uploadPath)) {
+            // It's an uploaded file
+            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+            $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
+            
+            // FIXED: Construct proper URL for uploaded files
+            // From: D:\xampp\htdocs\server\uploads\image.png
+            // To: http://localhost:8080/server/uploads/image.png
+            $url = "$protocol://$host/server/uploads/$filename";
+            
+            error_log("🖼️ Uploaded image URL: " . $url);
+            return $url;
+        } else {
+            // It's a stock image - return path for Vite to resolve
+            error_log("🖼️ Stock image path: /src/assets/stock_images/" . $filename);
+            return "/src/assets/stock_images/" . $filename;
+        }
     }
     
-    // Check if it's already a server-relative path
+    // If it has a path, handle accordingly
     if (strpos($filename, '/server/uploads/') === 0) {
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
         return "$protocol://$host$filename";
     }
     
-    // Check if it's a path starting with /uploads/
     if (strpos($filename, '/uploads/') === 0) {
-        $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
-        $basePath = str_replace('/api', '', $scriptPath);
-        $basePath = str_replace('/admin', '', $basePath);
-        return "$protocol://$host$basePath$filename";
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
+        return "$protocol://$host/server$filename";
     }
     
-    // Assume it's just a filename in uploads directory
-    $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
-    $basePath = str_replace('/api', '', $scriptPath);
-    $basePath = str_replace('/admin', '', $basePath);
-    
-    return "$protocol://$host$basePath/uploads/$filename";
+    // Default: assume it's in uploads
+    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+    $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
+    return "$protocol://$host/server/uploads/$filename";
 }
 
 /**
- * Get stock image path for frontend
- */
-function getStockImagePath($filename) {
-    // Return path that Vite can resolve
-    return "/src/assets/stock_images/" . $filename;
-}
-
-/**
- * Check if image is a stock image (no upload)
+ * Check if image is a stock image
  */
 function isStockImage($filename) {
     if (empty($filename)) {
         return false;
     }
     
-    // Stock images have no path separators
-    return (strpos($filename, '/') === false && strpos($filename, '\\') === false);
+    // Normalize
+    $filename = str_replace('\\', '/', $filename);
+    
+    // Stock images have no path separators AND don't exist in uploads
+    if (strpos($filename, '/') === false) {
+        $uploadPath = __DIR__ . '/../uploads/' . $filename;
+        return !file_exists($uploadPath);
+    }
+    
+    return false;
 }
 
 function sanitizeInput($data) {
