@@ -1,7 +1,7 @@
 <?php
 /**
- * Database Configuration
- * UPDATED: Added network IP to allowed origins
+ * Database Configuration - FIXED WITH STOCK IMAGES SUPPORT
+ * Replace: server/config/database.php
  */
 
 class Database {
@@ -36,7 +36,7 @@ class Database {
 $GLOBALS['_CORS_HEADERS_SENT'] = $GLOBALS['_CORS_HEADERS_SENT'] ?? false;
 
 /**
- * FIXED CORS FUNCTION - Added network IP support
+ * CORS Configuration
  */
 function enableCORS() {
     if ($GLOBALS['_CORS_HEADERS_SENT']) {
@@ -50,14 +50,13 @@ function enableCORS() {
     
     $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
     
-    // UPDATED: Added network IP to allowed origins
     $allowedOrigins = [
         'http://localhost:5000',
         'http://127.0.0.1:5000',
         'http://localhost:8080',
         'http://127.0.0.1:8080',
-        'http://192.168.8.101:5000',  // ADD YOUR NETWORK IP HERE
-        'http://192.168.8.101:8080',  // ADD YOUR NETWORK IP HERE
+        'http://192.168.8.101:5000',
+        'http://192.168.8.101:8080',
     ];
     
     $allowOrigin = '';
@@ -117,6 +116,9 @@ function sendResponse($status, $data = null, $message = null) {
     exit;
 }
 
+/**
+ * Get upload path for saving files
+ */
 function getUploadPath($filename) {
     $uploadDir = __DIR__ . '/../uploads/';
     
@@ -127,20 +129,69 @@ function getUploadPath($filename) {
     return $uploadDir . $filename;
 }
 
-function getUploadUrl($filename) {
+/**
+ * FIXED: Get image URL - handles both stock images and uploads
+ */
+function getImageUrl($filename) {
     if (empty($filename)) {
         return '';
     }
     
+    // If already a full URL, return as is
+    if (strpos($filename, 'http://') === 0 || strpos($filename, 'https://') === 0) {
+        return $filename;
+    }
+    
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    
+    // CRITICAL FIX: Check if this is a stock image (no path prefix)
+    // Stock images are just filenames like "dubai_skyline_with_b_8fae68a6.jpg"
+    if (strpos($filename, '/') === false && strpos($filename, '\\') === false) {
+        // It's a stock image - use Vite's asset system
+        // Frontend will handle this through the @assets alias
+        return "/src/assets/stock_images/" . $filename;
+    }
+    
+    // Check if it's already a server-relative path
+    if (strpos($filename, '/server/uploads/') === 0) {
+        return "$protocol://$host$filename";
+    }
+    
+    // Check if it's a path starting with /uploads/
+    if (strpos($filename, '/uploads/') === 0) {
+        $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
+        $basePath = str_replace('/api', '', $scriptPath);
+        $basePath = str_replace('/admin', '', $basePath);
+        return "$protocol://$host$basePath$filename";
+    }
+    
+    // Assume it's just a filename in uploads directory
     $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
     $basePath = str_replace('/api', '', $scriptPath);
     $basePath = str_replace('/admin', '', $basePath);
     
-    $url = "$protocol://$host$basePath/uploads/$filename";
+    return "$protocol://$host$basePath/uploads/$filename";
+}
+
+/**
+ * Get stock image path for frontend
+ */
+function getStockImagePath($filename) {
+    // Return path that Vite can resolve
+    return "/src/assets/stock_images/" . $filename;
+}
+
+/**
+ * Check if image is a stock image (no upload)
+ */
+function isStockImage($filename) {
+    if (empty($filename)) {
+        return false;
+    }
     
-    return $url;
+    // Stock images have no path separators
+    return (strpos($filename, '/') === false && strpos($filename, '\\') === false);
 }
 
 function sanitizeInput($data) {

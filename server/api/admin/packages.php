@@ -87,10 +87,6 @@ try {
     error_log("Stack trace: " . $e->getTraceAsString());
     sendResponse(500, null, 'Internal server error: ' . $e->getMessage());
 }
-
-/**
- * GET: Fetch packages
- */
 function handleGet($db) {
     error_log("📦 handleGet called");
     
@@ -112,7 +108,7 @@ function handleGet($db) {
         $package = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($package && $package['image']) {
-            $package['image'] = getUploadUrl($package['image']);
+            $package['image'] = getImageUrl($package['image']);
         }
         
         sendResponse(200, $package);
@@ -168,6 +164,44 @@ function handleGet($db) {
         return;
     }
     
+    error_log("✅ Query executed successfully");
+    
+    // Fetch all results
+    $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($packages === false) {
+        error_log("❌ fetchAll() returned FALSE");
+        sendResponse(500, null, 'Failed to fetch packages from database');
+        return;
+    }
+    
+    $packageCount = count($packages);
+    error_log("📦 Fetched " . $packageCount . " packages from database");
+    
+    // CRITICAL FIX: Format image URLs properly
+    foreach ($packages as &$package) {
+        if (!empty($package['image'])) {
+            // Check if it's a stock image (no path separators)
+            $isStockImage = (strpos($package['image'], '/') === false && strpos($package['image'], '\\') === false);
+            
+            if ($isStockImage) {
+                // For stock images, return path that frontend can resolve
+                $package['image'] = '/src/assets/stock_images/' . $package['image'];
+                error_log("📦 Stock image: " . $package['image']);
+            } else {
+                // For uploaded images, use getImageUrl()
+                $package['image'] = getImageUrl($package['image']);
+                error_log("📦 Uploaded image: " . $package['image']);
+            }
+        }
+    }
+    unset($package);
+    
+    error_log("📦 Sending response with " . $packageCount . " packages");
+    
+    // Send response
+    sendResponse(200, $packages, 'Packages retrieved successfully');
+}
     error_log("✅ Query executed successfully");
     
     // Fetch all results

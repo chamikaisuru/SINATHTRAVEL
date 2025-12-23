@@ -1,14 +1,10 @@
 /**
- * API Client for Sinath Travels Backend
- * Handles all API requests to PHP backend
+ * API Client - FIXED WITH STOCK IMAGES
+ * Replace: client/src/lib/api.ts
  */
 
-// API base URL - adjust based on your server configuration
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost/sinath-travels/server/api';
 
-/**
- * Generic API request function
- */
 async function apiRequest<T>(
   endpoint: string,
   options: RequestInit = {}
@@ -38,10 +34,6 @@ async function apiRequest<T>(
     throw error;
   }
 }
-
-// ====================
-// PACKAGES API
-// ====================
 
 export interface Package {
   id: number;
@@ -73,10 +65,6 @@ export async function getPackages(params?: {
   return apiRequest<Package[]>(`packages.php${query ? '?' + query : ''}`);
 }
 
-// ====================
-// SERVICES API
-// ====================
-
 export interface Service {
   id: number;
   icon: string;
@@ -93,10 +81,6 @@ export interface Service {
 export async function getServices(): Promise<Service[]> {
   return apiRequest<Service[]>('services.php');
 }
-
-// ====================
-// INQUIRIES API
-// ====================
 
 export interface InquiryData {
   name: string;
@@ -117,12 +101,8 @@ export async function submitInquiry(data: InquiryData): Promise<InquiryResponse>
   });
 }
 
-// ====================
-// HELPER FUNCTIONS
-// ====================
-
 /**
- * Get full image URL
+ * FIXED: Get full image URL with stock images support
  */
 export function getImageUrl(imagePath?: string): string {
   if (!imagePath) return '';
@@ -130,17 +110,33 @@ export function getImageUrl(imagePath?: string): string {
   // If already a full URL, return as is
   if (imagePath.startsWith('http')) return imagePath;
   
-  // If it's a path from the backend
+  // CRITICAL: Check if this is a stock image (no path separators)
+  const isStockImage = !imagePath.includes('/') && !imagePath.includes('\\');
+  
+  if (isStockImage) {
+    // Use Vite's asset import system for stock images
+    try {
+      // Import from attached_assets/stock_images
+      return new URL(`/attached_assets/stock_images/${imagePath}`, import.meta.url).href;
+    } catch (e) {
+      console.error('Failed to load stock image:', imagePath, e);
+      // Fallback
+      return `/attached_assets/stock_images/${imagePath}`;
+    }
+  }
+  
+  // If it's a path from the server uploads
   if (imagePath.startsWith('/server/uploads/')) {
     return `${window.location.origin}${imagePath}`;
   }
   
-  // If it's just a filename from attached_assets (for backwards compatibility)
-  if (!imagePath.startsWith('/')) {
-    return new URL(`/src/assets/stock_images/${imagePath}`, import.meta.url).href;
+  // If it's a relative server path
+  if (imagePath.startsWith('/uploads/')) {
+    return `${window.location.origin}/server${imagePath}`;
   }
   
-  return imagePath;
+  // Default case - assume it's in uploads
+  return `${window.location.origin}/server/uploads/${imagePath}`;
 }
 
 /**
