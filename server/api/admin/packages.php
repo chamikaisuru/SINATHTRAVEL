@@ -2,8 +2,6 @@
 /**
  * COMPLETELY FIXED Admin Packages API
  * Replace: server/api/admin/packages.php
- * 
- * KEY FIX: Removed the duplicate auth check that was returning early
  */
 
 // STEP 1: Start session FIRST
@@ -87,6 +85,10 @@ try {
     error_log("Stack trace: " . $e->getTraceAsString());
     sendResponse(500, null, 'Internal server error: ' . $e->getMessage());
 }
+
+/**
+ * GET: Fetch packages
+ */
 function handleGet($db) {
     error_log("📦 handleGet called");
     
@@ -115,10 +117,7 @@ function handleGet($db) {
         return;
     }
     
-    // ====================================
     // GET ALL PACKAGES
-    // ====================================
-    
     error_log("📦 Fetching ALL packages");
     
     $status = isset($_GET['status']) ? $_GET['status'] : null;
@@ -178,7 +177,7 @@ function handleGet($db) {
     $packageCount = count($packages);
     error_log("📦 Fetched " . $packageCount . " packages from database");
     
-    // CRITICAL FIX: Format image URLs properly
+    // Format image URLs
     foreach ($packages as &$package) {
         if (!empty($package['image'])) {
             // Check if it's a stock image (no path separators)
@@ -199,35 +198,7 @@ function handleGet($db) {
     
     error_log("📦 Sending response with " . $packageCount . " packages");
     
-    // Send response
-    sendResponse(200, $packages, 'Packages retrieved successfully');
-}
-    error_log("✅ Query executed successfully");
-    
-    // Fetch all results
-    $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    if ($packages === false) {
-        error_log("❌ fetchAll() returned FALSE");
-        sendResponse(500, null, 'Failed to fetch packages from database');
-        return;
-    }
-    
-    $packageCount = count($packages);
-    error_log("📦 Fetched " . $packageCount . " packages from database");
-    
-    // Format image URLs
-    foreach ($packages as &$package) {
-        if (!empty($package['image'])) {
-            $package['image'] = getUploadUrl($package['image']);
-        }
-    }
-    unset($package);
-    
-    error_log("📦 Sending response with " . $packageCount . " packages");
-    
-    // CRITICAL: Send packages array directly
-    // The sendResponse() function will wrap it as {success: true, data: [packages]}
+    // Send response - sendResponse() wraps it as {success: true, data: [packages]}
     sendResponse(200, $packages, 'Packages retrieved successfully');
 }
 
@@ -364,7 +335,7 @@ function handleDelete($db) {
     $stmt->bindParam(':id', $data['id']);
     
     if ($stmt->execute()) {
-        // Delete image file
+        // Delete image file if it's an uploaded image
         if (!empty($package['image'])) {
             $imagePath = getUploadPath($package['image']);
             if (file_exists($imagePath)) {
