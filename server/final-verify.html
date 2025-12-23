@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>🎯 Final Package Verification</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Courier New', monospace; 
+            background: #0a0a0a; 
+            color: #00ff00;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        h1 { 
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .section { 
+            background: #1a1a1a; 
+            border: 2px solid #00ff00;
+            border-radius: 8px; 
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .success { 
+            background: #1a4d1a;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .error { 
+            background: #4d1a1a;
+            color: #ff0000;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        button {
+            background: #00ff00;
+            color: #0a0a0a;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover { background: #00cc00; }
+        pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 FINAL PACKAGE VERIFICATION</h1>
+    
+    <div class="section">
+        <h2>Test with Updated Code</h2>
+        <button onclick="testWithNewCode()">🚀 RUN TEST</button>
+        <button onclick="clearResults()">🗑️ Clear</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:8080/server/api/admin';
+        
+        function log(title, content, type = 'info') {
+            const div = document.createElement('div');
+            div.className = 'section';
+            div.innerHTML = `
+                <h2>${title}</h2>
+                <div class="${type}">${
+                    typeof content === 'object' 
+                        ? '<pre>' + JSON.stringify(content, null, 2) + '</pre>'
+                        : content
+                }</div>
+            `;
+            document.getElementById('results').insertBefore(div, document.getElementById('results').firstChild);
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        async function testWithNewCode() {
+            clearResults();
+            
+            try {
+                // Step 1: Check auth
+                const authRes = await fetch(`${API_BASE}/auth.php`, {
+                    credentials: 'include'
+                });
+                
+                if (authRes.status === 401) {
+                    log('❌ NOT LOGGED IN', 
+                        '<p>Please login at: <a href="http://localhost:5000/admin/login" style="color: #00aaff;">Admin Login</a></p>',
+                        'error'
+                    );
+                    return;
+                }
+                
+                const authData = await authRes.json();
+                
+                if (!authData.data?.admin) {
+                    log('❌ AUTH FAILED', 'No admin data in response', 'error');
+                    return;
+                }
+                
+                log('✅ AUTHENTICATED', {
+                    username: authData.data.admin.username,
+                    role: authData.data.admin.role
+                }, 'success');
+                
+                // Step 2: Fetch packages
+                log('📦 Fetching packages...', 'Making API request', 'info');
+                
+                const packagesRes = await fetch(`${API_BASE}/packages.php`, {
+                    credentials: 'include',
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                const rawText = await packagesRes.text();
+                console.log('Raw response:', rawText);
+                
+                let data;
+                try {
+                    data = JSON.parse(rawText);
+                } catch (e) {
+                    log('❌ JSON PARSE ERROR', {
+                        error: e.message,
+                        preview: rawText.substring(0, 500)
+                    }, 'error');
+                    return;
+                }
+                
+                log('📥 RAW RESPONSE', data, 'info');
+                
+                // Step 3: Extract packages using new logic
+                let packages;
+                
+                if (Array.isArray(data)) {
+                    packages = data;
+                    log('✅ METHOD 1', `Direct array: ${packages.length} packages`, 'success');
+                } else if (data.success && Array.isArray(data.data)) {
+                    packages = data.data;
+                    log('✅ METHOD 2', `Extracted data.data: ${packages.length} packages`, 'success');
+                } else if (data.success && typeof data.data === 'object') {
+                    packages = data.data;
+                    log('⚠️ METHOD 3', 'data.data is object (not array)', 'error');
+                } else if (data.data !== undefined) {
+                    packages = data.data;
+                    log('⚠️ METHOD 4', 'Extracted data property', 'info');
+                } else {
+                    packages = data;
+                    log('⚠️ METHOD 5', 'Using entire response', 'error');
+                }
+                
+                // Step 4: Verify it's an array
+                if (Array.isArray(packages)) {
+                    log('🎉 SUCCESS!', {
+                        message: `Got ${packages.length} packages as ARRAY`,
+                        sample: packages[0] || 'No packages found',
+                        allPackages: packages
+                    }, 'success');
+                } else {
+                    log('❌ FAILED', {
+                        message: 'packages is not an array!',
+                        typeof: typeof packages,
+                        value: packages
+                    }, 'error');
+                }
+                
+            } catch (error) {
+                log('❌ TEST FAILED', {
+                    error: error.message,
+                    stack: error.stack
+                }, 'error');
+            }
+        }
+        
+        // Auto-run
+        setTimeout(testWithNewCode, 1000);
+    </script>
+</body>
+</html>

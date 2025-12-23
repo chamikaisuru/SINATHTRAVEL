@@ -2,6 +2,8 @@
 /**
  * COMPLETELY FIXED Admin Packages API
  * Replace: server/api/admin/packages.php
+ * 
+ * KEY FIX: Removed the duplicate auth check that was returning early
  */
 
 // STEP 1: Start session FIRST
@@ -11,7 +13,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // STEP 2: Load dependencies
 require_once '../../config/database.php';
-require_once './auth.php';
 
 // STEP 3: Enable CORS
 enableCORS();
@@ -19,6 +20,7 @@ enableCORS();
 error_log("========== PACKAGES API ==========");
 error_log("Method: " . $_SERVER['REQUEST_METHOD']);
 error_log("Session ID: " . session_id());
+error_log("Admin Session ID: " . ($_SESSION['admin_session_id'] ?? 'NONE'));
 
 // STEP 4: Initialize database
 $database = new Database();
@@ -26,11 +28,35 @@ $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
 // STEP 5: Verify authentication
+$sessionId = $_SESSION['admin_session_id'] ?? null;
+
+if (!$sessionId) {
+    error_log("❌ No session ID in packages.php");
+    sendResponse(401, null, 'Not authenticated');
+    exit;
+}
+
 try {
-    $admin = verifyAdminAuth($db);
+    $query = "SELECT au.* FROM admin_users au 
+              JOIN admin_sessions s ON au.id = s.admin_id 
+              WHERE s.id = :session_id AND s.expires_at > NOW() AND au.status = 'active'";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':session_id', $sessionId);
+    $stmt->execute();
+    
+    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$admin) {
+        error_log("❌ Invalid session in packages.php");
+        sendResponse(401, null, 'Session expired');
+        exit;
+    }
+    
     error_log("✅ Admin verified: " . $admin['username']);
+    
 } catch(Exception $e) {
-    error_log("❌ Auth failed: " . $e->getMessage());
+    error_log("❌ Auth error: " . $e->getMessage());
+    sendResponse(401, null, 'Authentication error');
     exit;
 }
 
@@ -79,7 +105,6 @@ function handleGet($db) {
         
         if (!$stmt->execute()) {
             error_log("❌ Query execution failed");
-            error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
             sendResponse(500, null, 'Database query failed');
             return;
         }
@@ -90,13 +115,12 @@ function handleGet($db) {
             $package['image'] = getUploadUrl($package['image']);
         }
         
-        error_log("📦 Returning single package");
         sendResponse(200, $package);
         return;
     }
     
     // ====================================
-    // GET ALL PACKAGES - THIS IS THE CRITICAL PART
+    // GET ALL PACKAGES
     // ====================================
     
     error_log("📦 Fetching ALL packages");
@@ -120,14 +144,12 @@ function handleGet($db) {
     $query .= " ORDER BY created_at DESC";
     
     error_log("📦 SQL Query: " . $query);
-    error_log("📦 Parameters: " . json_encode($params));
     
     // Prepare statement
     $stmt = $db->prepare($query);
     
     if (!$stmt) {
         error_log("❌ Failed to prepare statement");
-        error_log("PDO Error: " . print_r($db->errorInfo(), true));
         sendResponse(500, null, 'Failed to prepare database query');
         return;
     }
@@ -135,7 +157,6 @@ function handleGet($db) {
     // Bind parameters
     foreach ($params as $key => $value) {
         $stmt->bindValue($key, $value);
-        error_log("📦 Bound parameter: $key = $value");
     }
     
     // Execute query
@@ -143,23 +164,17 @@ function handleGet($db) {
     
     if (!$executeResult) {
         error_log("❌ Query execution failed");
-        error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
         sendResponse(500, null, 'Database query execution failed');
         return;
     }
     
     error_log("✅ Query executed successfully");
     
-    // Get row count
-    $rowCount = $stmt->rowCount();
-    error_log("📦 Row count: " . $rowCount);
-    
     // Fetch all results
     $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     if ($packages === false) {
         error_log("❌ fetchAll() returned FALSE");
-        error_log("SQL Error: " . print_r($stmt->errorInfo(), true));
         sendResponse(500, null, 'Failed to fetch packages from database');
         return;
     }
@@ -167,26 +182,18 @@ function handleGet($db) {
     $packageCount = count($packages);
     error_log("📦 Fetched " . $packageCount . " packages from database");
     
-    // Log first package for debugging
-    if ($packageCount > 0) {
-        error_log("📦 First package sample: " . json_encode($packages[0]));
-    } else {
-        error_log("⚠️ No packages found in database");
-    }
-    
     // Format image URLs
     foreach ($packages as &$package) {
         if (!empty($package['image'])) {
-            $originalImage = $package['image'];
             $package['image'] = getUploadUrl($package['image']);
-            error_log("📦 Converted image: $originalImage -> " . $package['image']);
         }
     }
-    unset($package); // Break reference
+    unset($package);
     
     error_log("📦 Sending response with " . $packageCount . " packages");
     
-    // Send response
+    // CRITICAL: Send packages array directly
+    // The sendResponse() function will wrap it as {success: true, data: [packages]}
     sendResponse(200, $packages, 'Packages retrieved successfully');
 }
 

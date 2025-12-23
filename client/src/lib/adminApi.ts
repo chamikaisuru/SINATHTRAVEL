@@ -1,5 +1,5 @@
 /**
- * Admin API Client - FIXED RESPONSE HANDLING
+ * COMPLETELY FIXED Admin API Client
  * Replace: client/src/lib/adminApi.ts
  */
 
@@ -55,16 +55,36 @@ async function adminApiRequest<T>(
 
     const data = await response.json();
     
-    // CRITICAL FIX: The PHP API wraps data in { success, data, message }
-    // We need to return data.data if it exists, otherwise return data
     console.log('🔵 Raw API response:', data);
     
-    if (data.data !== undefined) {
-      console.log('🔵 Returning data.data:', data.data);
+    // CRITICAL FIX: Handle all possible response structures
+    
+    // Case 1: Direct array [pkg1, pkg2, ...]
+    if (Array.isArray(data)) {
+      console.log('✅ Response is direct array, returning', data.length, 'items');
+      return data as T;
+    }
+    
+    // Case 2: { success, data: [...], message } - data is array
+    if (data.success && Array.isArray(data.data)) {
+      console.log('✅ Response has data array, returning', data.data.length, 'items');
       return data.data as T;
     }
     
-    console.log('🔵 Returning data directly:', data);
+    // Case 3: { success, data: {...}, message } - data is object
+    if (data.success && typeof data.data === 'object' && data.data !== null) {
+      console.log('✅ Response has data object, returning it');
+      return data.data as T;
+    }
+    
+    // Case 4: Just { data: ... } without success
+    if (data.data !== undefined) {
+      console.log('✅ Response has data property, returning it');
+      return data.data as T;
+    }
+    
+    // Case 5: Return the whole thing
+    console.log('ℹ️ Returning entire response object');
     return data as T;
     
   } catch (error) {
@@ -144,22 +164,47 @@ export async function getAdminPackages(params?: {
   
   console.log('📦 Fetching packages with query:', query);
   
-  // Make the API call
-  const result = await adminApiRequest<AdminPackage[]>(
-    `packages.php${query ? '?' + query : ''}`
-  );
-  
-  console.log('📦 getAdminPackages result:', result);
-  
-  // The result should already be the array of packages
-  // because adminApiRequest extracts data.data
-  if (Array.isArray(result)) {
-    console.log('✅ Got array with', result.length, 'packages');
-    return result;
+  try {
+    // Make the API call
+    const result = await adminApiRequest<AdminPackage[] | { success: boolean; data: AdminPackage[] }>(
+      `packages.php${query ? '?' + query : ''}`
+    );
+    
+    console.log('📦 getAdminPackages raw result:', result);
+    console.log('📦 Result type:', typeof result);
+    console.log('📦 Is array:', Array.isArray(result));
+    
+    // Handle response - it should already be extracted by adminApiRequest
+    if (Array.isArray(result)) {
+      console.log('✅ Got array with', result.length, 'packages');
+      return result;
+    }
+    
+    // If somehow we still got wrapped data, extract it
+    if (typeof result === 'object' && result !== null) {
+      const anyResult = result as any;
+      
+      if (Array.isArray(anyResult.data)) {
+        console.log('⚠️ Had to extract data.data, got', anyResult.data.length, 'packages');
+        return anyResult.data;
+      }
+      
+      if (anyResult.packages && Array.isArray(anyResult.packages)) {
+        console.log('⚠️ Had to extract packages property, got', anyResult.packages.length, 'packages');
+        return anyResult.packages;
+      }
+    }
+    
+    console.error('❌ Unexpected result format:', result);
+    console.error('❌ Result keys:', Object.keys(result as any));
+    
+    // Last resort: return empty array
+    return [];
+    
+  } catch (error) {
+    console.error('❌ getAdminPackages error:', error);
+    throw error;
   }
-  
-  console.error('❌ Unexpected result type:', typeof result, result);
-  return [];
 }
 
 export async function getAdminPackage(id: number): Promise<AdminPackage> {
@@ -181,7 +226,16 @@ export async function createAdminPackage(formData: FormData): Promise<{ id: numb
   }
   
   const data = await response.json();
-  return data.data || data;
+  
+  // Extract ID
+  if (data.data && data.data.id) {
+    return { id: data.data.id };
+  }
+  if (data.id) {
+    return { id: data.id };
+  }
+  
+  return data;
 }
 
 export async function updateAdminPackage(id: number, data: Partial<AdminPackage>): Promise<void> {
