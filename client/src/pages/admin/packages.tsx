@@ -12,26 +12,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, Loader2, Package } from "lucide-react";
+import { Plus, Edit, Trash2, Loader2, Package, AlertCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-
-const packageSchema = z.object({
-  category: z.enum(['tour', 'visa', 'ticket', 'offer']),
-  title_en: z.string().min(5, "Title required"),
-  description_en: z.string().min(10, "Description required"),
-  price: z.string().min(1, "Price required"),
-  duration: z.string().optional(),
-  status: z.enum(['active', 'inactive']),
-});
-
-type PackageFormData = z.infer<typeof packageSchema>;
 
 export default function AdminPackages() {
   const { toast } = useToast();
@@ -41,41 +27,30 @@ export default function AdminPackages() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+  // Form state
+  const [formData, setFormData] = useState({
+    category: 'tour',
+    title_en: '',
+    description_en: '',
+    price: '',
+    duration: '',
+    status: 'active'
+  });
+
   const { data: packages = [], isLoading, error } = useQuery<AdminPackage[]>({
     queryKey: ['admin-packages'],
     queryFn: async () => {
       console.log('🔍 Fetching packages from API...');
       const result = await getAdminPackages();
       console.log('🔍 API returned:', result);
-      console.log('🔍 Type:', typeof result);
-      console.log('🔍 Is Array?', Array.isArray(result));
       
       if (Array.isArray(result)) {
         console.log('✅ Returning', result.length, 'packages');
         return result;
       }
       
-      // Handle wrapped responses
-      const resultObj = result as any;
-      if (resultObj?.data && Array.isArray(resultObj.data)) {
-        console.log('✅ Returning', resultObj.data.length, 'packages from data property');
-        return resultObj.data;
-      }
-      
       console.error('❌ Unexpected response format:', result);
       return [];
-    },
-  });
-
-  const form = useForm<PackageFormData>({
-    resolver: zodResolver(packageSchema),
-    defaultValues: {
-      category: 'tour',
-      status: 'active',
-      title_en: '',
-      description_en: '',
-      price: '',
-      duration: '',
     },
   });
 
@@ -130,7 +105,7 @@ export default function AdminPackages() {
   function handleOpenDialog(pkg?: AdminPackage) {
     if (pkg) {
       setEditingPackage(pkg);
-      form.reset({
+      setFormData({
         category: pkg.category,
         title_en: pkg.title_en,
         description_en: pkg.description_en,
@@ -143,7 +118,14 @@ export default function AdminPackages() {
       }
     } else {
       setEditingPackage(null);
-      form.reset();
+      setFormData({
+        category: 'tour',
+        title_en: '',
+        description_en: '',
+        price: '',
+        duration: '',
+        status: 'active'
+      });
       setImagePreview(null);
     }
     setDialogOpen(true);
@@ -154,7 +136,14 @@ export default function AdminPackages() {
     setEditingPackage(null);
     setSelectedImage(null);
     setImagePreview(null);
-    form.reset();
+    setFormData({
+      category: 'tour',
+      title_en: '',
+      description_en: '',
+      price: '',
+      duration: '',
+      status: 'active'
+    });
   }
 
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -169,26 +158,38 @@ export default function AdminPackages() {
     }
   }
 
-  function onSubmit(values: PackageFormData) {
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      if (value) formData.append(key, value.toString());
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    // Validate
+    if (!formData.title_en || !formData.description_en || !formData.price) {
+      toast({
+        title: "❌ Validation Error",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const submitFormData = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value) submitFormData.append(key, value.toString());
     });
     
     if (selectedImage) {
-      formData.append('image', selectedImage);
+      submitFormData.append('image', selectedImage);
     }
     
     if (editingPackage?.id) {
       updateMutation.mutate({ 
         id: editingPackage.id, 
         data: {
-          ...values,
-          price: parseFloat(values.price),
+          ...formData,
+          price: parseFloat(formData.price),
         }
       });
     } else {
-      createMutation.mutate(formData);
+      createMutation.mutate(submitFormData);
     }
   }
 
@@ -215,6 +216,7 @@ export default function AdminPackages() {
       <div className="space-y-6">
         <h1 className="text-3xl font-heading font-bold text-primary">Packages</h1>
         <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
           <AlertDescription>
             Error loading packages: {error.toString()}
             <Button 
@@ -230,8 +232,6 @@ export default function AdminPackages() {
       </div>
     );
   }
-
-  console.log('📦 Rendering with', packages.length, 'packages');
 
   return (
     <div className="space-y-6">
@@ -255,167 +255,134 @@ export default function AdminPackages() {
                 {editingPackage ? 'Edit Package' : 'Add New Package'}
               </DialogTitle>
             </DialogHeader>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="category"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Category</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="tour">Tour Package</SelectItem>
-                            <SelectItem value="visa">Visa Service</SelectItem>
-                            <SelectItem value="ticket">Flight Ticket</SelectItem>
-                            <SelectItem value="offer">Special Offer</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="status"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Status</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="active">Active</SelectItem>
-                            <SelectItem value="inactive">Inactive</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="category">Category</Label>
+                  <Select 
+                    value={formData.category}
+                    onValueChange={(value) => setFormData({...formData, category: value})}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="tour">Tour Package</SelectItem>
+                      <SelectItem value="visa">Visa Service</SelectItem>
+                      <SelectItem value="ticket">Flight Ticket</SelectItem>
+                      <SelectItem value="offer">Special Offer</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
-                <FormField
-                  control={form.control}
-                  name="title_en"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Title (English)</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g., Dubai Shopping Festival" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="description_en"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Description (English)</FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          placeholder="Describe the package..." 
-                          {...field} 
-                          rows={4} 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="price"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Price (USD)</FormLabel>
-                        <FormControl>
-                          <Input 
-                            type="number" 
-                            step="0.01" 
-                            placeholder="500.00" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="duration"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Duration (Optional)</FormLabel>
-                        <FormControl>
-                          <Input placeholder="e.g., 5 Days" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                <div className="space-y-2">
+                  <Label htmlFor="status">Status</Label>
+                  <Select 
+                    value={formData.status}
+                    onValueChange={(value) => setFormData({...formData, status: value})}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="active">Active</SelectItem>
+                      <SelectItem value="inactive">Inactive</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
+              </div>
 
-                <div>
-                  <FormLabel>Package Image</FormLabel>
+              <div className="space-y-2">
+                <Label htmlFor="title">Title (English) *</Label>
+                <Input 
+                  id="title"
+                  value={formData.title_en}
+                  onChange={(e) => setFormData({...formData, title_en: e.target.value})}
+                  placeholder="e.g., Dubai Shopping Festival"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="description">Description (English) *</Label>
+                <Textarea 
+                  id="description"
+                  value={formData.description_en}
+                  onChange={(e) => setFormData({...formData, description_en: e.target.value})}
+                  placeholder="Describe the package..." 
+                  rows={4}
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="price">Price (USD) *</Label>
                   <Input 
-                    type="file" 
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="mt-2"
+                    id="price"
+                    type="number" 
+                    step="0.01"
+                    value={formData.price}
+                    onChange={(e) => setFormData({...formData, price: e.target.value})}
+                    placeholder="500.00"
+                    required
                   />
-                  {imagePreview && (
-                    <div className="mt-4">
-                      <img 
-                        src={imagePreview} 
-                        alt="Preview" 
-                        className="w-full h-48 object-cover rounded-lg"
-                      />
-                    </div>
-                  )}
                 </div>
 
-                <div className="flex gap-2 pt-4">
-                  <Button 
-                    type="submit" 
-                    disabled={createMutation.isPending || updateMutation.isPending}
-                    className="flex-1"
-                  >
-                    {(createMutation.isPending || updateMutation.isPending) ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        {editingPackage ? 'Updating...' : 'Creating...'}
-                      </>
-                    ) : (
-                      editingPackage ? 'Update Package' : 'Create Package'
-                    )}
-                  </Button>
-                  <Button 
-                    type="button" 
-                    variant="outline" 
-                    onClick={handleCloseDialog}
-                  >
-                    Cancel
-                  </Button>
+                <div className="space-y-2">
+                  <Label htmlFor="duration">Duration (Optional)</Label>
+                  <Input 
+                    id="duration"
+                    value={formData.duration}
+                    onChange={(e) => setFormData({...formData, duration: e.target.value})}
+                    placeholder="e.g., 5 Days"
+                  />
                 </div>
-              </form>
-            </Form>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="image">Package Image</Label>
+                <Input 
+                  id="image"
+                  type="file" 
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
+                {imagePreview && (
+                  <div className="mt-4">
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview" 
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <Button 
+                  type="submit" 
+                  disabled={createMutation.isPending || updateMutation.isPending}
+                  className="flex-1"
+                >
+                  {(createMutation.isPending || updateMutation.isPending) ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      {editingPackage ? 'Updating...' : 'Creating...'}
+                    </>
+                  ) : (
+                    editingPackage ? 'Update Package' : 'Create Package'
+                  )}
+                </Button>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={handleCloseDialog}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
           </DialogContent>
         </Dialog>
       </div>

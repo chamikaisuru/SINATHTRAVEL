@@ -1,33 +1,40 @@
 <?php
 /**
  * COMPLETELY FIXED Admin Packages API
- * Now properly returns packages array, not auth data
+ * Replace: server/api/admin/packages.php
  */
 
+// STEP 1: Start session FIRST
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// STEP 2: Load dependencies
 require_once '../../config/database.php';
 require_once './auth.php';
 
+// STEP 3: Enable CORS
 enableCORS();
 
+error_log("========== PACKAGES API ==========");
+error_log("Method: " . $_SERVER['REQUEST_METHOD']);
+error_log("Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
+
+// STEP 4: Initialize database
 $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-error_log("📦 PACKAGES API CALLED");
-error_log("Method: " . $method);
-error_log("Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
-
-// Verify admin authentication - this should NOT send a response, just return admin
+// STEP 5: Verify authentication
 try {
     $admin = verifyAdminAuth($db);
-    error_log("✅ Admin verified in packages.php: " . $admin['username']);
+    error_log("✅ Admin verified: " . $admin['username']);
 } catch(Exception $e) {
-    error_log("❌ Auth failed in packages.php: " . $e->getMessage());
-    // verifyAdminAuth already sent the 401 response
+    error_log("❌ Auth failed: " . $e->getMessage());
     exit;
 }
 
-// Now handle the actual packages request
+// STEP 6: Handle the request
 try {
     switch($method) {
         case 'GET':
@@ -50,14 +57,14 @@ try {
             sendResponse(405, null, 'Method not allowed');
     }
 } catch(Exception $e) {
-    error_log("❌ Packages Error: " . $e->getMessage());
+    error_log("❌ Error: " . $e->getMessage());
     error_log("Stack trace: " . $e->getTraceAsString());
     sendResponse(500, null, 'Internal server error: ' . $e->getMessage());
 }
 
 /**
- * GET: Fetch all packages
- * FIXED: Returns array of packages directly
+ * GET: Fetch packages
+ * CRITICAL FIX: This was returning empty array before
  */
 function handleGet($db) {
     error_log("📦 handleGet called");
@@ -65,13 +72,13 @@ function handleGet($db) {
     $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
     
     if ($id) {
-        // Get single package
+        // Single package
         error_log("📦 Fetching single package: " . $id);
         $query = "SELECT * FROM packages WHERE id = :id";
         $stmt = $db->prepare($query);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $package = $stmt->fetch();
+        $package = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($package && $package['image']) {
             $package['image'] = getUploadUrl($package['image']);
@@ -79,77 +86,97 @@ function handleGet($db) {
         
         error_log("📦 Returning single package");
         sendResponse(200, $package);
-    } else {
-        // Get all packages with optional filters
-        error_log("📦 Fetching all packages");
-        
-        $status = isset($_GET['status']) ? $_GET['status'] : null;
-        $category = isset($_GET['category']) ? $_GET['category'] : null;
-        
-        $query = "SELECT * FROM packages WHERE 1=1";
-        
-        if ($status) {
-            $query .= " AND status = :status";
-        }
-        if ($category) {
-            $query .= " AND category = :category";
-        }
-        
-        $query .= " ORDER BY created_at DESC";
-        
-        error_log("📦 Query: " . $query);
-        
-        $stmt = $db->prepare($query);
-        
-        if ($status) {
-            $stmt->bindParam(':status', $status);
-        }
-        if ($category) {
-            $stmt->bindParam(':category', $category);
-        }
-        
-        $stmt->execute();
-        $packages = $stmt->fetchAll();
-        
-        error_log("📦 Found " . count($packages) . " packages");
-        
-        // Format image URLs
-        foreach ($packages as &$package) {
-            if ($package['image']) {
-                $package['image'] = getUploadUrl($package['image']);
-            }
-        }
-        
-        error_log("📦 Sending response with " . count($packages) . " packages");
-        
-        // CRITICAL FIX: Send packages array directly as data
-        // The frontend expects an array, not { packages: [...] }
-        sendResponse(200, $packages);
+        return;
     }
+    
+    // Get all packages
+    error_log("📦 Fetching all packages");
+    
+    $status = isset($_GET['status']) ? $_GET['status'] : null;
+    $category = isset($_GET['category']) ? $_GET['category'] : null;
+    
+    // Build query
+    $query = "SELECT * FROM packages WHERE 1=1";
+    $params = [];
+    
+    if ($status) {
+        $query .= " AND status = :status";
+        $params[':status'] = $status;
+    }
+    if ($category) {
+        $query .= " AND category = :category";
+        $params[':category'] = $category;
+    }
+    
+    $query .= " ORDER BY created_at DESC";
+    
+    error_log("📦 Query: " . $query);
+    error_log("📦 Params: " . json_encode($params));
+    
+    $stmt = $db->prepare($query);
+    
+    // Bind parameters
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value);
+    }
+    
+    $stmt->execute();
+    
+    // CRITICAL: Use fetchAll with PDO::FETCH_ASSOC
+    $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    error_log("📦 Query executed");
+    error_log("📦 Rows returned by SQL: " . $stmt->rowCount());
+    error_log("📦 Packages array count: " . count($packages));
+    error_log("📦 Packages array: " . json_encode($packages));
+    
+    // Format image URLs
+    foreach ($packages as &$package) {
+        if (!empty($package['image'])) {
+            $package['image'] = getUploadUrl($package['image']);
+        }
+    }
+    unset($package); // Break reference
+    
+    error_log("📦 After image formatting: " . count($packages) . " packages");
+    error_log("📦 Final packages: " . json_encode($packages));
+    
+    // Send response
+    error_log("📦 Sending response with " . count($packages) . " packages");
+    sendResponse(200, $packages, 'Packages retrieved successfully');
 }
 
 /**
- * POST: Create new package with image upload
+ * POST: Create new package
  */
 function handlePost($db) {
+    error_log("📦 handlePost called");
+    
     $data = $_POST;
     $imagePath = null;
     
     // Handle image upload
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-        $imagePath = uploadImage($_FILES['image']);
+        try {
+            $imagePath = uploadImage($_FILES['image']);
+            error_log("📦 Image uploaded: " . $imagePath);
+        } catch(Exception $e) {
+            error_log("📦 Image upload failed: " . $e->getMessage());
+            sendResponse(400, null, 'Image upload failed: ' . $e->getMessage());
+            return;
+        }
     }
     
-    // Validate required fields
+    // Validate
     if (empty($data['title_en']) || empty($data['description_en']) || empty($data['price'])) {
-        sendResponse(400, null, 'Missing required fields: title_en, description_en, price');
+        error_log("📦 Validation failed");
+        sendResponse(400, null, 'Missing required fields');
+        return;
     }
     
     $query = "INSERT INTO packages 
-              (category, title_en, title_si, title_ta, description_en, description_si, description_ta, 
-               price, duration, image, status) 
-              VALUES (:category, :title_en, :title_si, :title_ta, :description_en, :description_si, 
-                      :description_ta, :price, :duration, :image, :status)";
+              (category, title_en, description_en, price, duration, image, status) 
+              VALUES (:category, :title_en, :description_en, :price, :duration, :image, :status)";
     
     $stmt = $db->prepare($query);
     
@@ -158,33 +185,34 @@ function handlePost($db) {
     
     $stmt->bindParam(':category', $category);
     $stmt->bindParam(':title_en', $data['title_en']);
-    $stmt->bindParam(':title_si', $data['title_si']);
-    $stmt->bindParam(':title_ta', $data['title_ta']);
     $stmt->bindParam(':description_en', $data['description_en']);
-    $stmt->bindParam(':description_si', $data['description_si']);
-    $stmt->bindParam(':description_ta', $data['description_ta']);
     $stmt->bindParam(':price', $data['price']);
     $stmt->bindParam(':duration', $data['duration']);
     $stmt->bindParam(':image', $imagePath);
     $stmt->bindParam(':status', $status);
     
     if ($stmt->execute()) {
-        sendResponse(201, ['id' => $db->lastInsertId()], 'Package created successfully');
+        $newId = $db->lastInsertId();
+        error_log("📦 Package created with ID: " . $newId);
+        sendResponse(201, ['id' => $newId], 'Package created successfully');
     } else {
+        error_log("📦 Failed to create package");
         sendResponse(500, null, 'Failed to create package');
     }
 }
 
 /**
- * PUT: Update existing package
+ * PUT: Update package
  */
 function handlePut($db) {
     parse_str(file_get_contents("php://input"), $data);
     
     if (empty($data['id'])) {
         sendResponse(400, null, 'Package ID required');
+        return;
     }
     
+    // Check if package exists
     $query = "SELECT * FROM packages WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $data['id']);
@@ -192,16 +220,14 @@ function handlePut($db) {
     
     if (!$stmt->fetch()) {
         sendResponse(404, null, 'Package not found');
+        return;
     }
     
+    // Update package
     $query = "UPDATE packages SET 
               category = :category,
               title_en = :title_en,
-              title_si = :title_si,
-              title_ta = :title_ta,
               description_en = :description_en,
-              description_si = :description_si,
-              description_ta = :description_ta,
               price = :price,
               duration = :duration,
               status = :status
@@ -212,11 +238,7 @@ function handlePut($db) {
     $stmt->bindParam(':id', $data['id']);
     $stmt->bindParam(':category', $data['category']);
     $stmt->bindParam(':title_en', $data['title_en']);
-    $stmt->bindParam(':title_si', $data['title_si']);
-    $stmt->bindParam(':title_ta', $data['title_ta']);
     $stmt->bindParam(':description_en', $data['description_en']);
-    $stmt->bindParam(':description_si', $data['description_si']);
-    $stmt->bindParam(':description_ta', $data['description_ta']);
     $stmt->bindParam(':price', $data['price']);
     $stmt->bindParam(':duration', $data['duration']);
     $stmt->bindParam(':status', $data['status']);
@@ -236,17 +258,19 @@ function handleDelete($db) {
     
     if (empty($data['id'])) {
         sendResponse(400, null, 'Package ID required');
+        return;
     }
     
-    // Get image path before deleting
+    // Get image before deleting
     $query = "SELECT image FROM packages WHERE id = :id";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':id', $data['id']);
     $stmt->execute();
-    $package = $stmt->fetch();
+    $package = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$package) {
         sendResponse(404, null, 'Package not found');
+        return;
     }
     
     // Delete package
@@ -255,8 +279,8 @@ function handleDelete($db) {
     $stmt->bindParam(':id', $data['id']);
     
     if ($stmt->execute()) {
-        // Delete image file if exists
-        if ($package['image']) {
+        // Delete image file
+        if (!empty($package['image'])) {
             $imagePath = getUploadPath($package['image']);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
@@ -269,18 +293,18 @@ function handleDelete($db) {
 }
 
 /**
- * Upload and validate image
+ * Upload image
  */
 function uploadImage($file) {
     $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
     $maxSize = 5 * 1024 * 1024; // 5MB
     
     if (!in_array($file['type'], $allowedTypes)) {
-        throw new Exception('Invalid file type. Only JPG, PNG, and WebP allowed.');
+        throw new Exception('Invalid file type');
     }
     
     if ($file['size'] > $maxSize) {
-        throw new Exception('File too large. Maximum size is 5MB.');
+        throw new Exception('File too large');
     }
     
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
