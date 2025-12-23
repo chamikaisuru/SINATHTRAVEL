@@ -1,0 +1,5 @@
+::1 - - [24/Dec/2025:03:04:43 +0530] "OPTIONS /server/api/admin/auth.php?action=login HTTP/1.1" 200 -
+::1 - - [24/Dec/2025:03:04:43 +0530] "POST /server/api/admin/auth.php?action=login HTTP/1.1" 200 256
+::1 - - [24/Dec/2025:03:04:44 +0530] "GET /server/api/admin/auth.php HTTP/1.1" 200 150
+::1 - - [24/Dec/2025:03:04:44 +0530] "GET /server/api/admin/dashboard.php HTTP/1.1" 200 394
+::1 - - [24/Dec/2025:03:04:47 +0530] "GET /server/api/admin/packages.php HTTP/1.1" 200 138
