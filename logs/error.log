@@ -2778,3 +2778,248 @@
 [Tue Dec 23 05:42:36.397606 2025] [php:notice] [pid 13928:tid 808] [client ::1:59289] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"09c49415548d18bf6b55c6716459db4396ec7d9e528388bc59d9f5a037c95872","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
 [Tue Dec 23 05:42:36.397606 2025] [php:notice] [pid 13928:tid 808] [client ::1:59289] \xf0\x9f\x94\x8d Session ID found: 09c49415548d18bf6b55c6716459db4396ec7d9e528388bc59d9f5a037c95872, referer: http://localhost:5000/
 [Tue Dec 23 05:42:36.398604 2025] [php:notice] [pid 13928:tid 808] [client ::1:59289] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Session ID from cookie: none, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.543424 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 05:56:10.606569 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.039214 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Session stored: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.040229 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 PHP Session ID: c0ae6trqnfjjvmclin3aprsrpn, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Session ID from cookie: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.543544 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Session ID found: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.544467 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.602580 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.602580 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Session ID: c0ae6trqnfjjvmclin3aprsrpn, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.602580 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Admin Session ID: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.602580 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.604568 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.604568 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.604568 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.605564 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.605564 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.606104 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:11.606104 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.118937 2025] [php:warn] [pid 13928:tid 808] [client ::1:60295] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 12, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.119940 2025] [php:warn] [pid 13928:tid 808] [client ::1:60295] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 13, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.119940 2025] [php:warn] [pid 13928:tid 808] [client ::1:60295] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 14, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.119940 2025] [php:warn] [pid 13928:tid 808] [client ::1:60295] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 15, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.119940 2025] [php:warn] [pid 13928:tid 808] [client ::1:60295] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 16, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122453 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122453 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122453 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122453 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] Session ID from cookie: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122453 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122984 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122984 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xf0\x9f\x94\x8d Session ID found: b57a798773b20392275b9e5577c4ecd89c89c3ca3d5d7d40e5d49232275741ec, referer: http://localhost:5000/
+[Tue Dec 23 05:56:14.122984 2025] [php:notice] [pid 13928:tid 808] [client ::1:60295] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.894198 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.894198 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.894198 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.894198 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Session ID from cookie: none, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.895207 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.895207 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:06:36.965750 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 06:06:37.140889 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Session stored: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:37.140889 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 PHP Session ID: jjuv9vuk0pttvnjkh867cfi04f, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.539228 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.540231 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.541222 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.541222 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Session ID from cookie: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.542217 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.542217 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.545208 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Session ID found: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.547201 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.602021 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.603015 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Session ID: jjuv9vuk0pttvnjkh867cfi04f, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.603015 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Admin Session ID: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.603015 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.620955 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.621952 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.622949 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.622949 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.623946 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.624942 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:38.624942 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.643878 2025] [php:warn] [pid 13928:tid 816] [client ::1:61232] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 12, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.643878 2025] [php:warn] [pid 13928:tid 816] [client ::1:61232] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 13, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.644374 2025] [php:warn] [pid 13928:tid 816] [client ::1:61232] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 14, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.644374 2025] [php:warn] [pid 13928:tid 816] [client ::1:61232] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 15, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.644374 2025] [php:warn] [pid 13928:tid 816] [client ::1:61232] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 16, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.645432 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] ========== AUTH DEBUG ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.645432 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.645432 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Action: none, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.645432 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] Session ID from cookie: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.646636 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.646636 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Session data: {"admin_session_id":"8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed","admin_id":"1","admin_username":"admin"}, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.646636 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xf0\x9f\x94\x8d Session ID found: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:06:40.647292 2025] [php:notice] [pid 13928:tid 816] [client ::1:61232] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:08:54.110411 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61423] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.797906 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61424] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 12, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.797906 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61424] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 13, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.797906 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61424] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 14, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.798912 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61424] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 15, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.798912 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61424] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 16, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:01.815530 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61424] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.075548 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.075548 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.075548 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.076041 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.076207 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.076207 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.076207 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:10.076207 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.883654 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d CORS Test - Origin: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.883654 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Request Method: OPTIONS, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.883654 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c Origin not allowed: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.883654 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9c\x85 OPTIONS request handled, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.889135 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d CORS Test - Origin: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.889135 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Request Method: OPTIONS, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.889135 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c Origin not allowed: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.889135 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9c\x85 OPTIONS request handled, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.895423 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d CORS Test - Origin: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.896415 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Request Method: OPTIONS, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.896415 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c Origin not allowed: http://127.0.0.1:8080, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:11.896415 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9c\x85 OPTIONS request handled, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.310987 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61440] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 12, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.310987 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61440] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 13, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.310987 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61440] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 14, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.310987 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61440] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 15, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.310987 2025] [php:warn] [pid 13928:tid 808] [client 127.0.0.1:61440] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 16, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.333544 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.333544 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.333544 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.333544 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.333544 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.334695 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.334695 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:16.334695 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61440] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.124346 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:09:56.125345 2025] [php:notice] [pid 13928:tid 808] [client 127.0.0.1:61598] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.241596 2025] [php:warn] [pid 13928:tid 816] [client 127.0.0.1:61599] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 12, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.241596 2025] [php:warn] [pid 13928:tid 816] [client 127.0.0.1:61599] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 13, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.241596 2025] [php:warn] [pid 13928:tid 816] [client 127.0.0.1:61599] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 14, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.241596 2025] [php:warn] [pid 13928:tid 816] [client 127.0.0.1:61599] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 15, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.242595 2025] [php:warn] [pid 13928:tid 816] [client 127.0.0.1:61599] PHP Warning:  ini_set(): Session ini settings cannot be changed when a session is active in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin\\auth.php on line 16, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] ========== AUTH DEBUG ==========, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] Method: GET, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] Action: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] Session ID from cookie: none, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] \xf0\x9f\x94\x8d Checking auth..., referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.263118 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] \xf0\x9f\x94\x8d Session data: [], referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.264116 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] \xe2\x9d\x8c No session ID found, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:10:02.264116 2025] [php:notice] [pid 13928:tid 816] [client 127.0.0.1:61599] \xe2\x9d\x8c Session contents: Array\n(\n)\n, referer: http://127.0.0.1:8080/server/debug-packages.html
+[Tue Dec 23 06:13:22.792616 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.792616 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.792616 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.793685 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Session ID: gj2a6tkl71blg48o7v8th61otf, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.793685 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Admin Session ID: none, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.793685 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.793685 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:13:22.852486 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.116918 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Session stored: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.699506 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Session ID: gj2a6tkl71blg48o7v8th61otf, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Admin Session ID: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.700516 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\x8d Session ID found: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.701503 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.744838 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.744838 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Session ID: gj2a6tkl71blg48o7v8th61otf, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.744838 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Admin Session ID: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.744838 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.746834 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.746834 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.747831 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.747831 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.748827 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.748827 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 06:13:23.748827 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.538747 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.538747 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.538747 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.538747 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Session ID: gj2a6tkl71blg48o7v8th61otf, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.538747 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] Admin Session ID: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.539841 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.539841 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xf0\x9f\x94\x8d Session ID found: 1fa23eb322c7c3d29074340a9ca5b140273217ed414d938edc223dd5ba729f5d, referer: http://localhost:5000/
+[Tue Dec 23 06:13:26.539841 2025] [php:notice] [pid 13928:tid 808] [client ::1:61817] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.036073 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.036073 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.036073 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.037071 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Session ID: jjuv9vuk0pttvnjkh867cfi04f, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.037071 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Admin Session ID: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.037071 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.037071 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xf0\x9f\x94\x8d Session ID found: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.038069 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.203465 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.203954 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.204475 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.204475 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Session ID: jjuv9vuk0pttvnjkh867cfi04f, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.204475 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] Admin Session ID: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.204475 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.205481 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xf0\x9f\x94\x8d Session ID found: 8d7b7fe3cba3dcecb613199e9532042279cce40b7f39a84de2da1e3f50a11eed, referer: http://localhost:5000/
+[Tue Dec 23 06:14:32.206478 2025] [php:notice] [pid 13928:tid 808] [client ::1:61911] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.277878 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.287013 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Method: POST, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.287013 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Action: login, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.287013 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.287013 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Admin Session ID: none, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.289507 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.304161 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.510038 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.644795 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Session stored: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.847403 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.852450 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.900712 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.900712 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.900712 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.900712 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Admin ID: 1, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.902820 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.902820 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.919410 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 08:12:48.919410 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Tue Dec 23 08:12:49.025071 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Tue Dec 23 08:12:49.025071 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Tue Dec 23 08:12:49.053560 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.813883 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] ========== AUTH API ==========, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.813883 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Method: GET, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.813883 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Action: check, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.813883 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Session ID: odrk9hoaut3atnb92civ8b374a, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.814952 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] Admin Session ID: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.814952 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.814952 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xf0\x9f\x94\x8d Session ID found: 698f091f83a5e46948958d205cf36a33fa261eeed57b7c0fe29dd646e8e3436f, referer: http://localhost:5000/
+[Tue Dec 23 08:12:51.816034 2025] [php:notice] [pid 13976:tid 1888] [client ::1:62835] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/

@@ -17,46 +17,53 @@ async function adminApiRequest<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const url = `${ADMIN_API_BASE}/${endpoint}`;
-  
+
   console.log('🔵 Making request to:', url);
   console.log('🔵 Request options:', options);
-  
+
+  // ✅ FIXED: TypeScript-safe headers
+  const headers: Record<string, string> = {
+    ...(options.headers as Record<string, string>),
+  };
+
+  if (
+    options.method &&
+    options.method !== 'GET' &&
+    !(options.body instanceof FormData)
+  ) {
+    headers['Content-Type'] = 'application/json';
+  }
+
   const config: RequestInit = {
     ...options,
     credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
+    headers,
   };
 
   try {
-    console.log('🟢 Sending fetch request...');
     const response = await fetch(url, config);
-    
-    console.log('🟡 Response status:', response.status);
-    console.log('🟡 Response headers:', Object.fromEntries(response.headers.entries()));
-    
+
     if (response.status === 401) {
-      console.log('🔴 Unauthorized - redirecting to login');
       window.location.href = '/admin/login';
       throw new Error('Authentication required');
     }
-    
+
     if (!response.ok) {
-      const error = await response.json().catch(() => ({ message: 'Request failed' }));
-      console.log('🔴 Request failed:', error);
-      throw new Error(error.message || `HTTP error! status: ${response.status}`);
+      const error = await response
+        .json()
+        .catch(() => ({ message: 'Request failed' }));
+      throw new Error(error.message || 'Request failed');
     }
 
     const data = await response.json();
-    console.log('✅ Response data:', data);
-    return data.data || data;
+    return (data.data ?? data) as T;
   } catch (error) {
     console.error('❌ Admin API request failed:', error);
     throw error;
   }
 }
+
+
 
 // ====================
 // AUTHENTICATION

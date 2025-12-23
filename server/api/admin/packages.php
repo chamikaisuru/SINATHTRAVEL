@@ -1,15 +1,16 @@
 <?php
 /**
  * COMPLETELY FIXED Admin Packages API
+ * CRITICAL FIX: Session must be started BEFORE any configuration
  * Replace: server/api/admin/packages.php
  */
 
-// STEP 1: Start session FIRST
+// STEP 1: Start session FIRST (before anything else)
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// STEP 2: Load dependencies
+// STEP 2: Load dependencies AFTER session started
 require_once '../../config/database.php';
 require_once './auth.php';
 
@@ -18,7 +19,8 @@ enableCORS();
 
 error_log("========== PACKAGES API ==========");
 error_log("Method: " . $_SERVER['REQUEST_METHOD']);
-error_log("Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
+error_log("Session ID: " . session_id());
+error_log("Admin Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
 
 // STEP 4: Initialize database
 $database = new Database();
@@ -64,7 +66,6 @@ try {
 
 /**
  * GET: Fetch packages
- * CRITICAL FIX: This was returning empty array before
  */
 function handleGet($db) {
     error_log("📦 handleGet called");
@@ -126,9 +127,8 @@ function handleGet($db) {
     $packages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     error_log("📦 Query executed");
-    error_log("📦 Rows returned by SQL: " . $stmt->rowCount());
-    error_log("📦 Packages array count: " . count($packages));
-    error_log("📦 Packages array: " . json_encode($packages));
+    error_log("📦 Rows returned: " . $stmt->rowCount());
+    error_log("📦 Packages count: " . count($packages));
     
     // Format image URLs
     foreach ($packages as &$package) {
@@ -138,10 +138,6 @@ function handleGet($db) {
     }
     unset($package); // Break reference
     
-    error_log("📦 After image formatting: " . count($packages) . " packages");
-    error_log("📦 Final packages: " . json_encode($packages));
-    
-    // Send response
     error_log("📦 Sending response with " . count($packages) . " packages");
     sendResponse(200, $packages, 'Packages retrieved successfully');
 }

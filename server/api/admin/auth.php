@@ -1,34 +1,29 @@
 <?php
 /**
- * Admin Authentication API - COMPLETE FIXED VERSION
- * Fixes session handling and authentication
+ * Admin Authentication API - FIXED SESSION HANDLING
+ * Replace: server/api/admin/auth.php
  */
 
-// STEP 1: Set CORS headers FIRST
+// STEP 1: CORS headers FIRST (before any output)
 require_once '../../config/database.php';
 enableCORS();
 
-// STEP 2: Configure session - FIXED FOR HTTP
-ini_set('session.cookie_httponly', 1);
-ini_set('session.use_strict_mode', 1);
-ini_set('session.cookie_samesite', 'Lax');
-ini_set('session.cookie_secure', 0);
-ini_set('session.cookie_path', '/');
-
-// STEP 3: Start session
+// STEP 2: Session must be started BEFORE any configuration
+// Only start if not already started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// STEP 4: Initialize database
+// STEP 3: Initialize database
 $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-error_log("========== AUTH DEBUG ==========");
+error_log("========== AUTH API ==========");
 error_log("Method: " . $method);
-error_log("Action: " . ($_GET['action'] ?? 'none'));
-error_log("Session ID from cookie: " . ($_SESSION['admin_session_id'] ?? 'none'));
+error_log("Action: " . ($_GET['action'] ?? 'check'));
+error_log("Session ID: " . session_id());
+error_log("Admin Session ID: " . ($_SESSION['admin_session_id'] ?? 'none'));
 
 try {
     switch($method) {
@@ -114,7 +109,6 @@ function handleLogin($db) {
     $_SESSION['admin_username'] = $admin['username'];
     
     error_log("✅ Session stored: " . $sessionId);
-    error_log("✅ PHP Session ID: " . session_id());
     
     sendResponse(200, [
         'token' => $sessionId,
@@ -144,13 +138,11 @@ function handleLogout($db) {
 
 function handleCheckAuth($db) {
     error_log("🔍 Checking auth...");
-    error_log("🔍 Session data: " . json_encode($_SESSION));
     
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
     if (!$sessionId) {
         error_log("❌ No session ID found");
-        error_log("❌ Session contents: " . print_r($_SESSION, true));
         sendResponse(401, null, 'Not authenticated');
         return;
     }
@@ -188,15 +180,11 @@ function handleCheckAuth($db) {
 
 /**
  * Verify admin authentication for API calls
- * Returns admin user or sends 401 and exits
  */
 function verifyAdminAuth($db) {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+    // Session should already be started by the calling file
     
-    error_log("🔍 Verifying admin for API request...");
-    error_log("🔍 Session data in verify: " . json_encode($_SESSION));
+    error_log("🔍 Verifying admin auth...");
     
     $sessionId = $_SESSION['admin_session_id'] ?? null;
     
