@@ -1,0 +1,782 @@
+[Wed Dec 24 04:06:31.411981 2025] [php:warn] [pid 18924:tid 204] [client ::1:5780] PHP Warning:  require_once(../../config/database.php): Failed to open stream: No such file or directory in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:06:31.412976 2025] [php:error] [pid 18924:tid 204] [client ::1:5780] PHP Fatal error:  Uncaught Error: Failed opening required '../../config/database.php' (include_path='D:\\xampp\\php\\PEAR') in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php:12\nStack trace:\n#0 {main}\n  thrown in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Action: login, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Admin Session ID: none, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.190322 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.191319 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.347546 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Wed Dec 24 04:06:44.465201 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Session stored: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.685496 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.685860 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.685860 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.685860 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.687205 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.687205 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.688339 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x94\x8d Session ID found: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.690190 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.982822 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.983820 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.984820 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.985811 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Admin ID: 1, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.989797 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.989797 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.991897 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":4,"active_packages":"4","tour_packages":"4","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.992931 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":4,"active_packages":4,"tour_packages":4,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.993927 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.994924 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Wed Dec 24 04:06:45.994924 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":4,"active_packages":4,"tour_packages":4,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.055487 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.056582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.056582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.056582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.059495 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.059495 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.059495 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.060489 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.060489 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 Fetched 4 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.061490 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.062486 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:06:49.062486 2025] [php:notice] [pid 18924:tid 792] [client ::1:5793] \xf0\x9f\x93\xa6 Sending response with 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.937271 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.937271 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.937271 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.937271 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.958436 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.958436 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.958436 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:03.958436 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 Image uploaded: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.092379 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 Package created with ID: 5, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.100544 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.100544 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.100544 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.100544 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.160304 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.160804 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.160804 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.161627 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.162297 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.163593 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 Fetched 5 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.163593 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.163593 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.163593 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.164582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.164582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.164582 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.165579 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.165579 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.165579 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.166583 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:04.166583 2025] [php:notice] [pid 18924:tid 792] [client ::1:5845] \xf0\x9f\x93\xa6 Sending response with 5 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.896431 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.896431 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.896431 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.896431 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.898422 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.898422 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.898422 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:07:51.898422 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 Image uploaded: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.012777 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 Package created with ID: 6, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.022103 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.022103 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.022103 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.022103 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.024125 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 Fetched 6 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.025121 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: sri_lanka_sigiriya_r_ddcb0491.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:07:52.026117 2025] [php:notice] [pid 18924:tid 792] [client ::1:5872] \xf0\x9f\x93\xa6 Sending response with 6 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.311110 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.311110 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.311110 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.311110 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.313104 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.491952 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.491952 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.492985 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.492985 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.551867 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.552863 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.552863 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.554009 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.556097 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.557094 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x93\xa6 Fetched 5 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.557094 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.558090 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.558090 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.559087 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.559087 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.560084 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.560084 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.561081 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.561081 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.562076 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:04.562076 2025] [php:notice] [pid 18924:tid 204] [client ::1:5876] \xf0\x9f\x93\xa6 Sending response with 5 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.243207 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.243207 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.243207 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.243207 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.245199 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.246195 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.246195 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.246195 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 Image uploaded: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.431986 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 Package created with ID: 7, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.440200 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.440200 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.440200 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.441197 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.458890 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.458890 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.458890 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.458890 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.459979 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.459979 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 Fetched 6 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.459979 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.460900 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.461896 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:29.461896 2025] [php:notice] [pid 18924:tid 204] [client ::1:5883] \xf0\x9f\x93\xa6 Sending response with 6 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.035576 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.035576 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.035576 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.036573 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.038567 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.084917 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted image: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b0de204527_1766526434.png, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.096806 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.097807 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.097807 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.098329 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.174130 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.174130 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.174631 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.174631 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.176403 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.176898 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x93\xa6 Fetched 5 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.178194 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.178194 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.178194 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.179187 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.179187 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.180182 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.180182 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.181172 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.181172 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.181172 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:08:53.182170 2025] [php:notice] [pid 18924:tid 204] [client ::1:5888] \xf0\x9f\x93\xa6 Sending response with 5 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.430453 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.430453 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.430453 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.430453 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.451508 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.796569 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted image: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b198fea0e2_1766529423.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.805164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.805164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.805164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.805164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.806945 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.806945 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.806945 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.806945 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x93\xa6 Fetched 4 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: dubai_skyline_with_b_8fae68a6.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.807957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:01.808957 2025] [php:notice] [pid 18924:tid 204] [client ::1:5892] \xf0\x9f\x93\xa6 Sending response with 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.072102 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.072102 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.072102 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.073097 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.091692 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.238164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.238164 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.239166 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.239166 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.299849 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.300845 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.300845 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.301849 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.302852 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.303835 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.303835 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.304839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.304839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.304839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.305839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.305839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:09.305839 2025] [php:notice] [pid 18924:tid 204] [client ::1:5895] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.361173 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.361173 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.361173 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.361173 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.388568 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.388568 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.389641 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.389641 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 Image uploaded: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.415553 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 Package created with ID: 8, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.422757 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.422757 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.422757 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.422757 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.449668 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.449668 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.449668 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.449668 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.450665 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.450665 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 Fetched 4 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.450665 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.450665 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x96\xbc\xef\xb8\x8f Stock image detected: maldives_water_villa_e130bb66.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:26.451662 2025] [php:notice] [pid 18924:tid 204] [client ::1:5906] \xf0\x9f\x93\xa6 Sending response with 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.368473 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.368473 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.368473 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.368473 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.394828 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.534183 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.534715 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.534715 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.534715 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.613281 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.613281 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.613791 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.613791 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.616259 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.616751 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.616751 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.617248 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.617744 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.617744 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.618241 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.618241 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:09:33.618241 2025] [php:notice] [pid 18924:tid 204] [client ::1:5910] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.358402 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.358402 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Method: PUT, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.358402 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.358402 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\x9d handlePut called, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\x9d Content-Type: application/x-www-form-urlencoded, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\x9d Has FILES: no, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\x9d Using parsed PUT data: {"id":"6","category":"tour","title_en":"Sri Lanka Heritage Tour","description_en":"Explore the ancient wonders of Sigiriya, Polonnaruwa, and Kandy.","price":"500","duration":"5 Days","status":"active"}, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xe2\x9c\x85 Package found: Sri Lanka Heritage Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.360396 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\x9d Current image: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.361392 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xe2\x9c\x85 Package updated successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.361392 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.361392 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.377338 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.378336 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.378336 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.378336 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.382456 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.382456 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.382456 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.382456 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383450 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383450 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383450 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383450 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383946 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383946 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383946 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383946 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:32.383946 2025] [php:notice] [pid 18924:tid 204] [client ::1:5979] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.017447 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.017447 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.017447 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.017447 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.031157 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.031157 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.032161 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.032161 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 Image uploaded: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.156994 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 Package created with ID: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.187987 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.188481 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.188977 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.189805 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.197017 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.197526 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.198517 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.198517 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.201374 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.202364 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 Fetched 4 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.203028 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.203317 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.203812 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.203812 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.203812 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.204835 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.204835 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.204835 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:10:51.205832 2025] [php:notice] [pid 18924:tid 204] [client ::1:5990] \xf0\x9f\x93\xa6 Sending response with 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.417227 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.417227 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.417227 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.418315 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.439646 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.557438 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted image: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b19bfdb69d_1766529471.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.588342 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.588342 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.589339 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.589339 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.623520 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.623520 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.625556 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.626028 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.627482 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.628476 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.629765 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.629765 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.630783 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.631779 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.632776 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.633771 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:11:21.633771 2025] [php:notice] [pid 18924:tid 204] [client ::1:6027] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.143915 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.143915 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Method: PUT, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.143915 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.144911 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.146981 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.146981 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\x9d handlePut called, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.146981 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\x9d Content-Type: application/x-www-form-urlencoded, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.146981 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\x9d Has FILES: no, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.146981 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\x9d Using parsed PUT data: {"id":"9","category":"visa","title_en":"Sri Lanka Heritag Tour","description_en":"Explore the ancient wonders of Sigiriya, Polonnaruwa, and Kandies","price":"500.01","duration":"6 Days","status":"active"}, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.147977 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xe2\x9c\x85 Package found: Sri Lanka Heritage Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.147977 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\x9d Current image: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.299592 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xe2\x9c\x85 Package updated successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.300586 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.300586 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.309556 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.309556 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.309556 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.309556 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.326501 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.327500 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.327500 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.327500 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.327500 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:06.328493 2025] [php:notice] [pid 18924:tid 204] [client ::1:6105] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.680799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.680799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Method: PUT, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.680799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.680799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.703309 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.703309 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\x9d handlePut called, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.703309 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\x9d Content-Type: application/x-www-form-urlencoded, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.703309 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\x9d Has FILES: no, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.704315 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\x9d Using parsed PUT data: {"id":"9","category":"tour","title_en":"Sri Lanka Heritage Tour","description_en":"Explore the ancient wonders of Sigiriya, Polonnaruwa, and Kandies","price":"500","duration":"5 Days","status":"active"}, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.704315 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xe2\x9c\x85 Package found: Sri Lanka Heritag Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.704315 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\x9d Current image: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.843017 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xe2\x9c\x85 Package updated successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.921455 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.921455 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.930215 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.930215 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.931219 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.931219 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.933130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.933130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.933130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.934130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.934130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.934130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\xa6 Fetched 3 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.934130 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:13:37.935123 2025] [php:notice] [pid 18924:tid 204] [client ::1:6117] \xf0\x9f\x93\xa6 Sending response with 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.942273 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.942273 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.943282 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.943282 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.947350 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.947350 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 handlePost called, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.948358 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:15:42.948358 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 Image uploaded: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.080040 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 Package created with ID: 10, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.097164 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.097661 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.097661 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.097661 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.102799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.102799 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.103295 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 Fetching ALL packages, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.103842 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 SQL Query: SELECT * FROM packages WHERE 1=1 ORDER BY created_at DESC, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.104906 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xe2\x9c\x85 Query executed successfully, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.105403 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 Fetched 4 packages from database, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.105403 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.105929 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.106404 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.106404 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.106404 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.106404 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.107429 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.107429 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:15:43.107429 2025] [php:notice] [pid 18924:tid 204] [client ::1:6157] \xf0\x9f\x93\xa6 Sending response with 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:16:03.033210 2025] [php:warn] [pid 18924:tid 204] [client ::1:6189] PHP Warning:  require_once(../../config/database.php): Failed to open stream: No such file or directory in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:16:03.033706 2025] [php:error] [pid 18924:tid 204] [client ::1:6189] PHP Fatal error:  Uncaught Error: Failed opening required '../../config/database.php' (include_path='D:\\xampp\\php\\PEAR') in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php:12\nStack trace:\n#0 {main}\n  thrown in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.242651 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x94\x8d Session ID found: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.244374 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.337682 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.337682 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.337682 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.337682 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.337682 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.340574 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.340574 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.341764 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.341764 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.341764 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.342627 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.342627 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.342627 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.342627 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.343126 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:41.343126 2025] [php:notice] [pid 18924:tid 204] [client ::1:6899] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.293111 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.293111 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Method: PUT, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.293111 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.293111 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.293111 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.317639 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.317639 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x94\x84 handlePut - UPDATE existing package, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.317639 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x93\x9d Using parsed PUT data, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.317639 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x94\x84 Updating package ID: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.317639 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xe2\x9c\x85 Found package: Sri Lanka Heritage Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.318694 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xe2\x9c\x85 Package UPDATED successfully: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.318694 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.318694 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.327022 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.327022 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.327022 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.327022 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.327022 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.329066 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a7307ca9_1766529651.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.330012 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.330012 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.330012 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.330012 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:31:50.330012 2025] [php:notice] [pid 18924:tid 768] [client ::1:6912] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.546016 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.546016 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.546016 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] POST data: {"category":"tour","title_en":"Sri Lanka Heritage Tour","description_en":"Explore the ancient wonders of Sigiriya, Polonnaruwa, and Kandies","price":"500.00","duration":"5 Days","status":"active","id":"9","_method":"PUT","action":"update"}, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.546016 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.546016 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.567879 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.568915 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x94\x84 POST with _method=PUT detected \xe2\x86\x92 UPDATE mode, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.568915 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x94\x84 handlePut - UPDATE existing package, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.568915 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x93\x9d Using POST data, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.568915 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x94\x84 Updating package ID: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.568915 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 Found package: Sri Lanka Heritage Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.571955 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.571955 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 New image uploaded: 694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.572875 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted old image, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.702642 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 Package UPDATED successfully: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.703645 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.704642 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.713214 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.713214 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.713214 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.713214 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.713214 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.715122 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.715122 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1f698b1f1_1766530921.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:01.716117 2025] [php:notice] [pid 18924:tid 768] [client ::1:6917] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.378836 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.378836 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.378836 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] POST data: {"category":"tour","title_en":"Sri Lanka Heritage Tour","description_en":"Explore the ancient wonders of Sigiriya, Polonnaruwa, and Kandies","price":"500.00","duration":"5 Days","status":"active","id":"9","_method":"PUT","action":"update"}, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.378836 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.378836 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.398557 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.398557 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x94\x84 POST with _method=PUT detected \xe2\x86\x92 UPDATE mode, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.398557 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x94\x84 handlePut - UPDATE existing package, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.398557 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x93\x9d Using POST data, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.398557 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x94\x84 Updating package ID: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.399541 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 Found package: Sri Lanka Heritage Tour, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.399541 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.399541 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 New image uploaded: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.400553 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted old image, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.544596 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 Package UPDATED successfully: 9, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.545621 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.545621 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.554565 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.555563 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.555563 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.555563 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.555563 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.567523 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1b96e760e_1766529942.webp, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.568518 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:32:57.569514 2025] [php:notice] [pid 18924:tid 768] [client ::1:6934] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.976458 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.976458 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.977454 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.977454 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.977454 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:33:42.978493 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.106748 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted image, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.116816 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.116816 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.117711 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.117711 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.117711 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.185502 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.185502 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:33:43.186499 2025] [php:notice] [pid 18924:tid 768] [client ::1:6952] \xf0\x9f\x93\xa6 Sending 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:35:03.845871 2025] [php:warn] [pid 18924:tid 204] [client ::1:6998] PHP Warning:  require_once(../../config/database.php): Failed to open stream: No such file or directory in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:35:03.845871 2025] [php:error] [pid 18924:tid 204] [client ::1:6998] PHP Fatal error:  Uncaught Error: Failed opening required '../../config/database.php' (include_path='D:\\xampp\\php\\PEAR') in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php:12\nStack trace:\n#0 {main}\n  thrown in D:\\xampp\\htdocs\\sinath-travels\\server\\api\\packages.php on line 12, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Action: login, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Admin Session ID: e5a1b6ba7f9aab094bdb1f2e44141b2ad6fcead213f500082e48562c21a5ab02, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x94\xb5 handleLogin called, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.351676 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x94\x8d Looking for user: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.412891 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xe2\x9c\x85 Password verified, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.603157 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xe2\x9c\x85 Session stored: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.929965 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.930433 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.930433 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.931075 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.931075 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.931075 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.931571 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x94\x8d Session ID found: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:35:19.932417 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.034212 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] ========== DASHBOARD API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.034212 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.035246 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.035246 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] Admin ID: 1, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.037238 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.037238 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x93\x8a Fetching dashboard data..., referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.037238 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x93\xa6 Raw package stats: {"total_packages":3,"active_packages":"3","tour_packages":"3","visa_packages":"0","ticket_packages":"0","offer_packages":"0"}, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.037238 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x93\xa6 Converted package stats: {"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0}, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.038235 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x93\xa7 Raw inquiry stats: {"total_inquiries":0,"new_inquiries":"0","read_inquiries":"0","replied_inquiries":"0"}, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.038235 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xf0\x9f\x93\xa7 Converted inquiry stats: {"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0}, referer: http://localhost:5000/
+[Wed Dec 24 04:35:20.038235 2025] [php:notice] [pid 18924:tid 204] [client ::1:7005] \xe2\x9c\x85 Sending response: {"success":true,"data":{"packages":{"total_packages":3,"active_packages":3,"tour_packages":3,"visa_packages":0,"ticket_packages":0,"offer_packages":0},"inquiries":{"total_inquiries":0,"new_inquiries":0,"read_inquiries":0,"replied_inquiries":0},"system_status":{"database":"online","api_server":"online","session":"valid","admin_user":"admin"}},"message":"Dashboard data retrieved successfully"}, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.424094 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.424094 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.424094 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.424094 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.424094 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.428081 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.428200 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.428696 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.428696 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.429193 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.429193 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.429193 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.429193 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:35:27.429193 2025] [php:notice] [pid 18924:tid 204] [client ::1:7026] \xf0\x9f\x93\xa6 Sending 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.768635 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.768635 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.768635 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] POST data: {"category":"tour","title_en":"test","description_en":"test","price":"10.00","duration":"4 Days","status":"active"}, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.768635 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.768635 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.769632 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.769632 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9e\x95 POST without update indicators \xe2\x86\x92 CREATE mode, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.769632 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9e\x95 handlePost - CREATE new package, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.769632 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b206bbc03a_1766531179.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:19.769632 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9c\x85 Image uploaded: 694b206bbc03a_1766531179.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.162569 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9c\x85 Package CREATED with ID: 11, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.172599 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.172599 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.172599 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.173673 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.173673 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.189542 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.189542 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b206bbc03a_1766531179.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b206bbc03a_1766531179.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:20.190554 2025] [php:notice] [pid 18924:tid 792] [client ::1:7034] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.639923 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.639923 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Method: DELETE, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.640921 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.640921 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.640921 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.642354 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.986989 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x97\x91\xef\xb8\x8f Deleted image, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.993399 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.993399 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.993399 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.993399 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:36:27.993399 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.132960 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133173 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:36:28.133639 2025] [php:notice] [pid 18924:tid 792] [client ::1:7037] \xf0\x9f\x93\xa6 Sending 3 packages, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.206041 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.206041 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.206041 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.206041 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.206041 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.207039 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.207039 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] \xf0\x9f\x94\x8d Session ID found: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:38:49.208155 2025] [php:notice] [pid 18924:tid 204] [client ::1:7093] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.516247 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.516247 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Method: POST, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.516247 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] POST data: {"category":"ticket","title_en":"test","description_en":"test","price":"800.00","duration":"4 Days","status":"active"}, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.517245 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.517335 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.518966 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.518966 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9e\x95 POST without update indicators \xe2\x86\x92 CREATE mode, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.518966 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9e\x95 handlePost - CREATE new package, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.518966 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9c\x85 File uploaded: D:\\xampp\\htdocs\\sinath-travels\\server\\api\\admin/../../uploads/694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.518966 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9c\x85 Image uploaded: 694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.576903 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9c\x85 Package CREATED with ID: 12, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.581869 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.581869 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.581869 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.581869 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.581869 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.583742 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.583835 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584183 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584318 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584455 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 04:40:52.584498 2025] [php:notice] [pid 18924:tid 204] [client ::1:7156] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.516754 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.516754 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.517250 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.517250 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.517747 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.517747 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.517747 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x94\x8d Session ID found: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.519240 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.606382 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.607380 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.607380 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.607380 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.607380 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.609381 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.610377 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.610377 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.610377 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.610377 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 08:22:03.610377 2025] [php:notice] [pid 18924:tid 708] [client ::1:8230] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.271462 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] ========== AUTH API ==========, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.271462 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.271462 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Action: check, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.271462 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.271462 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.272468 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x94\x8d Checking auth..., referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.272468 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x94\x8d Session ID found: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.273401 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xe2\x9c\x85 Auth check passed for: admin, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.403780 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] ========== PACKAGES API ==========, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.403780 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Method: GET, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.403780 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] POST data: [], referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.404275 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Session ID: 35hjdn0rbbu1o7ghtqugm4s0ni, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.404275 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] Admin Session ID: 2f9c8a1bd37b5815201bfd7879ddeac7800a661e1be7592daeedda3c99d6ee01, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.406952 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xe2\x9c\x85 Admin verified: admin, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.407452 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x93\xa6 handleGet called, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.408233 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.408729 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b217c7ec57_1766531452.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.408729 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.408729 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1fa1619a7_1766530977.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.409226 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.409722 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b1a1e5f056_1766529566.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.409722 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Formatting image path: 694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.409722 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x96\xbc\xef\xb8\x8f Uploaded image URL: http://localhost:8080/server/uploads/694b19e53c1e8_1766529509.jpg, referer: http://localhost:5000/
+[Wed Dec 24 09:21:11.410222 2025] [php:notice] [pid 18924:tid 708] [client ::1:8401] \xf0\x9f\x93\xa6 Sending 4 packages, referer: http://localhost:5000/

@@ -15,7 +15,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Edit, Trash2, Loader2, Package, AlertCircle } from "lucide-react";
+import { Plus, Edit, Trash2, Loader2, Package, AlertCircle, Star, Gift, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -27,14 +27,15 @@ export default function AdminPackages() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // Form state
+  // ⭐ UPDATED: Form state with featured_type
   const [formData, setFormData] = useState({
     category: 'tour',
     title_en: '',
     description_en: '',
     price: '',
     duration: '',
-    status: 'active'
+    status: 'active',
+    featured_type: '' // ⭐ ADDED
   });
 
   const { data: packages = [], isLoading, error } = useQuery<AdminPackage[]>({
@@ -102,6 +103,7 @@ export default function AdminPackages() {
     },
   });
 
+  // ⭐ UPDATED: handleOpenDialog with featured_type
   function handleOpenDialog(pkg?: AdminPackage) {
     if (pkg) {
       setEditingPackage(pkg);
@@ -112,6 +114,7 @@ export default function AdminPackages() {
         price: pkg.price.toString(),
         duration: pkg.duration || '',
         status: pkg.status,
+        featured_type: pkg.featured_type || '', // ⭐ ADDED
       });
       if (pkg.image) {
         setImagePreview(pkg.image);
@@ -124,7 +127,8 @@ export default function AdminPackages() {
         description_en: '',
         price: '',
         duration: '',
-        status: 'active'
+        status: 'active',
+        featured_type: '' // ⭐ ADDED
       });
       setImagePreview(null);
     }
@@ -142,7 +146,8 @@ export default function AdminPackages() {
       description_en: '',
       price: '',
       duration: '',
-      status: 'active'
+      status: 'active',
+      featured_type: '' // ⭐ ADDED
     });
   }
 
@@ -158,71 +163,71 @@ export default function AdminPackages() {
     }
   }
 
-function handleSubmit(e: React.FormEvent) {
-  e.preventDefault();
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
 
-  // Validate
-  if (!formData.title_en || !formData.description_en || !formData.price) {
-    toast({
-      title: "❌ Validation Error",
-      description: "Please fill in all required fields",
-      variant: "destructive"
-    });
-    return;
-  }
+    // Validate
+    if (!formData.title_en || !formData.description_en || !formData.price) {
+      toast({
+        title: "❌ Validation Error",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
 
-  if (editingPackage?.id) {
-    // UPDATING EXISTING PACKAGE
-    console.log('📝 Updating package:', editingPackage.id);
-    console.log('📝 Has new image:', !!selectedImage);
-    
-    if (selectedImage) {
-      // Has new image - use FormData
-      const submitFormData = new FormData();
+    if (editingPackage?.id) {
+      // UPDATING EXISTING PACKAGE
+      console.log('📝 Updating package:', editingPackage.id);
+      console.log('📝 Has new image:', !!selectedImage);
       
-      // Add all fields
+      if (selectedImage) {
+        // Has new image - use FormData
+        const submitFormData = new FormData();
+        
+        // Add all fields
+        Object.entries(formData).forEach(([key, value]) => {
+          if (value) submitFormData.append(key, value.toString());
+        });
+        
+        // Add image file
+        submitFormData.append('image', selectedImage);
+        
+        console.log('📝 Sending FormData with new image');
+        
+        updateMutation.mutate({ 
+          id: editingPackage.id, 
+          data: submitFormData 
+        });
+      } else {
+        // No new image - send as object
+        console.log('📝 Sending data without image change');
+        
+        updateMutation.mutate({ 
+          id: editingPackage.id, 
+          data: {
+            ...formData,
+            price: parseFloat(formData.price),
+          }
+        });
+      }
+    } else {
+      // CREATING NEW PACKAGE
+      console.log('📝 Creating new package');
+      
+      const submitFormData = new FormData();
       Object.entries(formData).forEach(([key, value]) => {
         if (value) submitFormData.append(key, value.toString());
       });
       
-      // Add image file
-      submitFormData.append('image', selectedImage);
+      if (selectedImage) {
+        submitFormData.append('image', selectedImage);
+        console.log('📝 Added image to FormData');
+      }
       
-      console.log('📝 Sending FormData with new image');
-      
-      updateMutation.mutate({ 
-        id: editingPackage.id, 
-        data: submitFormData 
-      });
-    } else {
-      // No new image - send as object
-      console.log('📝 Sending data without image change');
-      
-      updateMutation.mutate({ 
-        id: editingPackage.id, 
-        data: {
-          ...formData,
-          price: parseFloat(formData.price),
-        }
-      });
+      createMutation.mutate(submitFormData);
     }
-  } else {
-    // CREATING NEW PACKAGE
-    console.log('📝 Creating new package');
-    
-    const submitFormData = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      if (value) submitFormData.append(key, value.toString());
-    });
-    
-    if (selectedImage) {
-      submitFormData.append('image', selectedImage);
-      console.log('📝 Added image to FormData');
-    }
-    
-    createMutation.mutate(submitFormData);
   }
-}
 
   function handleDelete(id: number) {
     if (confirm('Are you sure you want to delete this package? This action cannot be undone.')) {
@@ -321,6 +326,43 @@ function handleSubmit(e: React.FormEvent) {
                     </SelectContent>
                   </Select>
                 </div>
+              </div>
+
+              {/* ⭐ NEW: Featured Type Dropdown */}
+              <div className="space-y-2">
+                <Label htmlFor="featured">Featured Type (Optional)</Label>
+                <Select 
+                  value={formData.featured_type}
+                  onValueChange={(value) => setFormData({...formData, featured_type: value})}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Regular Package" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="">Regular Package</SelectItem>
+                    <SelectItem value="popular">
+                      <div className="flex items-center gap-2">
+                        <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
+                        Popular Package
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="special_offer">
+                      <div className="flex items-center gap-2">
+                        <Gift className="w-4 h-4 text-red-500" />
+                        Special Offer
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="seasonal">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-green-500" />
+                        Seasonal Package
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  Featured packages appear on the home page in special sections
+                </p>
               </div>
 
               <div className="space-y-2">
@@ -434,6 +476,7 @@ function handleSubmit(e: React.FormEvent) {
         </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* ⭐ UPDATED: Package cards with featured badges */}
           {packages.map((pkg) => (
             <Card key={pkg.id} className="overflow-hidden hover:shadow-lg transition-shadow">
               {pkg.image && (
@@ -455,9 +498,45 @@ function handleSubmit(e: React.FormEvent) {
                 <div className="flex items-start justify-between gap-2">
                   <CardTitle className="text-lg line-clamp-2">{pkg.title_en}</CardTitle>
                 </div>
-                <Badge variant="outline" className="w-fit text-xs mt-2">
-                  {pkg.category}
-                </Badge>
+                
+                {/* ⭐ NEW: Badges section */}
+                <div className="flex gap-2 flex-wrap mt-2">
+                  <Badge variant="outline" className="w-fit text-xs">
+                    {pkg.category}
+                  </Badge>
+                  
+                  {/* ⭐ NEW: Featured badge */}
+                  {pkg.featured_type && (
+                    <Badge 
+                      className={`w-fit text-xs ${
+                        pkg.featured_type === 'popular' 
+                          ? 'bg-amber-100 text-amber-800 hover:bg-amber-200 dark:bg-amber-900 dark:text-amber-100' 
+                          : pkg.featured_type === 'special_offer'
+                          ? 'bg-red-100 text-red-800 hover:bg-red-200 dark:bg-red-900 dark:text-red-100'
+                          : 'bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900 dark:text-green-100'
+                      }`}
+                    >
+                      {pkg.featured_type === 'popular' && (
+                        <>
+                          <Star className="w-3 h-3 mr-1 fill-current" />
+                          Popular
+                        </>
+                      )}
+                      {pkg.featured_type === 'special_offer' && (
+                        <>
+                          <Gift className="w-3 h-3 mr-1" />
+                          Special Offer
+                        </>
+                      )}
+                      {pkg.featured_type === 'seasonal' && (
+                        <>
+                          <Sparkles className="w-3 h-3 mr-1" />
+                          Seasonal
+                        </>
+                      )}
+                    </Badge>
+                  )}
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
