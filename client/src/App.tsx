@@ -28,7 +28,7 @@ function Router() {
         <Route path="/services" component={Services} />
         <Route path="/contact" component={Contact} />
         <Route path="/package/:id" component={PackageDetails} />
-        
+
         {/* Admin Routes */}
         <Route path="/admin/login" component={AdminLogin} />
         <Route path="/admin/dashboard">
@@ -46,7 +46,7 @@ function Router() {
             <AdminInquiries />
           </AdminLayout>
         </Route>
-        
+
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -59,7 +59,7 @@ function App() {
       <LanguageProvider>
         <TooltipProvider>
           <Router />
-          <WhatsAppButton />
+
           <Toaster />
         </TooltipProvider>
       </LanguageProvider>

@@ -1,15 +1,16 @@
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/lib/i18n";
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
 import { Menu, X, Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { t, language, setLanguage } = useLanguage();
@@ -65,14 +66,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
-                <span className={`text-sm font-semibold transition-colors hover:text-secondary cursor-pointer ${
-                  location === link.href ? "text-secondary" : "text-foreground"
-                }`}>
+                <span className={`text-sm font-semibold transition-colors hover:text-secondary cursor-pointer ${location === link.href ? "text-secondary" : "text-foreground"
+                  }`}>
                   {link.label}
                 </span>
               </Link>
             ))}
-            
+
             <Select value={language} onValueChange={(v: any) => setLanguage(v)}>
               <SelectTrigger className="w-[100px] h-8 text-xs bg-muted border-none">
                 <SelectValue placeholder="Language" />
@@ -92,7 +92,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="md:hidden p-2 text-primary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -105,10 +105,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="md:hidden bg-background border-b border-border absolute w-full px-4 py-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-5">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
-                <span 
-                  className={`text-lg font-medium py-2 block ${
-                    location === link.href ? "text-secondary" : "text-foreground"
-                  }`}
+                <span
+                  className={`text-lg font-medium py-2 block ${location === link.href ? "text-secondary" : "text-foreground"
+                    }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -116,12 +115,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
             <div className="py-2 border-t border-border flex justify-between items-center">
-               <span className="text-sm text-muted-foreground">Language</span>
-               <div className="flex gap-2">
-                 <button onClick={() => setLanguage("en")} className={`px-2 py-1 text-xs rounded ${language === 'en' ? 'bg-primary text-white' : 'bg-muted'}`}>EN</button>
-                 <button onClick={() => setLanguage("si")} className={`px-2 py-1 text-xs rounded ${language === 'si' ? 'bg-primary text-white' : 'bg-muted'}`}>SI</button>
-                 <button onClick={() => setLanguage("ta")} className={`px-2 py-1 text-xs rounded ${language === 'ta' ? 'bg-primary text-white' : 'bg-muted'}`}>TA</button>
-               </div>
+              <span className="text-sm text-muted-foreground">Language</span>
+              <div className="flex gap-2">
+                <button onClick={() => setLanguage("en")} className={`px-2 py-1 text-xs rounded ${language === 'en' ? 'bg-primary text-white' : 'bg-muted'}`}>EN</button>
+                <button onClick={() => setLanguage("si")} className={`px-2 py-1 text-xs rounded ${language === 'si' ? 'bg-primary text-white' : 'bg-muted'}`}>SI</button>
+                <button onClick={() => setLanguage("ta")} className={`px-2 py-1 text-xs rounded ${language === 'ta' ? 'bg-primary text-white' : 'bg-muted'}`}>TA</button>
+              </div>
             </div>
           </div>
         )}
@@ -142,8 +141,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Your trusted IATA accredited partner for air ticketing, visas, and tour packages.
               </p>
               <div className="bg-white/10 p-4 rounded-lg inline-block backdrop-blur-sm border border-white/20">
-                 <div className="font-bold text-accent">IATA ACCREDITED</div>
-                 <div className="text-xs text-white/70">Official Agent</div>
+                <div className="font-bold text-accent">IATA ACCREDITED</div>
+                <div className="text-xs text-white/70">Official Agent</div>
               </div>
             </div>
 
@@ -158,13 +157,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-6 text-white">Services</h4>
-              <ul className="space-y-3 text-sm text-primary-foreground/80">
-                <li>Air Ticketing</li>
-                <li>Visa Consultation</li>
-                <li>Holiday Packages</li>
-                <li>Travel Insurance</li>
-              </ul>
+              <h4 className="font-bold text-lg mb-6 text-white">Newsletter</h4>
+              <p className="text-sm text-primary-foreground/80 mb-4">
+                Subscribe to get special offers and travel inspiration.
+              </p>
+              <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="w-full px-3 py-2 text-sm rounded bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-accent"
+                />
+                <Button className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold">
+                  Subscribe
+                </Button>
+              </form>
             </div>
 
             <div>
@@ -194,6 +200,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }

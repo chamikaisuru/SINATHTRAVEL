@@ -3,12 +3,12 @@ import { Link, useLocation } from "wouter";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { checkAdminAuth, adminLogout, type AdminUser } from "@/lib/adminApi";
 import { Button } from "@/components/ui/button";
-import { 
-  LayoutDashboard, 
-  Package, 
-  Mail, 
-  LogOut, 
-  Menu, 
+import {
+  LayoutDashboard,
+  Package,
+  Mail,
+  LogOut,
+  Menu,
   X,
   Settings
 } from "lucide-react";
@@ -66,17 +66,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <header className="bg-white border-b border-border sticky top-0 z-40">
         <div className="flex items-center justify-between px-4 h-16">
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="lg:hidden p-2"
             >
               {sidebarOpen ? <X /> : <Menu />}
             </button>
-            <Link href="/admin/dashboard">
-              <a className="text-xl font-heading font-bold text-primary">
-                SINATH <span className="text-secondary">ADMIN</span>
-              </a>
-            </Link>
+            <span className="text-xl font-heading font-bold text-primary cursor-pointer" onClick={() => setLocation('/admin/dashboard')}>
+              SINATH <span className="text-secondary">ADMIN</span>
+            </span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -84,9 +82,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <p className="font-medium">{admin.full_name}</p>
               <p className="text-xs text-muted-foreground">{admin.role}</p>
             </div>
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={handleLogout}
               className="text-destructive hover:text-destructive"
             >
@@ -109,8 +107,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link key={item.href} href={item.href}>
                 <a className={`
                   flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
-                  ${location === item.href 
-                    ? 'bg-primary text-white' 
+                  ${location === item.href
+                    ? 'bg-primary text-white'
                     : 'text-foreground hover:bg-muted'
                   }
                 `}>
@@ -130,7 +128,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Overlay for mobile */}
       {sidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-20 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />

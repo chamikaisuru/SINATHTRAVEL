@@ -6,12 +6,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { 
-  ArrowLeft, 
-  Calendar, 
-  DollarSign, 
-  MapPin, 
-  Users, 
+import {
+  ArrowLeft,
+  Calendar,
+  DollarSign,
+  MapPin,
+  Users,
   CheckCircle2,
   Clock,
   AlertCircle
@@ -55,9 +55,9 @@ export default function PackageDetails() {
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
               Failed to load package details. Please try again.
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 className="ml-4"
                 onClick={() => setLocation('/')}
               >
@@ -97,8 +97,8 @@ export default function PackageDetails() {
       {/* Header */}
       <div className="bg-primary text-white py-8">
         <div className="container mx-auto px-4">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             size="sm"
             className="text-white hover:bg-white/10 mb-4"
             onClick={() => setLocation('/')}
@@ -127,8 +127,8 @@ export default function PackageDetails() {
             {/* Image */}
             {pkg.image && (
               <Card className="overflow-hidden shadow-lg">
-                <img 
-                  src={pkg.image} 
+                <img
+                  src={pkg.image}
                   alt={pkg.title_en}
                   className="w-full h-96 object-cover"
                 />
@@ -197,7 +197,7 @@ export default function PackageDetails() {
                       </div>
                     </div>
                   )}
-                  
+
                   <div className="flex items-center gap-3 text-sm">
                     <Users className="w-5 h-5 text-secondary" />
                     <div>
@@ -216,8 +216,8 @@ export default function PackageDetails() {
                 </div>
 
                 <Link href="/contact">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="w-full bg-secondary hover:bg-secondary/90 text-white font-bold"
                   >
                     Inquire Now
@@ -246,8 +246,8 @@ export default function PackageDetails() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="font-semibold">Email:</span>
-                    <a href="mailto:info@sinathtravels.com" className="text-secondary hover:underline">
-                      info@sinathtravels.com
+                    <a href="mailto:sinathtravels@outlook.com" className="text-secondary hover:underline">
+                      sinathtravels@outlook.com
                     </a>
                   </div>
                 </div>

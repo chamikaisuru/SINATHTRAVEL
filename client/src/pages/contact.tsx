@@ -25,7 +25,7 @@ export default function Contact() {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -38,15 +38,15 @@ export default function Contact() {
 
   async function onSubmit(values: ContactFormData) {
     setIsSubmitting(true);
-    
+
     try {
       await submitInquiry(values);
-      
+
       toast({
         title: "Inquiry Sent!",
         description: "We have received your message and will contact you shortly.",
       });
-      
+
       form.reset();
     } catch (error) {
       console.error('Submission error:', error);
@@ -93,7 +93,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-secondary shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-lg text-primary mb-2">Call Us</h3>
-                  <p className="text-muted-foreground mb-1">0117 794 128</p>
+                  <p className="text-muted-foreground mb-1">077 731 7589</p>
                   <p className="text-muted-foreground text-sm">Mon - Sat, 8am - 6pm</p>
                 </div>
               </CardContent>
@@ -104,7 +104,7 @@ export default function Contact() {
                 <Mail className="w-6 h-6 text-secondary shrink-0 mt-1" />
                 <div>
                   <h3 className="font-bold text-lg text-primary mb-2">Email Us</h3>
-                  <p className="text-muted-foreground break-all">info@sinathtravels.com</p>
+                  <p className="text-muted-foreground break-all">sinathtravels@outlook.com</p>
                 </div>
               </CardContent>
             </Card>
@@ -124,10 +124,10 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Name</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="Your Name" 
-                              {...field} 
-                              className="bg-muted/50" 
+                            <Input
+                              placeholder="Your Name"
+                              {...field}
+                              className="bg-muted/50"
                               disabled={isSubmitting}
                             />
                           </FormControl>
@@ -142,10 +142,10 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>{t.contact.email}</FormLabel>
                           <FormControl>
-                            <Input 
-                              placeholder="your@email.com" 
-                              {...field} 
-                              className="bg-muted/50" 
+                            <Input
+                              placeholder="your@email.com"
+                              {...field}
+                              className="bg-muted/50"
                               disabled={isSubmitting}
                             />
                           </FormControl>
@@ -154,7 +154,7 @@ export default function Contact() {
                       )}
                     />
                   </div>
-                  
+
                   <FormField
                     control={form.control}
                     name="phone"
@@ -162,10 +162,10 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>{t.contact.phone}</FormLabel>
                         <FormControl>
-                          <Input 
-                            placeholder="Your Phone Number" 
-                            {...field} 
-                            className="bg-muted/50" 
+                          <Input
+                            placeholder="Your Phone Number"
+                            {...field}
+                            className="bg-muted/50"
                             disabled={isSubmitting}
                           />
                         </FormControl>
@@ -181,10 +181,10 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>{t.contact.message}</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="How can we help you?" 
-                            className="min-h-[150px] bg-muted/50" 
-                            {...field} 
+                          <Textarea
+                            placeholder="How can we help you?"
+                            className="min-h-[150px] bg-muted/50"
+                            {...field}
                             disabled={isSubmitting}
                           />
                         </FormControl>
@@ -193,9 +193,9 @@ export default function Contact() {
                     )}
                   />
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="w-full md:w-auto bg-secondary hover:bg-secondary/90"
                     disabled={isSubmitting}
                   >
@@ -209,13 +209,13 @@ export default function Contact() {
 
         {/* Map Embed */}
         <div className="mt-16 h-[400px] rounded-2xl overflow-hidden shadow-lg border border-border">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63320.43002237937!2d81.82!3d7.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae515f426090623%3A0x6283b40092289659!2sAkkaraipattu%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63320.43002237937!2d81.82!3d7.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae515f426090623%3A0x6283b40092289659!2sAkkaraipattu%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Location Map"
           ></iframe>

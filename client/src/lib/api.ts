@@ -3,14 +3,14 @@
  * Replace: client/src/lib/api.ts
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/server/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 async function apiRequest<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
   const url = `${API_BASE_URL}/${endpoint}`;
-  
+
   const config: RequestInit = {
     ...options,
     headers: {
@@ -21,7 +21,7 @@ async function apiRequest<T>(
 
   try {
     const response = await fetch(url, config);
-    
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({ message: 'Request failed' }));
       throw new Error(error.message || `HTTP error! status: ${response.status}`);
@@ -60,7 +60,7 @@ export async function getPackages(params?: {
   if (params?.category) queryParams.append('category', params.category);
   if (params?.status) queryParams.append('status', params.status);
   if (params?.limit) queryParams.append('limit', params.limit.toString());
-  
+
   const query = queryParams.toString();
   return apiRequest<Package[]>(`packages.php${query ? '?' + query : ''}`);
 }
@@ -107,21 +107,21 @@ export async function submitInquiry(data: InquiryData): Promise<InquiryResponse>
  */
 export function getImageUrl(imagePath?: string): string {
   if (!imagePath) return '';
-  
+
   console.log('🖼️ Frontend getImageUrl received:', imagePath);
-  
+
   // If already a full URL, return as is
   if (imagePath.startsWith('http')) {
     console.log('🖼️ Full URL, returning as is');
     return imagePath;
   }
-  
+
   // If it's a stock image path (starts with /src/assets)
   if (imagePath.startsWith('/src/assets/stock_images/')) {
     // Extract just the filename
     const filename = imagePath.split('/').pop() || '';
     console.log('🖼️ Stock image, using Vite import:', filename);
-    
+
     try {
       // Use Vite's asset import
       return new URL(`/attached_assets/stock_images/${filename}`, import.meta.url).href;
@@ -130,7 +130,7 @@ export function getImageUrl(imagePath?: string): string {
       return `/attached_assets/stock_images/${filename}`;
     }
   }
-  
+
   // Otherwise, assume backend gave us correct path
   console.log('🖼️ Using path as provided by backend');
   return imagePath;

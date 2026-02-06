@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { getPackages } from "@/lib/api";
+import StatsSection from "@/components/stats-section";
+import Testimonials from "@/components/testimonials";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -22,12 +24,12 @@ export default function Home() {
     <div className="flex flex-col gap-16 pb-16">
       {/* Hero Section */}
       <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${images.hero})` }}
         />
         <div className="absolute inset-0 bg-primary/40 z-10 backdrop-blur-[2px]" />
-        
+
         <div className="container mx-auto px-4 z-20 relative text-center text-white space-y-6 max-w-4xl">
           <Badge className="bg-secondary/90 hover:bg-secondary text-white border-none px-4 py-1 text-sm uppercase tracking-wider mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
             {t.about.iata}
@@ -51,18 +53,18 @@ export default function Home() {
       {/* Services Preview */}
       <section className="container mx-auto px-4 -mt-24 relative z-30">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <ServiceCard 
-            icon={<Plane className="w-10 h-10 text-secondary" />} 
+          <ServiceCard
+            icon={<Plane className="w-10 h-10 text-secondary" />}
             title={t.services.airTicketing}
             desc="Best deals on flights worldwide."
           />
-          <ServiceCard 
-            icon={<Globe className="w-10 h-10 text-secondary" />} 
+          <ServiceCard
+            icon={<Globe className="w-10 h-10 text-secondary" />}
             title={t.services.visaServices}
             desc="Expert visa handling for all countries."
           />
-          <ServiceCard 
-            icon={<Map className="w-10 h-10 text-secondary" />} 
+          <ServiceCard
+            icon={<Map className="w-10 h-10 text-secondary" />}
             title={t.services.tourPackages}
             desc="Curated holiday experiences."
           />
@@ -100,14 +102,17 @@ export default function Home() {
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-secondary/10 rounded-3xl transform rotate-3 scale-105" />
-            <img 
-              src={images.tourists} 
-              alt="Happy travelers" 
+            <img
+              src={images.tourists}
+              alt="Happy travelers"
               className="relative rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]"
             />
           </div>
         </div>
       </section>
+
+      {/* Stats Section */}
+      <StatsSection />
 
       {/* Featured Packages - DYNAMIC */}
       <section className="bg-muted/50 py-20">
@@ -120,7 +125,7 @@ export default function Home() {
               Explore our most sought-after destinations and exclusive holiday deals crafted just for you.
             </p>
           </div>
-          
+
           {isLoading ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
@@ -149,9 +154,9 @@ export default function Home() {
                       ${pkg.price}
                     </div>
                     {pkg.image ? (
-                      <img 
-                        src={pkg.image} 
-                        alt={pkg.title_en} 
+                      <img
+                        src={pkg.image}
+                        alt={pkg.title_en}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     ) : (
@@ -198,6 +203,9 @@ export default function Home() {
           )}
         </div>
       </section>
+
+      {/* Testimonials */}
+      <Testimonials />
     </div>
   );
 }

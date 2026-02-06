@@ -3,6 +3,19 @@
  * COMPLETELY FIXED Admin Inquiries API
  */
 
+// Configure session for cross-origin
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'lifetime' => 86400,
+        'path' => '/',
+        'domain' => '',
+        'secure' => false,
+        'httponly' => true,
+        'samesite' => 'None'
+    ]);
+    session_start();
+}
+
 require_once '../../config/database.php';
 require_once './auth.php';
 
@@ -15,12 +28,45 @@ $method = $_SERVER['REQUEST_METHOD'];
 error_log("📬 INQUIRIES API CALLED");
 error_log("Method: " . $method);
 
-// Verify admin authentication
+// Verify admin authentication using Authorization header
+$headers = getallheaders();
+$authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? '';
+
+if (empty($authHeader)) {
+    error_log("❌ No Authorization header in inquiries.php");
+    sendResponse(401, null, 'Not authenticated');
+    exit;
+}
+
+$token = str_replace('Bearer ', '', $authHeader);
+
+if (empty($token)) {
+    error_log("❌ No token in Authorization header");
+    sendResponse(401, null, 'Not authenticated');
+    exit;
+}
+
 try {
-    $admin = verifyAdminAuth($db);
+    $query = "SELECT au.* FROM admin_users au 
+              JOIN admin_sessions s ON au.id = s.admin_id 
+              WHERE s.id = :session_id AND s.expires_at > NOW() AND au.status = 'active'";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':session_id', $token);
+    $stmt->execute();
+    
+    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    if (!$admin) {
+        error_log("❌ Invalid session in inquiries.php");
+        sendResponse(401, null, 'Session expired');
+        exit;
+    }
+    
     error_log("✅ Admin verified in inquiries.php: " . $admin['username']);
+    
 } catch(Exception $e) {
-    error_log("❌ Auth failed in inquiries.php");
+    error_log("❌ Auth error in inquiries.php: " . $e->getMessage());
+    sendResponse(401, null, 'Authentication error');
     exit;
 }
 

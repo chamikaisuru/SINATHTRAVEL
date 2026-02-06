@@ -8,9 +8,18 @@
 require_once '../../config/database.php';
 enableCORS();
 
-// STEP 2: Session must be started BEFORE any configuration
+// STEP 2: Configure session cookie for cross-origin support
 // Only start if not already started
 if (session_status() === PHP_SESSION_NONE) {
+    // Set session cookie parameters BEFORE starting session
+    session_set_cookie_params([
+        'lifetime' => 86400, // 24 hours
+        'path' => '/',
+        'domain' => '', // Empty allows localhost with different ports
+        'secure' => false, // Set to true if using HTTPS
+        'httponly' => true,
+        'samesite' => 'None' // Required for cross-origin
+    ]);
     session_start();
 }
 
@@ -81,7 +90,7 @@ function handleLogin($db) {
     
     error_log("✅ Password verified");
     
-    // Create session
+    // Create session token
     $sessionId = bin2hex(random_bytes(32));
     $expiresAt = date('Y-m-d H:i:s', strtotime('+24 hours'));
     
@@ -103,13 +112,9 @@ function handleLogin($db) {
     $stmt->bindParam(':id', $admin['id']);
     $stmt->execute();
     
-    // Set session variables
-    $_SESSION['admin_session_id'] = $sessionId;
-    $_SESSION['admin_id'] = $admin['id'];
-    $_SESSION['admin_username'] = $admin['username'];
+    error_log("✅ Session created: " . $sessionId);
     
-    error_log("✅ Session stored: " . $sessionId);
-    
+    // Return token in response (not cookie)
     sendResponse(200, [
         'token' => $sessionId,
         'admin' => [
@@ -139,28 +144,38 @@ function handleLogout($db) {
 function handleCheckAuth($db) {
     error_log("🔍 Checking auth...");
     
-    $sessionId = $_SESSION['admin_session_id'] ?? null;
+    // Get token from Authorization header
+    $headers = getallheaders();
+    $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? '';
     
-    if (!$sessionId) {
-        error_log("❌ No session ID found");
+    if (empty($authHeader)) {
+        error_log("❌ No Authorization header");
         sendResponse(401, null, 'Not authenticated');
         return;
     }
     
-    error_log("🔍 Session ID found: " . $sessionId);
+    // Extract token (format: "Bearer TOKEN")
+    $token = str_replace('Bearer ', '', $authHeader);
+    
+    if (empty($token)) {
+        error_log("❌ No token in Authorization header");
+        sendResponse(401, null, 'Not authenticated');
+        return;
+    }
+    
+    error_log("🔍 Token found: " . substr($token, 0, 10) . "...");
     
     $query = "SELECT au.* FROM admin_users au 
               JOIN admin_sessions s ON au.id = s.admin_id 
               WHERE s.id = :session_id AND s.expires_at > NOW() AND au.status = 'active'";
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':session_id', $sessionId);
+    $stmt->bindParam(':session_id', $token);
     $stmt->execute();
     
     $admin = $stmt->fetch();
     
     if (!$admin) {
         error_log("❌ Session expired or invalid");
-        session_destroy();
         sendResponse(401, null, 'Session expired');
         return;
     }

@@ -9,17 +9,23 @@ export default function AdminDashboard() {
   const { data, isLoading, error, refetch, isFetching } = useQuery({
     queryKey: ['admin-dashboard'],
     queryFn: async () => {
-      const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '/api/admin') || 
-                       'http://localhost:8080/server/api/admin';
-      
+      const API_BASE = import.meta.env.VITE_API_URL?.replace('/api', '/api/admin') ||
+        '/api/admin';
+
+      const token = localStorage.getItem('admin_token');
+      const headers: HeadersInit = {};
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE}/dashboard.php`, {
-        credentials: 'include',
+        headers,
       });
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      
+
       const result = await response.json();
       return result.data;
     },
@@ -30,7 +36,7 @@ export default function AdminDashboard() {
       <div className="space-y-8">
         <h1 className="text-3xl font-bold">Dashboard</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {[1,2,3,4].map(i => (
+          {[1, 2, 3, 4].map(i => (
             <Card key={i}><CardContent className="p-6">
               <Skeleton className="h-20 w-full" />
             </CardContent></Card>
@@ -61,9 +67,9 @@ export default function AdminDashboard() {
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Dashboard</h1>
-        <Button 
-          onClick={() => refetch()} 
-          variant="outline" 
+        <Button
+          onClick={() => refetch()}
+          variant="outline"
           size="sm"
           disabled={isFetching}
         >
@@ -74,30 +80,30 @@ export default function AdminDashboard() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <StatCard 
-          title="Total Packages" 
+        <StatCard
+          title="Total Packages"
           value={packages.total_packages || 0}
-          icon={<Package className="w-8 h-8" />} 
-          color="blue" 
+          icon={<Package className="w-8 h-8" />}
+          color="blue"
         />
-        <StatCard 
-          title="Active Packages" 
+        <StatCard
+          title="Active Packages"
           value={packages.active_packages || 0}
-          icon={<TrendingUp className="w-8 h-8" />} 
-          color="green" 
+          icon={<TrendingUp className="w-8 h-8" />}
+          color="green"
         />
-        <StatCard 
-          title="Total Inquiries" 
+        <StatCard
+          title="Total Inquiries"
           value={inquiries.total_inquiries || 0}
-          icon={<Mail className="w-8 h-8" />} 
-          color="purple" 
+          icon={<Mail className="w-8 h-8" />}
+          color="purple"
         />
-        <StatCard 
-          title="New Inquiries" 
+        <StatCard
+          title="New Inquiries"
           value={inquiries.new_inquiries || 0}
-          icon={<Mail className="w-8 h-8" />} 
-          color="orange" 
-          highlight 
+          icon={<Mail className="w-8 h-8" />}
+          color="orange"
+          highlight
         />
       </div>
 
@@ -143,7 +149,7 @@ function StatCard({ title, value, icon, color, highlight }: {
     purple: 'bg-purple-500/10 text-purple-500',
     orange: 'bg-orange-500/10 text-orange-500',
   };
-  
+
   return (
     <Card className={highlight ? "border-orange-500 border-2" : ""}>
       <CardContent className="p-6">
@@ -171,7 +177,7 @@ function Row({ label, value, color }: {
     blue: 'text-blue-600',
     green: 'text-green-600',
   };
-  
+
   return (
     <div className="flex justify-between items-center pb-3 border-b last:border-0">
       <span className="text-sm text-muted-foreground">{label}</span>

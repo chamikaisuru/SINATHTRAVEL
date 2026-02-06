@@ -194,7 +194,8 @@ function getImageUrl($filename) {
     // Default: assume it's in uploads
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
-    return "$protocol://$host/server/uploads/$filename";
+    // FIXED: Include project folder name 'sinath-travels'
+    return "$protocol://$host/sinath-travels/server/uploads/$filename";
 }
 
 /**

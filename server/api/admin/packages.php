@@ -4,8 +4,16 @@
  * Replace: server/api/admin/packages.php
  */
 
-// STEP 1: Start session FIRST
+// STEP 1: Configure and start session FIRST
 if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'lifetime' => 86400,
+        'path' => '/',
+        'domain' => '',
+        'secure' => false,
+        'httponly' => true,
+        'samesite' => 'None'
+    ]);
     session_start();
 }
 
@@ -25,11 +33,20 @@ $database = new Database();
 $db = $database->getConnection();
 $method = $_SERVER['REQUEST_METHOD'];
 
-// STEP 5: Verify authentication
-$sessionId = $_SESSION['admin_session_id'] ?? null;
+// STEP 5: Verify authentication using Authorization header
+$headers = getallheaders();
+$authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? '';
 
-if (!$sessionId) {
-    error_log("❌ No session ID in packages.php");
+if (empty($authHeader)) {
+    error_log("❌ No Authorization header in packages.php");
+    sendResponse(401, null, 'Not authenticated');
+    exit;
+}
+
+$token = str_replace('Bearer ', '', $authHeader);
+
+if (empty($token)) {
+    error_log("❌ No token in Authorization header");
     sendResponse(401, null, 'Not authenticated');
     exit;
 }
@@ -39,7 +56,7 @@ try {
               JOIN admin_sessions s ON au.id = s.admin_id 
               WHERE s.id = :session_id AND s.expires_at > NOW() AND au.status = 'active'";
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':session_id', $sessionId);
+    $stmt->bindParam(':session_id', $token);
     $stmt->execute();
     
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -123,7 +140,7 @@ function formatImagePath($imagePath) {
         // Uploaded image - return full URL to server/uploads
         $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
         $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
-        $url = "$protocol://$host/server/uploads/$imagePath";
+        $url = "$protocol://$host/sinath-travels/server/uploads/$imagePath";
         
         error_log("🖼️ Uploaded image URL: " . $url);
         return $url;
